@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lightbox</title>
+<link href="css/lightbox.css" rel="stylesheet" type="text/css" >
+<link href="css/gallery.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id = "container">
+<h1>Image Rollovers</h1>
+<div id="gallery">
+  <a href="images/large/blue.jpg" data-title = "Blue Scene"    data-lightbox="flowers"><img src="images/small/blue_h.jpg" width="70" height="70" alt="Blue"></a>
+  <a href="images/large/yellow.jpg" data-title = "Yellow Scene"    data-lightbox="flowers"> <img src="images/small/yellow_h.jpg" width="70" height="70" alt="Yellow"/ </a>
+  <a href="images/large/green.jpg" data-title = "Green Scene"   data-lightbox="flowers"><img src="images/small/green_h.jpg" width="70" height="70" alt="Green"/ </a>
+  <a href="images/large/orange.jpg" data-title = "Orange Scene"   data-lightbox="flowers"><img src="images/small/orange_h.jpg" width="70" height="70" alt="Orange"></a>
+  <a href="images/large/purple.jpg" data-title = "Purple Scene"   data-lightbox="flowers"><img src="images/small/purple_h.jpg" width="70" height="70" alt="Purple"> </a>
+  <a href="images/large/red.jpg" data-title = "Red Scene"   data-lightbox="flowers"><img src="images/small/red_h.jpg" width="70" height="70" alt="Red"></a>
+  </div>
+</div>
+</body>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+		$('#gallery img').css('opacity', 0.6);
+
+		$('#gallery img').hover(
+		  function(){
+			$(this).stop().fadeTo('slow', 1);
+		  },
+		  function(){
+			$(this).stop().fadeTo('slow', 0.6);
+		  });
+
+		  lightbox.option({
+		       'fadeDuration':1200,//default * 2
+		       'imageFadeDuration':2400,//default * 4
+		       'wrapAround': true
+		  })
+
+});
+</script>
+
+</html>

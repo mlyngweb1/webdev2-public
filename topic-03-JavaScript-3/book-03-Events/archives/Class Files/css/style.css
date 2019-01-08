@@ -1,0 +1,77 @@
+
+body, html {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+} 
+
+body {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  background-color: #e2edff;
+  line-height: 125%;
+}
+
+
+.container {
+ width:100%;
+  }
+  
+  
+
+header {
+  margin:0;
+  padding:0;
+ }
+
+form {
+  margin-top:3%;
+}
+
+h1 {
+  font-size: x-large;
+  background-color: navy;
+  color: white;
+  padding-top: 2em;
+  padding-bottom: .2em;
+  padding-left: .4em;
+  margin: 0;
+}
+
+
+h1, h2, h3 {
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+
+legend {   
+  font-weight: bold;   
+  font-size: medium;   
+  color: navy;  
+  border-bottom: 2px solid navy;
+
+  
+}
+
+label {  
+  font-weight: bold;  
+  font-size: small;  
+  color: blue;  
+  line-height: 150%;
+}
+
+
+input[type="text"]:valid,  input[type="tel"]:valid, input[type="date"]:valid, input[type="email"]:valid, input[type="password"]:valid, input[type="url"]:valid{
+    color: green;
+}
+
+/* Unmatched */
+input[type="text"]:invalid, input[type="tel"]:invalid,input[type="date"]:invalid, input[type="email"]:invalid, input[type="password"]:invalid, input[type="url"]:invalid{
+    color: red;
+    border-color:red;
+}
+
+
+
+
+
+

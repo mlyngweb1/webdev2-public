@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Fade In</title>
+<link href="css/mycss.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id = "container">
+<h1>Image Fade In</h1>
+<div id="gallery">
+  <a href="images/large/blue.jpg" title = "Blue Scene"><img src="images/small/blue_h.jpg" width="70" height="70" alt="Blue"></a>
+  <a href="images/large/yellow.jpg" title = "Yellow Scene"> <img src="images/small/yellow_h.jpg" width="70" height="70" alt="Yellow"/ </a>
+  <a href="images/large/green.jpg" title = "Green Scene"><img src="images/small/green_h.jpg" width="70" height="70" alt="Green"/ </a>
+  <a href="images/large/orange.jpg" title = "Orange Scene"><img src="images/small/orange_h.jpg" width="70" height="70" alt="Orange"></a>
+  <a href="images/large/purple.jpg" title = "Purple Scene"><img src="images/small/purple_h.jpg" width="70" height="70" alt="Purple"> </a>
+  <a href="images/large/red.jpg" title = "Red Scene"><img src="images/small/red_h.jpg" width="70" height="70" alt="Red"></a>
+</div>
+<div id="photo"></div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function() {
+
+
+$('#gallery img').css('opacity', 0.6);
+
+$('#gallery img').hover(
+ function(){
+    $(this).stop().fadeTo('slow', 1);
+ },
+ function(){
+    $(this).stop().fadeTo('slow', .6);
+});
+
+
+$('#gallery a').click(function(evt) {
+     evt.preventDefault();
+     var imgPath = $(this).attr('href');
+	 var oldImage = $('#photo img');
+	 var newImage = $('<img src=' + imgPath +' alt = "" >');
+	 $('#photo').prepend(newImage);
+	 oldImage.fadeOut(4500,function(){
+          $(this).remove();
+     });
+});
+
+$('#gallery a:first').click();
+}); // end ready()
+</script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Changing Attribute values</title>
+</head>
+<body>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").on("click", function(){
+        $(this).hide();
+    });
+});
+</script>
+
+</body>
+</html>
+

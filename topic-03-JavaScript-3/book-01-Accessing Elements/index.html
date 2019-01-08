@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  JavaScript Part Three  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Accessing Elements">
+          Accessing Elements
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Accessing Elements">
+            <h1>Objectives</h1>
+<p>This lab will look at accessing elements in the DOM.</p>
+<p>DOM queries may return one element, or they may return a NodeList, which is a collection of nodes. </p>
+<p>In this lab we are going to work with the following <a href="archives/Class Files/initial-page.html" target = "_blank"> example</a>.</p>
+<ul>
+<li><p><a href="#/01">Return a Single Element Node</a></p>
+</li>
+<li><p><a href="#/02">Return one or more Elements <code>-</code> getElementsByTagName()</a></p>
+</li>
+<li><p><a href="#/03">Return one or more Elements <code>-</code> getElementsByClassName()</a></p>
+</li>
+<li><p><a href="#/04">Return one or more Elements <code>-</code> querySelectorAll()</a></p>
+</li>
+<li><p><a href="#/05">Return one or more Elements <code>-</code> Refer to a specific item</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Return a Single Element Node</h1>
+<p>Sometimes you will want to access one individual element (or a fragment of the page that is stored within that one element).</p>
+<p><strong>getElementById()</strong> and <strong>querySelector()</strong> can both search an entire document and return individual elements. Both use a similar syntax.</p>
+<h2>getElementById()</h2>
+<p>Selects an individual element given the value of its attribute. The HTML must have an <strong>id</strong> atrribute in order for it to be selectable.</p>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;h1 id=&quot;header&quot;&gt;List King&lt;/h1&gt;
+&lt;h2&gt;Buy groceries&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li id=&quot;one&quot; class=&quot;hot&quot;&gt;&lt;em&gt;fresh&lt;/em&gt; figs&lt;/li&gt;
+   &lt;li id=&quot;two&quot; class=&quot;hot&quot;&gt;pine nuts&lt;/li&gt;
+   &lt;li id=&quot;three&quot; class=&quot;hot&quot;&gt;honey&lt;/li&gt;
+   &lt;li id=&quot;four&quot;&gt;balsamic vinegar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code>// Select the element and store it in a variable.
+var el = document.getElementById(&#39;one&#39;);
+
+// Change the value of the class attribute.
+el.className = &#39;cool&#39;;</code></pre>
+<p><a href="archives/Class Files/get-element-by-id.html" target = "_blank">getElementById() Example</a>.</p>
+<h2>querySelector()</h2>
+<p>Uses CSS selector syntax that would select one or more elements. This method returns only the first of the matching elements.</p>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;h1 id=&quot;header&quot;&gt;List King&lt;/h1&gt;
+&lt;h2&gt;Buy groceries&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li id=&quot;one&quot; class=&quot;hot&quot;&gt;&lt;em&gt;fresh&lt;/em&gt; figs&lt;/li&gt;
+   &lt;li id=&quot;two&quot; class=&quot;hot&quot;&gt;pine nuts&lt;/li&gt;
+   &lt;li id=&quot;three&quot; class=&quot;hot&quot;&gt;honey&lt;/li&gt;
+   &lt;li id=&quot;four&quot;&gt;balsamic vinegar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code>// Select the element and store it in a variable.
+var el = document.querySelector(&#39;li.hot&#39;);
+
+// Change the value of the class attribute.
+el.className = &#39;cool&#39;;</code></pre>
+<p><a href="archives/Class Files/queryselector.html" target = "_blank">querySelector() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Return one or more Elements</h1>
+<p>You may also want to select a group of elements, for example, every <code>&lt;h1&gt;</code> element in the page or every <code>&lt;h1&gt;</code> element within a particular list.</p>
+<p><strong>getElementsByTagName(), getElementsByClassName()</strong> and <strong>querySelectorAll()</strong> can search an entire document and return more than one element (as a NodeList).</p>
+<p>The NodeList object represents a collection of nodes. The nodes can be accessed by index numbers. The index starts at 0.</p>
+<h2>getElementsByTagName()</h2>
+<p>Select all elements on the page with the specified tag name. </p>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;h1 id=&quot;header&quot;&gt;List King&lt;/h1&gt;
+&lt;h2&gt;Buy groceries&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li id=&quot;one&quot; class=&quot;hot&quot;&gt;&lt;em&gt;fresh&lt;/em&gt; figs&lt;/li&gt;
+   &lt;li id=&quot;two&quot; class=&quot;hot&quot;&gt;pine nuts&lt;/li&gt;
+   &lt;li id=&quot;three&quot; class=&quot;hot&quot;&gt;honey&lt;/li&gt;
+   &lt;li id=&quot;four&quot;&gt;balsamic vinegar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code>var elements = document.getElementsByTagName(&#39;li&#39;); // Find &lt;li&gt; elements
+
+if (elements.length &gt; 0) {  // If 1 or more are found
+ for (i in elements) {
+  var el = elements[i];     // Select each element using array syntax
+  el.className = &#39;cool&#39;;    // Change the value of the class attribute
+ }
+}</code></pre>
+<p><a href="archives/Class Files/get-elements-by-tag-name.html" target = "_blank">getElementsByTagName() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Return one or more Elements</h1>
+<h2>getElementsByClassName()</h2>
+<p>Selects one or more elements given the value of their <strong>class</strong> attribute. The HTML must have a <strong>class</strong> attribute for it to be selectable.</p>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;h1 id=&quot;header&quot;&gt;List King&lt;/h1&gt;
+&lt;h2&gt;Buy groceries&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li id=&quot;one&quot; class=&quot;hot&quot;&gt;&lt;em&gt;fresh&lt;/em&gt; figs&lt;/li&gt;
+   &lt;li id=&quot;two&quot; class=&quot;hot&quot;&gt;pine nuts&lt;/li&gt;
+   &lt;li id=&quot;three&quot; class=&quot;hot&quot;&gt;honey&lt;/li&gt;
+   &lt;li id=&quot;four&quot;&gt;balsamic vinegar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code>var elements = document.getElementsByClassName(&#39;hot&#39;); // Find hot items
+
+if (elements.length &gt; 2) {                            // If 3 or more are found
+
+  var el = elements[2];              // Select the third one from the NodeList
+  el.className = &#39;cool&#39;;             // Change the value of its class attribute
+
+}</code></pre>
+<p><a href="archives/Class Files/get-elements-by-class-name.html" target = "_blank">getElementsByTagName() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Return one or more Elements</h1>
+<h2>querySelectorAll()</h2>
+<p>Uses CSS selector syntax to select one or more elements and returns all of those that match.</p>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;h1 id=&quot;header&quot;&gt;List King&lt;/h1&gt;
+&lt;h2&gt;Buy groceries&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li id=&quot;one&quot; class=&quot;hot&quot;&gt;&lt;em&gt;fresh&lt;/em&gt; figs&lt;/li&gt;
+   &lt;li id=&quot;two&quot; class=&quot;hot&quot;&gt;pine nuts&lt;/li&gt;
+   &lt;li id=&quot;three&quot; class=&quot;hot&quot;&gt;honey&lt;/li&gt;
+   &lt;li id=&quot;four&quot;&gt;balsamic vinegar&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p><strong>JavaScript</strong></p>
+<pre><code>// querySelectorAll returns a NodeList.
+// The first and third li elements are selected and changed.
+var els = document.querySelectorAll(&#39;li.hot&#39;);
+els[0].className = &#39;cool&#39;;
+els[2].className = &#39;cool&#39;;</code></pre>
+<p><a href="archives/Class Files/query-selector-All.html" target = "_blank">querySelectorAll() Example</a>.</p>
+<p>In the following <a href="archives/Class Files/node-list.html" target = "_blank">example</a>, all list items with class of <em>hot</em> are set to <em>cool</em>.</p>
+<pre><code>var hotItems = document.querySelectorAll(&#39;li.hot&#39;); // Store NodeList in array
+if (hotItems.length &gt; 0) {                          // If it contains items
+
+  for (i in hotItems) {       // Loop through each item
+    hotItems[i].className = &#39;cool&#39;;         // Change value of class attribute
+  }
+
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Return one or more Elements - Refer to a specific item</h1>
+<p><strong>getElementsByTagName(), getElementsByClassName()</strong> and <strong>querySelectorAll()</strong> return a nodeList.</p>
+<p>To refer a specific element we can use:</p>
+<pre><code>var listItems = document.getElementsByTagName(&#39;li&#39;);
+var fourthItem = listItems[3];</code></pre>
+<p>or</p>
+<pre><code>var fourthItem = document.getElementsByTagName(&#39;li&#39;).item(3);</code></pre>
+<p>The <strong>item()</strong> method returns a node at the specified index in a NodeList object. The nodes are sorted as they appear in the source code, and the index starts at 0.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

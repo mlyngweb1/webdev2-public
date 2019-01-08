@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Example</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href='css/bootstrap-datepicker.min.css' rel="stylesheet">
+    <link rel = "stylesheet" href = "css/gallery2.css">
+</head>
+<body>
+<div class="container">
+<div class="row">
+<sidebar class="col-sm-2">
+<img src="images/burning_book.jpg" alt="">
+</sidebar>
+<section class="col-sm-10">
+
+  <form action="process.html" method="post" name="signup" id="signup" role="form" class="form-horizontal">
+  <fieldset>
+   <legend>Signup Form</legend>
+    <div class ="form-group">
+             <label for="name" class="col-sm-3 control-label">Name</label>
+             <div class="col-sm-4">
+               <input type="text" class="form-control" name="name" id="name" autofocus>
+             </div>
+           </div>
+
+     <div class ="form-group">
+      <label for="email" class="col-sm-3 control-label">E-mail Address</label>
+     <div class="col-sm-4">
+     <input name="email" class="form-control" type="email" id="email">
+    </div>
+    </div>
+
+     <div class ="form-group">
+      <label for="mypassword" class="col-sm-3 control-label">Password</label>
+     <div class="col-sm-4">
+     <input name="mypassword" class="form-control" type="password" id="mypassword">
+      </div></div>
+
+     <div class ="form-group">
+	       <label for="confirm_password" class="col-sm-3 control-label">Confirm Password</label>
+	      <div class="col-sm-4">
+	      <input name="confirm_password" class="form-control" type="password" id="confirm_password">
+	       </div></div>
+
+        <div class="form-group">
+         <label for="dob" class="col-sm-3 control-label">Date of Birth</label>
+         <div class="col-sm-4">
+            <div class="input-group date">
+                <input id="dob" type="text" name='dob' class="form-control">
+                <label for="dob" class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                </label>
+            </div>
+         </div></div>
+
+	    <div class="buttonarea">
+            <input type="submit" value="Submit">
+          </div>
+
+          </fieldset>
+  </form>
+</section>
+</div>
+
+</div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+<script>
+$(document).ready(function () {
+
+$("#dob").datepicker({
+     format: "dd-mm-yyyy",
+     startDate: "01-01-1940",
+     endDate: "+0d",
+     startView:2
+});
+
+});
+</script>
+
+
+</body>
+</html>

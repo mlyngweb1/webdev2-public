@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  JavaScript Part Three  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Events">
+          Events
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Events">
+            <h1>Objectives</h1>
+<p>This lab explores the events and event handling.  </p>
+<ul>
+<li><a href="#01">Events</a></li>
+<li><a href="#02">Event Handling</a></li>
+<li><a href="#03">Using Event Listeners</a></li>
+<li><a href="#04">Form Example</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Events</h1>
+<p>When you browse the web, your browser registers different types of events. It&#39;s the bowsers way of saying &quot;Hey, this just happened&quot;. Your script can then respond
+to these events.</p>
+<p>An example would be the <strong>mouseover</strong> event, which is detected when the user moves the mouse over an object.   </p>
+<p>Another event is the <strong>load</strong> event, which is detected as soon as the page is finished loading.</p>
+<p>The following are the most important events recognized by javascript:</p>
+<p><img src="img/events.png" alt=""></p>
+<h2>Events Fire or are Raised</h2>
+<p>When an event has occurred, it is often described as having <strong>fired</strong> or been <strong>raised</strong>.</p>
+<h2>Events Trigger Scripts</h2>
+<p>Events are said to <strong>trigger</strong> a function or script.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Event Handling</h1>
+<p>When the user interacts with the HTML on a web page, there are three steps involved in getting it to trigger some JavaScript code. Together these steps are known as <strong>Event Handling</strong>.</p>
+<ol>
+<li>Select the <em>element</em> node(s) you want the script to respond to.</li>
+<li>Indicate which <em>event</em> on the selected node(s) will trigger the response.</li>
+<li>State the <em>code</em> you want to run when the event occurs.</li>
+</ol>
+<h2>Example</h2>
+<p><img src="img/eg.jpg" alt=""> </p>
+<ol>
+<li>The element that users are interacting with is the text input where they enter their firstname.</li>
+<li>When users move out of the text input, it loses focus, and the <strong>blur</strong> event fires on this element.</li>
+<li>When the <strong>blur</strong> event fires on the firstname input, it will trigger a function, which will check whether the text entered is valid or not.</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Using Event Listeners</h1>
+<p>The <strong>addEventListener()</strong> method attaches an event handler to the specified element.</p>
+<p><strong>Syntax</strong></p>
+<p>element.addEventListener(event, function, useCapture)</p>
+<dl>
+<dt>event</dt>
+<dd><em>Required</em>. A String that specifies the name of the event. Do not use the &quot;on&quot; prefix. For example, use &quot;click&quot; instead of &quot;onclick&quot;.
+</dd>
+<dt>function</dt>
+<dd><em>Required</em>. Specifies the function to run when the event occurs. 
+</dd>
+<dt>useCapture</dt>
+<dd><em>Optional</em>. A Boolean value that specifies whether the event should be executed in the capturing (true) or in the bubbling (false) phase.<br></dd>
+
+</dl>
+
+<h2>Simple Examples</h2>
+<h3>Example One</h3>
+<p><a href="archives/Class Files/event1.htm" target = "_blank">Example One </a>responds to the event of a web page loading.</p>
+<pre><code>&lt;body&gt;
+&lt;script&gt;
+function handleload(e) {
+  alert(&quot;Page has loaded&quot;);
+}
+
+window.addEventListener(&quot;load&quot;, handleload, false);
+
+&lt;/script&gt;
+&lt;h1&gt;The page has loaded...&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+<h3>Example Two</h3>
+<p><a href="archives/Class Files/event2.htm" target = "_blank">Example Two </a>responds to the event of a button being clicked.</p>
+<pre><code>&lt;body&gt;
+&lt;form&gt;
+ &lt;button id=&quot;btnClickMe&quot;&gt;Click Me!&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+ function handleClick() {
+   alert(&quot;You clicked the button!&quot;);
+ }
+
+ var myButton = document.getElementById(&quot;btnClickMe&quot;);
+ myButton.addEventListener(&quot;click&quot;, handleClick, false);
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Form Example</h1>
+<p>In the following <a href="archives/Class Files/event-listener.html" target = "_blank">example</a>, we combine DOM manipulation, and event handling to help 
+validate our form input.</p>
+<p>HTML</p>
+<pre><code>&lt;form method=&quot;post&quot; action=&quot;&quot;&gt;
+ &lt;label for=&quot;username&quot;&gt;Create a username: &lt;/label&gt;
+ &lt;input type=&quot;text&quot; id=&quot;username&quot; autofocus&gt;
+ &lt;div id=&quot;feedback&quot;&gt;&lt;/div&gt;
+
+ &lt;label for=&quot;password&quot;&gt;Create a password: &lt;/label&gt;
+ &lt;input type=&quot;password&quot; id=&quot;password&quot; &gt;
+ &lt;div id=&quot;feedbackmsg&quot;&gt;&lt;/div&gt;
+
+ &lt;input type=&quot;submit&quot; value=&quot;sign up&quot; &gt;
+&lt;/form&gt;</code></pre>
+<p>JS</p>
+<pre><code>function checkUsername() { 
+
+  var elMsg = document.getElementById(&#39;feedback&#39;);     
+  if (this.value.length &lt; 5) {                         
+    elMsg.textContent = &#39;Username must be 5 characters or more&#39;; 
+    this.value=&quot;&quot;;                                     
+    this.focus();                                      
+  } else {                                             
+    elMsg.textContent = &#39;&#39;;                            
+  }
+}
+
+function checkPassword() {                            
+  var elFeedMsg = document.getElementById(&#39;feedbackmsg&#39;);     
+  re = /[0-9]/;                                       
+  re1 = /[a-z]/;                                      
+  re2 = /[A-Z]/;                                      
+  if ((this.value.length &lt; 6) || (!re.test(this.value)) || (!re1.test(this.value)) || (!re2.test(this.value))) {
+    elFeedMsg.textContent = &#39;Password must be 6 characters or more and contain at least one letter (upper and lower case) and one number&#39;; 
+    this.value=&quot;&quot;;                                     
+    this.focus();                                      
+  } else {                                             
+    elFeedMsg.textContent = &#39;&#39;;                       
+  }
+}
+
+var elUsername = document.getElementById(&#39;username&#39;);  
+
+elUsername.addEventListener(&#39;blur&#39;, checkUsername, false);
+
+var elPass = document.getElementById(&#39;password&#39;); 
+
+elPass.addEventListener(&#39;blur&#39;, checkPassword, false);</code></pre>
+<p>First we set up access to inputs <strong>username</strong> and <strong>password</strong>. Event listeners are then set up for a <strong>blur</strong> event on both inputs. When the user leaves the first text box (username), the 
+function <strong>checkUsername</strong> is called.  And, when the user leaves the second text box (password), the function <strong>checkPassword</strong> is called. </p>
+<p>Both functions include tests against the value entered. If there is an error (true), then:</p>
+<ol>
+<li>An error message is written to the empty <strong>div</strong> underneath each element (feedback and feedbackmsg respectively). This message is written to the text node
+using <strong>textContent</strong>. You could use <strong>innerHTML</strong> also (this allows the text to be marked up).</li>
+<li>The text box is emptied (<strong>this.value=&quot;&quot;;</strong>)</li>
+<li>Focus is returned to the text box (<strong>this.focus();</strong>).</li>
+</ol>
+<p>If there is no error (false), then an empty message is written to the empty <strong>div</strong> underneath each element.</p>
+<h2>Form Example Continued</h2>
+<p>The following <a href="archives/Class Files/event-listener-submission.html" target = "_blank">example</a>, expands the above example to include an event handler for the <strong>submit</strong> event.</p>
+<pre><code>function feedback() {
+    alert(&quot;Thank you &quot;+document.getElementById(&quot;username&quot;).value+&quot; for your submission&quot;);
+}
+
+// When the form is submitted call feedback()
+document.addEventListener(&quot;submit&quot;, feedback, false);</code></pre>
+<p>Our final <a href="archives/Class Files/WITSkiClub.htm" target = "_blank">example</a>, calculates the cost of a ski trip based on user data.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

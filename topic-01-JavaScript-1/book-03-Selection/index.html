@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  JavaScript Part One  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Selection">
+          Selection
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Selection">
+            <h1>Objectives</h1>
+<p>This lab explores the how to do Selection.  </p>
+<ul>
+<li><a href="#01">If ... else</a></li>
+<li><a href="#02">Comparison Operators</a></li>
+<li><a href="#03">And, Or &amp; Not</a></li>
+<li><a href="#04">Switch</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>If ... else</h1>
+<p>Sometimes JavaScript requires the ability to make distinctions between different options/choices.</p>
+<p>For example, you might have a script that checks which browser the user arrives with. If it&#39;s MSIE, 
+a page specifically designed for that browser should be loaded, if it&#39;s Chrome another page should be loaded.</p>
+<p>The general syntax for <strong>if</strong> statements is:</p>
+<pre><code>if (condition) 
+   {action1} 
+else 
+   {action2}</code></pre>
+<p>An example could be:</p>
+<pre><code>if (browser==&quot;MSIE&quot;) 
+   {alert(&quot;You are using MSIE&quot;)}
+else 
+   {alert(&quot;You are using Chrome&quot;)}</code></pre>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li><p>Again it is important to note that if is written as &quot;if&quot;. Using the capital &quot;IF&quot; would cause an error. </p>
+</li>
+<li><p>Also note that when comparing variables you will need to have two equals signs next to each other (==) (more on this later). If we wrote browser=&quot;MSIE&quot; we would actually store &quot;MSIE&quot; in the variable called browser. When you write browser==&quot;MSIE&quot; JavaScript knows that you want it to compare rather than assign a value. </p>
+</li>
+<li><p>More complex if statements can be made by simply entering new if statements in the else part: </p>
+</li>
+</ul>
+<pre><code>if (condition) 
+   {action1} 
+else {if (condition) {action2}
+else {action3}</code></pre>
+<p>An <a href="archives/Class Files/example1.htm" target = "_blank">example</a>:</p>
+<pre><code>if (browser==&quot;Firefox&quot; || browser==&quot;firefox&quot; || browser==&quot;FIREFOX&quot;){
+    alert(&quot;You are using Mozilla Firefox&quot;)
+}
+else {if (browser==&quot;Chrome&quot; || browser==&quot;chrome&quot; ||browser==&quot;CHROME&quot;) {
+    alert(&quot;You are using Google Chrome&quot;)
+     }
+    else {
+    alert(&quot;You are using an unknown browser&quot;)
+    }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Comparison Operators</h1>
+<p>The following table contains the different comparison operators: </p>
+<p><img src="img/op.png" alt=""></p>
+<p>When checking if two values are equal, it is considered better to use strict equals operators (===) and (!==) rather than (==) and (!=) as these strict operators
+check that the value and data types match.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>And, Or &amp; Not</h1>
+<p>To further enhance your if statements you can use the so-called <strong>logical</strong> operators.</p>
+<h2>And</h2>
+<p><strong>And</strong> is written as <strong>&amp;&amp;</strong> and allows you to chain together two or more expressions so that <em>all of them have to 
+individually evaluate to <strong>true</strong> for the whole expression to return true</em>.</p>
+<p>Eg: If the basket contains egg and the basket contains bacon, we can have egg and bacon.</p>
+<p>The syntax is: </p>
+<pre><code>if (condition &amp;&amp; condition) {
+ action;
+}</code></pre>
+<p>For example:</p>
+<pre><code>if (hour===12 &amp;&amp; minute===0) {
+  alert(&quot;it&#39;s noon&quot;);
+}</code></pre>
+<h2>Or</h2>
+<p><strong>Or</strong> is written as <strong>||</strong> and allows you to chain together two or more expressions so that <em>one or more of them have to individually 
+evaluate to <strong>true</strong> for the whole expression to return true</em>. </p>
+<p>Eg: If the basket contains milk or the basket contains water, we can have something to drink.</p>
+<p>The syntax is: </p>
+<pre><code>if (condition || condition) {
+  action;
+}</code></pre>
+<p>For example:</p>
+<pre><code>if (hour===11 || hour===10) {
+  alert(&quot;it&#39;s less than 2 hours till noon&quot;);
+}</code></pre>
+<h2>Not</h2>
+<p><strong>Not</strong> is written as <strong>!</strong> and is used to invert the result.</p>
+<p>Eg: If not the basket contains egg or not the basket contains bacon, we can&#39;t have egg and bacon.</p>
+<p>The syntax is: </p>
+<pre><code>if (!(condition)) {
+  action;
+}</code></pre>
+<p>For example:</p>
+<pre><code>if (!(hour===11)) {
+ alert(&quot;it&#39;s more than 1 hour till noon&quot;);
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Switch</h1>
+<p>The <strong>switch</strong> statement is another useful construct that works on a conditional basis. When you need to make a choice 
+between more than two items you will find the switch statement much easier to write and maintain.</p>
+<p>The general syntax for <strong>switch</strong> statements is:</p>
+<pre><code>switch (variable) {
+  case &#39;value 1&#39;:
+    perform some action when variable == &#39;value 1&#39;;
+    break;
+  case &#39;value 2&#39;:
+    perform some action when variable == &#39;value 2&#39;;
+    break;
+  default:
+    perform  action if none of the above is true;
+}</code></pre>
+<p>The first line of a switch statement begins with the keyword <strong>switch</strong>, followed by a variable name inside brackets, 
+followed by an opening brace symbol ({). </p>
+<p>Essentially the code says &quot;Let&#39;s get the value of this variable and see if it matches one of several values&quot;. </p>
+<p>Each test is called a <strong>case</strong>, and a switch statement has one or more cases. </p>
+<p>The case keyword indicates the beginning of a case; it is followed by some value and then a colon. </p>
+<p>You must then indicate what is to be done next, such as display a message; or execute a function, etc... </p>
+<p>For each case entry, you add a <strong>break</strong>; statement. This step is important - the break; statement exits the switch statement.</p>
+<p>You can also add a <strong>default</strong> keyword before the closing brace (}). This statement applies if none of the test cases is true.</p>
+<p>The switch statement is illustrated in the following <a href="archives/Class Files/example2.htm" target = "_blank">example</a>:</p>
+<pre><code>ans=prompt(&quot;Which Fruit do you like&quot;,&quot;apple&quot;);
+switch (ans)
+{
+case &quot;apple&quot;:
+  document.write(&quot;&lt;h1&gt;You like Apples&lt;/h1&gt;&quot;);
+  break;
+case &quot;orange&quot;:
+  document.write(&quot;&lt;h1&gt;You like Oranges&lt;/h1&gt;&quot;);
+  break;
+default:
+   document.write(&quot;&lt;h1&gt;You like &quot; + ans + &quot;s&lt;/h1&gt;&quot;);
+}</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

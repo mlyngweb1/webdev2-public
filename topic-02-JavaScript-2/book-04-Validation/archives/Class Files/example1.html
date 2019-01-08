@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<title>Validation</title>
+</head>
+<body>
+<h2>Validation</h2>
+<script>
+sentence = prompt("Enter a string, please","");
+res = isFilled(sentence);
+if (res) {
+   document.write("<p>The string entered was " + sentence+ "</p>");
+}
+else document.write("<p>No input was entered</p>");
+
+function isFilled(field) {
+ if (field==null || field.length== 0) {
+     return false;
+  }
+ return true;
+}
+</script>
+</body>
+</html>

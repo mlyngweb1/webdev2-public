@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>each Helper</title>
+</head>
+
+<body>
+<script id="handlebars-demo" type="text/x-handlebars-template">
+<div>
+  <h1>{{name}} - {{age}}</h1>
+   <h3>{{secretIdentity}}</h3>
+   <ul>
+  {{#each powers}}
+  <li>{{this}}</li>
+  {{/each}}
+  </ul>
+</div>
+</script>
+
+
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src='js/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+var superhero = {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+}
+
+// Retrieve the template data from the HTML (jQuery is used here).
+var template = $('#handlebars-demo').html();
+
+// Compile the template data into a function
+var templateScript = Handlebars.compile(template);
+
+var html = templateScript(superhero);
+
+// Insert the HTML code into the page
+$(document.body).append(html);});
+</script>
+</body>

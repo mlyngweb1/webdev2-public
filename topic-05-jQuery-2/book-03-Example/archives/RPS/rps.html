@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <title>Rock, Paper, Scissors</title>
+ <link rel = "stylesheet" href="css/rps.css">
+</head>
+<body>
+<div id="game">
+  <div id="userSelection">
+   <h1>Select your choice</h1>
+   <ul>
+	<li class="selection" id="stone">
+      <img src="images/stone.png" alt="Stone" id="Rock">
+    </li>
+    <li class="selection" id="stone">
+      <img src="images/paper.png" alt="Paper" id="Paper" >
+    </li>
+    <li class="selection" id="stone">
+      <img src="images/scissor.png" alt="Scissors" id="Scissors">
+    </li>
+   </ul>
+  </div>
+  <div id = "result">
+    <h3>Computer Move: <span id="CMove"> </span></h3>
+    <h3>Player Move: <span id="PMove"> </span></h3>
+    <h2>Results: <span id="Msg"> </span></h2>
+  </div>
+</div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/rps.js"></script>
+</body>
+</html>
+

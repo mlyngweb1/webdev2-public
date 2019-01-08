@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Event Handling</title>
+</head>
+<body>
+
+<form>
+ <button id="btnClickMe">Click Me!</button>
+</form>
+<script>
+ var myButton = document.getElementById("btnClickMe");
+
+ function handleClick() {
+   alert("addEventListener clicked!");
+ }
+
+ myButton.addEventListener("click", handleClick, false);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+body {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  background-color: #e2edff;
+  line-height: 125%;
+  padding: 0;
+  margin: 10px;
+}
+
+header {
+  background:url(../images/logo-lotto.png) no-repeat, url(../images/logo-lotto.png) no-repeat right;
+  background-color: white;
+  padding:.5em;
+  font-size: x-large;
+  color: navy;
+  border-radius:25px;
+  margin-bottom:5%;
+}
+
+header {
+  text-align:center;
+}
+
+.form-group {
+  padding-top:1.5em;
+}
+
+input[type="text"]:valid {
+    color: green;
+}
+
+input[type="text"]:invalid {
+    color: red;
+    border-color:red;
+}

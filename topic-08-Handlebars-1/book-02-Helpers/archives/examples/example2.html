@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>if Helper</title>
+</head>
+
+<body>
+<script id="handlebars-demo" type="text/x-handlebars-template">
+{{#if countries}}
+  The countries are present.
+{{else}}
+  The countries are not present.
+{{/if}}
+</script>
+
+
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src='js/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+var data = {
+  "countries": []
+}
+
+// Retrieve the template data from the HTML (jQuery is used here).
+var template = $('#handlebars-demo').html();
+
+// Compile the template data into a function
+var templateScript = Handlebars.compile(template);
+
+var html = templateScript(data);
+
+// Insert the HTML code into the page
+$(document.body).append(html);});
+</script>
+</body>

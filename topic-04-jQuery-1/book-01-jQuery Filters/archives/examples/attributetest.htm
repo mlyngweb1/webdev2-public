@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <title>Attribute selectors</title><head>
+ <style type = "text/css">
+    body{
+        font-size:150%;
+        }
+    ul {
+       list-style-type:none;
+       }
+
+    li {
+       padding:.8%;
+       }
+    </style>
+</head>
+<body>
+<h1>Welcome to My Homepage</h1>
+<p class="intro">My name is Donald</p>
+<p>I live in Duckburg</p>
+<p>My best friend is Mickey</p>
+
+<p>Favourite sites:</p>
+<ul>
+<li><a href = "http://www.walt-disney.com">Walt Disney</a></li>
+<li><a href = "attributetest2.htm">Daffy Duck</a>
+<li><a href = "http://www.mickeymouse.com">Mickey Mouse</a></li>
+</ul>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('a[href^="http://"]').css({
+  'font-weight':'bold',
+  'font-style':'italic',
+  'color':'black'
+  });
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <title>Fade In Fade Out Hover Effect</title>
+      <link href="css/mycss.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    <div id="container">
+    <h1>Image Rollover</h1>
+    <div id="gallery">
+     <a href="images/large/blue.jpg" title = "Blue Scene"><img src="images/small/blue_h.jpg" width="70" height="70" alt="Blue"></a>
+     <a href="images/large/yellow.jpg" title = "Yellow Scene"> <img src="images/small/yellow_h.jpg" width="70" height="70" alt="Yellow"/ </a>
+     <a href="images/large/green.jpg" title = "Green Scene"><img src="images/small/green_h.jpg" width="70" height="70" alt="Green"/ </a>
+     <a href="images/large/orange.jpg" title = "Orange Scene"><img src="images/small/orange_h.jpg" width="70" height="70" alt="Orange"></a>
+     <a href="images/large/purple.jpg" title = "Purple Scene"><img src="images/small/purple_h.jpg" width="70" height="70" alt="Purple"> </a>
+     <a href="images/large/red.jpg" title = "Red Scene"><img src="images/small/red_h.jpg" width="70" height="70" alt="Red"></a>
+    </div>
+    </div>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script>
+	$(document).ready(function() {
+
+		$('#gallery img').css('opacity', 0.6);
+
+/*		$('#gallery img').hover(
+		  function(){
+			$(this).stop().fadeTo('slow', 1);
+		  },
+		  function(){
+			$(this).stop().fadeTo('slow', 0.6);
+		  });
+*/
+
+      $('#gallery img').on('mouseover', function() {
+			$(this).stop().fadeTo(1200, 1);
+      });
+
+      $('#gallery img').on('mouseout', function() {
+			$(this).stop().fadeTo(1200, 0.6);
+      });
+    });
+    </script>
+    </body>
+</html>
+
+

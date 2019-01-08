@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Math Library</title>
+</head>
+<body>
+
+<script>
+
+document.write("<h1>The Math Library</h1>");
+do
+{var valueOne= prompt("Enter Number One", "");
+} while (isNaN(valueOne));
+
+do
+{var valueTwo= prompt("Enter Number Two", "");
+} while (isNaN(valueTwo));
+do
+{var valueThree= prompt("Enter Number Three", "");
+} while (isNaN(valueThree));
+
+var v1=0;
+var v2=0;
+var v3=0;
+var result1 = 0;
+var result2 = 0;
+
+v1=parseFloat(valueOne);
+v2=parseFloat(valueTwo);
+v3=parseFloat(valueThree);
+
+
+document.write("<p>The numbers entered were "+ v1 + ", " + v2+", " + v3 + ".</p>");
+
+result1 = Math.max(v1, v2, v3);
+document.write("<p>The <b>maximum</b> number entered was " +  result1 + ".</p>");
+
+result2 = Math.min(v1, v2, v3);
+document.write("<p>The <b>minimum</b> number entered was " +  result2 + ".</p>");
+
+
+</script>
+</body>
+</html>

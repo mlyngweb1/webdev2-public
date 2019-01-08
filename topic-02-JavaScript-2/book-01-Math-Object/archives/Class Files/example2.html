@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<title>Math Library</title>
+</head>
+<body>
+
+<script>
+
+document.write("<h1>The Math Library</h1>");
+do
+{var vo= parseInt(prompt("Enter a number ", "9"));
+} while (isNaN(vo));
+
+
+var result=0;
+
+
+document.write("<p>The number is "+ vo + ".</p>");
+
+result = Math.pow(vo,2);
+document.write("<p>" + vo +" <b>squared</b> is " + result+ ".</p>");
+
+result = Math.sqrt(vo);
+document.write("<p>The <b>square root</b> of " + vo +"  is " + result+ ".</p>");
+
+</script>
+</body>
+</html>

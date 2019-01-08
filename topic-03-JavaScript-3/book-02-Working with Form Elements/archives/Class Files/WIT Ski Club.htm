@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WIT Ski Club</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel ="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+
+<div class="row">
+<header class = "col-sm-12">
+<h1>Ski Club Signup Page</h1>
+</header>
+</div>
+
+<form action="" method="post" id = "skiclub" onsubmit="feedback()" >
+
+<fieldset>
+<legend>Personal Information</legend>
+<div class = "form-group row">
+    <label for="contactname" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+     <input type="text" name="contactname" id="contactname" class="form-control" autofocus required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+     title="Please enter a name (Surname optional) with First Letter capitalised">
+    </div>
+</div>
+
+
+<legend>Ski Package</legend>
+<div class = "form-group row">
+    <label for="days" class="col-sm-2 col-form-label">Number of Days</label>
+    <div class="col-sm-10">
+     <input type="text" name="days" id="days" class="form-control" value="7"  required pattern = "[0-9]{1,2}"
+     title="Please enter a numeric value > 1">
+    </div>
+</div>
+
+
+
+
+<div class = "form-group row justify-content-end">
+ <div class="col-sm-10 ">
+  <input type="submit" class="btn btn-primary" value="Calculate">
+  <input type="reset" class="btn btn-primary" value="Clear the Info">
+</div>
+</div>
+
+</form>
+</form>
+</section>
+</div>
+ <script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type = "text/javascript" src="js/calculate.js"></script>
+</body>
+</html>
+
+

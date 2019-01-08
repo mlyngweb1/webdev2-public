@@ -1,0 +1,43 @@
+body {
+    background: url(../images/download.png)no-repeat top left, url(../images/download.png)no-repeat top right ;
+}
+
+#game{
+    background-color: #FFA500;
+    border-radius: 15px;
+    width:50%;
+    margin: 0 auto;
+}
+
+#userSelection
+{
+
+    text-align: center;
+    padding: 1em;
+    margin:0;
+}
+
+#result
+{
+    clear:left;
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2em;
+}
+
+
+#userSelection li {
+	float: left; /* Images float to the left, so they appear in the same line */
+	list-style: none; /* Remove the bullet */
+	margin:3em;
+}
+
+.selection img
+{
+	width: 70px; /* All the images have the same size */
+        padding: 10px;
+        border: 5px #F8F8F8  solid;
+	border-radius: 15px;
+}
+
+

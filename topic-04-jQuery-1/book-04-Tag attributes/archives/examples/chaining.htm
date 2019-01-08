@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <title>Chaining</title><head>
+</head>
+
+<body>
+<p id = "popup" style="background:yellow;display:none;"></p>
+<button>Click me</button>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('button').on('click', function(){
+    $('#popup').width(300).height(100).text("This is an example of Chaining").fadeIn(2000);
+  });
+});
+</script>
+
+</body>
+</html>
+

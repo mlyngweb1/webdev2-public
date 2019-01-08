@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Handlebars 2  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Custom Helpers">
+          Custom Helpers
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Custom Helpers">
+            <h1>Objectives</h1>
+<p>This lab will introduce you to what custom helpers are.</p>
+<ul>
+<li><p><a href="#/01">What are Custom Helpers?</a></p>
+</li>
+<li><p><a href="#/02">Example One</a></p>
+</li>
+<li><p><a href="#/03">Example Two</a></p>
+</li>
+<li><p><a href="#/04">Example Three</a></p>
+</li>
+<li><p><a href="#/05">Example Four</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>What are Custom Helpers?</h1>
+<p>As we have seen, Handlebars has some built in helpers such as #each, #if, etc... Handlebars also gives you the ability to create your own custom helper. 
+This means writing code to do something that you want (like converting names to sentence case).
+Simply register your function into Handlebars, and any template you compile afterwards can 
+access your helper. With custom helpers, we can add any kind or JavaScript logic. Custom helpers are created in the JavaScript code, not inside the Handlebars template.</p>
+<p>Custom block helpers are also registered with the <strong>Handlebars.registerHelper</strong> method. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Example One</h1>
+<p>This example just calls a function to return the firstname and lastname together.</p>
+<p>Let us consider the template below:</p>
+<pre><code>&lt;div&gt;
+  &lt;h1&gt;By {{fullName author}}&lt;/h1&gt;
+  &lt;p&gt;{{message}}&lt;/p&gt;
+
+  &lt;h3&gt;Comments&lt;/h3&gt;
+  &lt;ul&gt;
+  {{#each comments}}
+    &lt;li&gt;
+     &lt;b&gt;{{fullName author}}&lt;/b&gt; -- {{reply}}
+    &lt;/li&gt;
+  {{/each}}
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>If we provide the following context variable:</p>
+<pre><code>var data = {
+  author: {firstName: &quot;Alan&quot;, lastName: &quot;Johnson&quot;},
+  message: &quot;I Love Handlebars&quot;,
+  comments: [{
+    author: {firstName: &quot;Yehuda&quot;, lastName: &quot;Katz&quot;},
+    reply: &quot;Me too!&quot;
+  },
+  {
+    author: {firstName: &quot;Atlanta&quot;, lastName: &quot;Yates&quot;},
+    reply: &quot;Easy to understand!&quot;
+  }
+  ]
+};</code></pre>
+<p>and, custom Helper</p>
+<pre><code>Handlebars.registerHelper(&#39;fullName&#39;, function(person) {
+  return person.firstName + &quot; &quot; + person.lastName;
+});</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example1.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Example Two</h1>
+<p>This example just calls a function to return the number of powers for each superhero.</p>
+<p>Let us consider the template below:</p>
+<pre><code>  &lt;table border=&quot;1&quot;&gt;
+    &lt;thead&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Age&lt;/th&gt;
+      &lt;th&gt;Secret Identity&lt;/th&gt;
+      &lt;th&gt;Number of Powers&lt;/th&gt;
+      &lt;th&gt;Powers&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      {{#each members}}
+        &lt;tr&gt;
+          &lt;td&gt;{{name}}&lt;/td&gt;
+          &lt;td&gt;{{age}} &lt;/td&gt;
+          &lt;td&gt;{{secretIdentity}}&lt;/td&gt;
+          &lt;td&gt;{{numPowers powers}}&lt;/td&gt;
+          &lt;td&gt;
+          {{#each powers}}
+           &lt;ul&gt;
+            &lt;li&gt;{{this}}&lt;/li&gt;
+           &lt;/ul&gt;
+          {{/each}}
+        &lt;/tr&gt;
+      {{/each}}
+    &lt;/tbody&gt;
+  &lt;/table&gt;</code></pre>
+<p>If we provide the following context variable:</p>
+<pre><code>  var superheroes = {
+  &quot;squadName&quot;: &quot;Super hero squad&quot;,
+  &quot;homeTown&quot;: &quot;Metro City&quot;,
+  &quot;formed&quot;: 2016,
+  &quot;secretBase&quot;: &quot;Super tower&quot;,
+  &quot;active&quot;: true,
+  &quot;members&quot;: [
+    {
+      &quot;name&quot;: &quot;Molecule Man&quot;,
+      &quot;age&quot;: 29,
+      &quot;secretIdentity&quot;: &quot;Dan Jukes&quot;,
+      &quot;powers&quot;: [
+        &quot;Radiation resistance&quot;,
+        &quot;Turning tiny&quot;,
+        &quot;Radiation blast&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Madame Uppercut&quot;,
+      &quot;age&quot;: 39,
+      &quot;secretIdentity&quot;: &quot;Jane Wilson&quot;,
+      &quot;powers&quot;: [
+        &quot;Million tonne punch&quot;,
+        &quot;Damage resistance&quot;,
+        &quot;Superhuman reflexes&quot;
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Eternal Flame&quot;,
+      &quot;age&quot;: 1000000,
+      &quot;secretIdentity&quot;: &quot;Unknown&quot;,
+      &quot;powers&quot;: [
+        &quot;Immortality&quot;,
+        &quot;Heat Immunity&quot;,
+        &quot;Inferno&quot;,
+        &quot;Teleportation&quot;,
+        &quot;Interdimensional travel&quot;
+      ]
+    }
+  ]
+}</code></pre>
+<p>and, custom Helper</p>
+<pre><code>Handlebars.registerHelper(&#39;numPowers&#39;, function(powers) {
+  var cnt=0;
+  for (i in powers) {
+      cnt++;
+  }
+  return cnt;
+});</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example2.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Example Three</h1>
+<p>This example just calls a function to return the average score for each student.</p>
+<p>Let us consider the template below:</p>
+<pre><code>  &lt;table border=&quot;1&quot;&gt;
+    &lt;thead&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Average Score&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      {{#each this}}
+        &lt;tr&gt;
+          &lt;td&gt;{{firstName}} {{lastName}}&lt;/td&gt;
+          &lt;td&gt;{{calculateScore score}}&lt;/td&gt;
+        &lt;/tr&gt;
+      {{/each}}
+    &lt;/tbody&gt;
+  &lt;/table&gt;</code></pre>
+<p>If we provide the following context variable:</p>
+<pre><code>var data = [
+           {firstName: &quot;Kapil&quot;,
+            lastName:&quot;Manish&quot;,
+            score:[22, 34, 45, 67]
+           },
+           {firstName: &quot;Bruce&quot;,
+            lastName:&quot;Kasparov&quot;,
+            score:[10, 34, 67, 90]
+           }
+];</code></pre>
+<p>and, custom Helper</p>
+<pre><code> Handlebars.registerHelper(&#39;calculateScore&#39;, function(score) {
+   var total=0;
+   for (i in score) {
+         total+=score[i];
+   }
+   var avg=Math.round(total/score.length);
+   return avg;
+ });</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example3.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Example Four</h1>
+<p>This example just calls a function to convert names to uppercase.</p>
+<p>Let us consider the template below:</p>
+<pre><code>  &lt;ul&gt;
+  {{#each people}}
+        &lt;li&gt;{{upper name}} - {{../group}}&lt;/li&gt;
+    {{/each}}
+  &lt;/ul&gt;</code></pre>
+<p>If we provide the following context variable:</p>
+<pre><code>var data = [
+var data = { people: [
+    {name: &quot;alan murphy&quot;},
+    {name: &quot;Allison Doyle&quot;},
+    {name: &quot;Ryan Smith&quot;}
+], 
+group: &quot;Bloggers&quot; 
+};</code></pre>
+<p>and, custom Helper</p>
+<pre><code>Handlebars.registerHelper(&#39;upper&#39;, function(str) {
+  return str.toUpperCase();
+});</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example4.html" target="_blank">example</a>.</p>
+<p>We can modify the above example to capitalise the words rather than uppercase by changing the helper as follows:</p>
+<pre><code>Handlebars.registerHelper(&#39;capitalise&#39;, function(str) {
+  data=str.split(&quot; &quot;);
+  formattedname=&quot;&quot;;
+  for (i in data) {
+     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1,).toLowerCase() + &quot; &quot;;
+  }
+  return formattedname;
+});</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example5.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

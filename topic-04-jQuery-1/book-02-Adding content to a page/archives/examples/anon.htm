@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS function</title>
+<link rel="stylesheet" type = "text/css" href= "css/style.css">
+
+</head>
+<body>
+<div id = "main">
+<div id = "header">
+<h1>Browser Summary</h1>
+</div>
+
+
+<div id = "content">
+<h1>Internet Explorer</h1> <img src= "images/Internet_Explorer_7_Logo.png" alt="blue" width="10%" height="50%" class = "exp" />
+<p>Windows <b><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">  Internet Explorer</b></a> (formerly Microsoft Internet Explorer; commonly abbreviated to IE), is a series of graphical web browsers developed by Microsoft and included as part of the Microsoft Windows line of operating systems starting in 1995. It was first released as part of the add-on package Plus! for Windows 95 that year. Later versions were available as free downloads, or in service packs, and included in the OEM service releases of Windows 95 and later versions of Windows.</p>
+<p>IE has been the most widely used web browser since 1999, attaining a peak of about 95% usage share during 2002 and 2003 with IE5 and IE6. Since its peak of popularity, its usage share has declined in the face of renewed competition from other web browsers to 55%, and is slowly trending downward. Microsoft spent over $100 million per year on IE[1] in the late 1990s, with over 1000 people working on it by 1999.</p>
+
+<h1>Google Chrome</h1> <img src= "images/256px-Chrome_Logo.svg.png" alt="blue" width="10%" height="50%" class = "google" />
+<p><a href="http://www.google.com/chrome/index.html?hl=en&brand=CHMB&utm_campaign=en&utm_source=en-ha-na-us-sk&utm_medium=ha"><b>Google Chrome</b></a> is a web browser developed by Google that uses the Web Kit layout engine and application framework. It was first released as a beta version for Microsoft Windows on 2 September 2008, and the public stable release was on 11 December 2008. The name is derived from the graphical user interface frame, or "chrome", of web browsers. As of December 2010, Chrome was the third most widely used browser, with 13.35% of worldwide usage share of web browsers, according to Stat counter. </p>
+<p>In September 2008, Google released a large portion of Chrome's source code, including its V8 JavaScript engine, as an open source project entitled Chromium. This move enabled third-party developers to study the underlying source code and to help convert the browser to the Mac OS X and Linux operating systems. Google also expressed hope that other browsers would adopt V8 to improve web application performance. The Google-authored portion of Chromium is released under the permissive BSD license, which allows portions to be incorporated into both open source and closed source software programs. Other portions of the source code are subject to a variety of open source licenses. Chromium implements the same feature set as Chrome, but lacks built-in automatic updates and Google branding, and most notably has a blue-coloured logo in place of the multicoloured Google logo. </p>
+
+<h1>Mozilla Firefox</h1> <img src= "images/Firefox_3.5_logo.png" alt="blue" width="10%" height="50%" class = "fire" />
+<p><a href="http://www.mozilla.com/en-US/firefox/ie.html?&"><b>Mozilla Firefox</b></a> is a free and open source web browser descended from the Mozilla Application Suite and managed by Mozilla Corporation. As of October 2010, Firefox is the second most widely used browser, with 30% of worldwide usage share of web browsers. In Germany, Firefox is the most popular browser with 60% usage. </p>
+<p>To display web pages, Firefox uses the Gecko layout engine, which implements most current web standards in addition to several features which are intended to anticipate likely additions to the standards. </p>
+
+<h1>Opera</h1> <img src= "images/512px-Opera_O.svg.png" alt="blue" width="10%" height="50%" class = "opera" />
+<p><a href="http://www.opera.com/"><b>Opera</b></a> is a web browser and Internet suite developed by Opera Software. The browser handles common Internet-related tasks such as displaying web sites, sending and receiving e-mail messages, managing contacts, chatting on IRC, downloading files via BitTorrent, and reading web feeds. Opera is offered free of charge for personal computers and mobile phones.</p>
+<p>Opera is the most popular mobile browser, and the most popular desktop browser in some countries such as Ukraine.</p>
+
+
+<h1>Safari</h1> <img src= "images/Apple_Safari.png" alt="blue" width="10%" height="50%" class = "saf" />
+<p><a href="http://www.apple.com/safari/"><b>Safari</b></a> is a graphical web browser developed by Apple and included as part of the Mac OS X operating system. First released as a public beta on January 7, 2003on the company's Mac OS X operating system, it became Apple's default browser beginning with Mac OS X v10.3 "Panther". Safari is also the native browser for the iOS.</p>
+<p>A version of Safari for the Microsoft Windows operating system, first released on June 11, 2007, supports Windows XP, Windows Vista, and Windows 7. The latest stable release of the browser is 5.0.3, which is available as a free download for both Mac OS X and Microsoft Windows. As of 2010, Safari is the fourth most widely used browser in the US, following Google Chrome. </p>
+
+
+
+</div>
+<div id = "bibliography">
+<h3>Web pages referenced in this article</h3>
+<ul id = "bibList">
+</ul>
+</div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('[href^="http://"]').each(function(){
+    var extLink = $(this).attr('href');
+   $('#bibList').append('<li>' + extLink + '</li>');
+  });
+});
+</script>
+
+</body>
+</html>
+

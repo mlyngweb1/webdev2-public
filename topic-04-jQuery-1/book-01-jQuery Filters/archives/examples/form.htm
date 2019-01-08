@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adding Content (after)</title>
+<style type="text/css" >
+.error {
+     margin-left:.6em;
+     color:red;
+}
+</style>
+</head>
+<body>
+
+    <h1>Contact Form</h1>
+<form id ="signup" action = "">
+      <fieldset>
+         <p>
+         <label for="username">Name:</label>
+         <input type="text" id="username" name="username" autofocus>
+         </p>
+         <p>
+          <input type ="submit" value ="Test data">
+         </p>
+       </fieldset>
+</form>
+
+  </div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function() {
+   $("#signup").on('submit', function(evt) {
+
+ name =$('#username').val();//get the current value of the text box.
+if (name==null || name.length == 0 || !(isaString(name))) {
+   $('#username').after("<span class = 'error'>User name required</span>");
+   $('#username').focus();
+   evt.preventDefault(); //prevent the submission from occurring.
+  }
+
+function isaString(newValue) {
+   var newLength = newValue.length;
+   var extraChars=" ";
+   var search;
+
+   for(var i = 0; i != newLength; i++) {
+      aChar = newValue.substring(i,i+1);
+      aChar = aChar.toUpperCase();
+      search = extraChars.indexOf(aChar);
+      if(search == -1 && (aChar < "A" || aChar > "Z") ) {
+         return false;
+      }
+   }
+   return true;
+}
+
+  }); // end validate
+}); // end ready()
+
+</script>
+
+</body>
+</html>

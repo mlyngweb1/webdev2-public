@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<title>Math Library</title>
+</head>
+<body>
+
+<script>
+
+document.write("<h1>The Math Library</h1>");
+do
+{var vo= parseFloat(prompt("Enter a number ", "5.45"));
+} while (isNaN(vo));
+
+var result=0;
+
+document.write("<p>The number is "+ vo + ".</p>");
+
+result = Math.floor(vo);
+document.write("<p>The <b>floor</b> of " + vo + " is " + result + ".</p>");
+
+result = Math.ceil(vo);
+document.write("<p>The <b>ceil</b> of " + vo + " is " + result+ ".</p>");
+
+result = Math.round(vo);
+document.write("<p>" + vo +" <b>rounded</b> is " + result+ ".</p>");
+
+
+</script>
+</body>
+</html>

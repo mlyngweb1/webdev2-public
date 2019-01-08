@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<title>Validation</title>
+</head>
+<body>
+<h2>Numeric Validation</h2>
+<script>
+sentence = prompt("Enter a string, please","");
+sentence = isFilled(sentence)
+document.write("<p>The string entered was " + sentence+ "</p>");
+
+function isFilled(field) {
+ while (field==null || field.length== 0) {
+     alert("The input is empty");
+ field = prompt("Enter a string, please","");
+  }
+ return field;
+}
+</script>
+</body>
+</html>

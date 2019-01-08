@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Adding content (append)</title><head>
+<style type = "text/css">
+#errors {
+   border:solid black 1px;
+   padding:2%;
+}
+</style>
+</head>
+
+<body>
+<div id = "errors">
+<ul id = "fruits">
+<li>Apple</</li>
+<li>Banana</li>
+<li>Pear</li>
+</ul>
+</div>
+<p id = 'txt'></p>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  alert("Ready to Proceed");
+  $('#txt').html("Initial Fruit List Length "+$('#fruits li').length);
+  $('#fruits').append('<li>Orange</li>');
+  $('#txt').append("<br>Fruit List Length (after append) "+$('#fruits li').length);
+
+});
+</script>
+
+</body>
+</html>
+

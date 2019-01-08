@@ -1,0 +1,87 @@
+body {
+  font: 1em "Trebuchet MS", Arial, sans-serif;
+  background: url(../images/bg.png) repeat-x;
+}
+
+#container{
+  width: 80%;
+  margin: 1.5% auto;
+  background-color:white;
+  overflow:hidden;
+}
+
+h1,h2 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: .3em;
+  font-weight: bold;
+}
+
+h1 {
+  color: #990000;
+  border-bottom:solid 1px black;
+}
+
+section {
+  margin-left: 25%;
+}
+ 
+sidebar {
+  float: left;
+  width: 20%;
+  padding-top: 1em;
+  background: url(../images/burning_book.jpg) no-repeat 2em 8em;
+  padding-bottom:400px;
+}
+
+.highlight {
+  background-color: #FFA9B8;
+}
+	
+#signup  .label {
+  font: bold 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: #036;
+  float: left;
+  width: 140px;
+  margin-right: 10px;
+  text-align: right;
+  display: block;
+  margin-top: 0;
+  padding-top: 2px;
+  border-top: 1px dotted #666;
+}
+
+#signup  p {
+  line-height: 1em;
+  font-size: 1.5em;
+  padding-bottom: 10px;
+  clear: left;
+}
+
+#signup {
+  float: left;
+  width: 580px;
+}
+
+#signup  .label2 {
+  font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#submit {
+  margin-left: 150px;
+}
+
+#signup  div {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  clear: left;
+}
+
+
+
+
+
+
+
+
+
+

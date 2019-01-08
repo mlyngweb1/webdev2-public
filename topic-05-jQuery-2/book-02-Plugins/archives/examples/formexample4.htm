@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Form Example</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='css/bootstrap-datepicker.min.css' rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" href = "css/gallery2.css">
+</head>
+<body>
+<div class="container">
+<div class="row">
+<sidebar class="col-sm-3">
+<img src="images/burning_book.jpg" alt="">
+</sidebar>
+<section class="col-sm-9">
+
+  <form action="process.html" method="get" name="signup" id="signup" role="form">
+  <fieldset>
+   <legend>Signup Form</legend>
+    <div class ="form-group row">
+       <label for="name" class="col-sm-3 col-form-label">Name</label>
+       <div class="col-sm-9">
+         <input type="text" class="form-control" name="name"  id="name" data-h5-errorid="invalid-name" autofocus required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+                title="Please enter a name (Surname optional) with First Letter capitalised">
+         <div id="invalid-name" class="ui-state-error"></div>
+       </div>
+   </div>
+
+     <div class ="form-group row">
+      <label for="email" class="col-sm-3 col-form-label">E-mail Address</label>
+     <div class="col-sm-9">
+     <input name="email" class="form-control" type="email" id="email" data-h5-errorid ="invalid-email" required  pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+     title="Please enter a valid email">
+     <div id="invalid-email" class="ui-state-error">
+    </div>
+    </div>
+    </div>
+
+     <div class ="form-group row">
+      <label for="mypassword" class="col-sm-3 col-form-label">Password</label>
+     <div class="col-sm-9">
+     <input name="mypassword" class="form-control" type="password" id="mypassword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}" data-h5-errorid ="invalid-pass"
+        onchange="form.confirm_password.pattern = this.value;"title = "Please enter a valid Password which is at least 6 characters in length and includes at least one capital letter and at least one digit">
+      <div id="invalid-pass" class="ui-state-error">
+        </div></div></div>
+
+     <div class ="form-group row">
+	       <label for="confirm_password" class="col-sm-3 col-form-label">Confirm Password</label>
+	      <div class="col-sm-9">
+	      <input name="confirm_password" class="form-control" type="password" id="confirm_password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}" data-h5-errorid ="invalid-pass2"
+	       onchange="form.mypassword.pattern = this.value;" title = "Please enter a valid Password which is at least 6 characters in length and includes at least one capital letter and at least one digit">
+	       <div id="invalid-pass2" class="ui-state-error">
+        </div></div></div>
+
+         <div class ="form-group row">
+          <label for="dob" class="col-sm-3 col-form-label">Date of Birth</label>
+           <div class="col-sm-9">
+            <div class="input-group date">
+              <input type="text" id='dob' name="dob" class="form-control" data-h5-errorid ="invalid-date" required title="Please select/provide a date">
+              <label for="dob" class="input-group-addon"><i class="fa fa-calendar-check-o"></i></label>
+              </div>
+              <div id="invalid-date" class="ui-state-error">
+             </div>
+          </div>
+         </div>
+
+  <div class="form-group row justify-content-end">
+    <div class="col-sm-9">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+          </fieldset>
+  </form>
+</section>
+</div>
+
+</div>
+<script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.h5validate.js"></script>
+<script src="js/bootstrap-datepicker.min.js"></script>
+<script>
+$(document).ready(function () {
+
+$("#dob").datepicker({
+     format: "dd-mm-yyyy",
+     startDate: "01-01-1940",
+     endDate: "+0d",
+     startView:2
+});
+
+$('form').h5Validate({errorClass:'validationError'});
+
+});
+</script>
+</body>
+</html>

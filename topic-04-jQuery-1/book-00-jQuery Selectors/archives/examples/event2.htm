@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Changing Attribute values</title>
+</head>
+<body>
+</head>
+<body>
+
+<p>Click or move the mouse pointer over this paragraph.</p>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("p").on({
+	    mouseenter: function(){
+	        $(this).css("background-color", "lightgray");
+	    },
+	    mouseleave: function(){
+	        $(this).css("background-color", "lightblue");
+	    },
+	    click: function(){
+	        $(this).css("background-color", "yellow");
+	    }
+});
+});
+</script>
+
+</body>
+</html>
+

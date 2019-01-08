@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+<title>While Loop Example</title>
+<style>
+table, td, th {
+  border:solid black 1px;
+}
+
+td {
+  padding:0em 1em;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+<table>
+<tr><th>CELSIUS</th><th>FAHRENHEIT</th></tr>
+<script>
+celsius = 0;
+while (celsius<=50)
+{
+ document.write("<tr><td>"+celsius+"</td><td>"+((celsius*9/5)+32)+"</td></tr>");
+ celsius = celsius + 1;
+}
+</script>
+</table>
+</body>
+</html>

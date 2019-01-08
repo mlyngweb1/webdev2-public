@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  JavaScript Part Three  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Example">
+          Example
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Example">
+            <h1>Objectives</h1>
+<p>This lab will use JavaScript code to play a simple Lotto game.</p>
+<p>Previously in class, we wrote code generating 6 random numbers and saving them to an array (myNumbers). And we wrote code to prompt the user for 
+their 6 lotto numbers and also saved them to an array (lottoNumbers). As the numbers are input they are validated. Then we wrote code to compare the arrays. </p>
+<p>Now, we will write code for the <a href="archives/Lotto/lotto.html" target = "_blank">lotto</a> game again, this time using forms. 
+The screenshot below includes 2 forms (numbers and lotto).</p>
+<p><img src="img/lotto1.png" alt=""></p>
+<ul>
+<li><a href="#01">Form One</a></li>
+<li><a href="#02">Form Two - Play Game</a></li>
+<li><a href="#03">Form Two - Clear Numbers</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Form One</h1>
+<p>The first form (<strong>numbers</strong>) has 6 text boxes where we will ask the user to enter a number in each text box. 
+As the user enters a number and then goes to the next text box, a <em>blur</em> event is triggered for that text box. </p>
+<pre><code>mylottonumbers=document.getElementById(&#39;numbers&#39;).getElementsByTagName(&#39;input&#39;);
+for (i=0; i &lt; mylottonumbers.length; i++) {
+  mylottonumbers[i].addEventListener(&#39;blur&#39;,validNum,false);
+  ...
+}</code></pre>
+<p>First we select the input text boxes inside the <em>numbers</em> form. Then we add a <em>blur</em> event handler for each the input text box. </p>
+<p>This event will trigger a function call to <strong>validNum</strong>. This function includes code to ensure that the number entered is valid: not empty, is a number, 
+is in a valid range, and has not already been chosen (call to <strong>checkNums</strong> function).  </p>
+<p>If the value input violates any of the validation checks, an error message is output to a paragraph (error) below the form text boxes, the cursor back is put back into the text box, and the text box is cleared (emptied). </p>
+<pre><code>document.getElementById(&#39;error&#39;).textContent=msg;
+this.value=&quot;&quot;;
+this.focus();</code></pre>
+<p>If the number is valid it is added (pushed) to the array and the field is disabled.</p>
+<pre><code>myNumbers.push(parseInt(thevalue));
+this.disabled=true;</code></pre>
+<p>Note that when the validNum function is first called, the paragraph where the error message is output is cleared.</p>
+<pre><code>function checkNums(Lotto, num) {
+   x=Lotto.indexOf(num);
+   if (x==-1) {;
+       return true;
+   } else return false;
+}
+
+function validNum() {
+    document.getElementById(&#39;error&#39;).textContent=&quot;&quot;;
+    var thevalue=this.value;
+    if (thevalue==&quot;&quot; || isNaN(thevalue) || thevalue&lt;1 ||thevalue&gt;47)   {
+    msg=&quot;Invalid number entry.. Please enter a valid number between 1 and 47&quot;;
+    document.getElementById(&#39;error&#39;).textContent=msg;
+    this.value=&quot;&quot;;
+    this.focus();
+
+    }
+    else if  (!checkNums(myNumbers,parseInt(thevalue))) {
+    msg=&quot;Number already chosen .. Please enter a valid number between 1 and 47&quot;;
+    document.getElementById(&#39;error&#39;).textContent=msg;
+    this.value=&quot;&quot;;
+    this.focus();
+    }
+    else {myNumbers.push(parseInt(thevalue));
+    this.disabled=true;
+   }
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Form Two - Play Game</h1>
+<p>The second form (lotto) has 2 text boxes, a textarea, and 2 buttons. </p>
+<p>When the user presses (<em>clicks</em>) the Play Game button, the click event will trigger a function call to <strong>newNumbers</strong>. </p>
+<pre><code>function newNumbers() {
+   if (myNumbers.length!=6)  {
+     document.getElementById(&#39;p1&#39;).innerHTML=&quot;&lt;b&gt;You must enter 6 valid numbers first&lt;/b&gt;&quot;;
+   }
+   else {
+     lottoNumbers = [];
+     var i=1;
+     while ( i&lt;7) {
+         newnum=Math.floor(Math.random()*47+1);
+         if (checkNums(lottoNumbers, newnum)) {
+            i++;
+            lottoNumbers.push(newnum);
+         }
+     }
+     document.getElementById(&#39;lnumbers&#39;).value=lottoNumbers.sort(function(a,b){return a - b});
+     document.getElementById(&#39;mynumbers&#39;).value=myNumbers.sort(function(a,b){return a - b});
+     compareNumbers();
+   }
+}
+
+playgame=document.getElementById(&#39;play&#39;);
+
+playgame.addEventListener(&#39;click&#39;,newNumbers,false);</code></pre>
+<p>This function includes code to check that the user has entered all their numbers (6 valid numbers) first. If the user has not entered 6 numbers (myNumbers &lt; 6), 
+an error message is displayed. </p>
+<p>When 6 valid numbers are in the myNumbers array, a new array (lottoNumbers) is created and populated with 6 valid random numbers between 1 and 47.</p>
+<p>Then the numbers from both arrays are output in ascending order to the text boxes in form 2.</p>
+<p>Finally, the <strong>compareNumbers</strong> function is called. This function compares the 2 arrays to ascertain if there are any matching numbers. 
+Each time a matching number is found a variable (match) is incremented. When the comparison is complete, a string message is composed detailing how many 
+(if any) matches were found and how much (if any) money was won. The money component is formatted using a call to the <strong>formatCurrency</strong> function. 
+The resulting string is then output to the textarea (results). </p>
+<pre><code>function compareNumbers() {
+   match=0;
+   for (i in lottoNumbers) {
+     x=myNumbers.indexOf(lottoNumbers[i]);
+     if (x&gt;=0) {
+       match++;
+     }
+   }
+   string=&quot;You have matched &quot;+ match + &quot; number(s).&quot;
+   switch (match) {
+     case 6:
+       win=1000000;
+       break;
+     case 5:
+       win=100000;
+       break;
+     case 4:
+       win=10000;
+       break;
+     case 3:
+       win=1000;
+       break;
+     case 2:
+       win=100;
+       break;
+     case 1:
+       win=10;
+       break;
+     default:
+       win=0;
+   }
+   string+=&quot;\nYou have won &quot; + formatCurrency(win);
+   document.getElementById(&#39;results&#39;).value=string;
+}
+
+function formatCurrency(num) {
+//Unicode Character &#39;EURO SIGN&#39; \u20ac*/
+   num = num.toString().replace(/\u20ac|\,/g,&#39;&#39;);
+   if(isNaN(num))
+   {
+     num = &quot;0&quot;;
+   }
+   sign = (num == (num = Math.abs(num)));
+   num = num.toFixed(2);
+   elements= num.split(&quot;.&quot;);
+   num = elements[0];
+   cents = elements[1];
+   for (var i = 0; i &lt; Math.floor((num.length-(1+i))/3); i++)
+   {
+     num = num.substring(0,num.length-(4*i+3))+&#39;,&#39;+
+     num.substring(num.length-(4*0+3));
+   }
+   return (((sign)?&#39;&#39;:&#39;-&#39;) + &#39;\u20ac&#39; + num + &#39;.&#39; + cents)
+}</code></pre>
+<p><img src="img/lotto.png" alt=""></p>
+<p><strong>Note:</strong></p>
+<p>The error message displayed when the user presses (<em>clicks</em>) the Play Game button and there is not enough numbers to proceed, 
+is cleared when the user puts focus into any of the input number text boxes.</p>
+<pre><code>for (i=0; i &lt; mylottonumbers.length; i++) {
+  ...
+  mylottonumbers[i].addEventListener(&#39;focus&#39;, eraseMsg, false);
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Form Two - Clear Numbers</h1>
+<p>When the user presses (<em>clicks</em>) the Clear Numbers button, the click event will trigger a function call to <strong>clearNumbers</strong>. </p>
+<pre><code>function clearNumbers() {
+   mylottonumbers=document.getElementById(&#39;numbers&#39;).getElementsByTagName(&#39;input&#39;);
+
+   for (i=0; i &lt; mylottonumbers.length; i++) {
+     mylottonumbers[i].disabled=false;
+     mylottonumbers[i].value=&quot;&quot;;
+   }
+
+   thelottonumbers=document.getElementById(&#39;lotto&#39;).querySelectorAll(&quot;input[type=text]&quot;);
+   for (i=0; i &lt; thelottonumbers.length; i++) {
+     thelottonumbers[i].value=&quot;&quot;;
+   }
+   document.getElementById(&#39;results&#39;).value=&quot;&quot;;
+   myNumbers = [];
+}
+
+cleargame=document.getElementById(&#39;clear&#39;);
+
+cleargame.addEventListener(&#39;click&#39;,clearNumbers,false);</code></pre>
+<p>This function clears the elements on both forms and empties the myNumbers array.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

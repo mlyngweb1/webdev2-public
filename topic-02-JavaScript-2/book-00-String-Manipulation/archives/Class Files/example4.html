@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>substring</title>
+</head>
+<body>
+
+<script>
+ document.write("<h1>substring()</h1>");
+ document.write("<h3>County value: Kilkenny</h3>");
+ var you = "Kilkenny";
+ start=0;
+ finish=2;
+ var subset = you.substring(start,finish);
+ document.write("Starting Value: "+start);
+ document.write("<br>Finishing Value: "+finish);
+ document.write("<br>The characters from position " +start+ " to "+ finish +" (but not including "+finish+") are: " + subset);
+
+ start=3;
+ var subset = you.substring(start);
+ document.write("<br><br>Starting Value: "+start);
+ document.write("<br>The characters from position " +start+ " to the end of the string are: " + subset);
+
+ start=-5;
+ finish=4;
+ var subset = you.substring(start,finish);
+ document.write("<br><br>Starting Value: "+start);
+ document.write("<br>Finishing Value: "+finish);
+ document.write("<br>The characters from position 0 to "+ finish +" (but not including "+finish+") are: " + subset);
+
+ start=4;
+ finish=2;
+ var subset = you.substring(start,finish);
+ document.write("<br><br>Starting Value: "+start);
+ document.write("<br>Finishing Value: "+finish);
+ document.write("<br>The characters from position " +finish+ " to "+ start +" (but not including "+start+") are: " + subset);
+
+ start=20;
+ finish=2;
+ var subset = you.substring(start,finish);
+ document.write("<br><br>Starting Value: "+start);
+ document.write("<br>Finishing Value: "+finish);
+ document.write("<br>The characters from position " +finish+ " to "+ start +" (but not including "+start+") are: " + subset);
+</script>
+</body>
+</html>

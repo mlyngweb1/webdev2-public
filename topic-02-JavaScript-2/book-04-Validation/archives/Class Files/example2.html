@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+<title>Numeric Validation</title>
+</head>
+<body>
+<h2>Numeric Validation</h2>
+<script>
+mynum = parseInt(prompt("Enter your favourite number, please",""));
+res= isFilled(mynum);
+if (res) {
+   document.write("<p>The number entered was " + mynum+ "</p>");
+}
+else document.write("<p>The valid entered was invalid</p>");
+
+
+function isFilled(field) {
+ if (field==null || field.length == 0 ||  (isNaN(field))) {
+     return false;
+  }
+ return true;
+}
+
+
+</script>
+</body>
+</html>

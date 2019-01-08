@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part One  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="jQuery Filters">
+          jQuery Filters
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop Up Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-01-Accessing Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-02-Working with Form Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-04-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-03-JavaScript-3/book-05-Exercise/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-00-jQuery Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-01-jQuery Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-02-Adding content to a page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-03-Modifying CSS properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-04-Tag attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-04-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="jQuery Filters">
+            <h1>Objectives</h1>
+<p>This lab introduces filters, which allow you to filter your selections based on certain characteristics.</p>
+<ul>
+<li><p><a href="#/01">jQuery filters</a></p>
+</li>
+<li><p><a href="#/02">Automatic loops</a></p>
+</li>
+<li><p><a href="#/03">Chaining functions</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>jQuery Filters</h1>
+<p>jQuery also provides a way to filter your selections based on certain characteristics. For example, the <code>:even</code> filter lets you select every even element in a collection of elements. In addition, you can find elements that contain particular tags, specific text, elements that are hidden from view, and even elements that do not match a particular selector. For Example, to find every row of a table, the jQuery selector would be as follows: <code>$(&#39;tr&#39;)</code></p>
+<p>To narrow down the search, find every even row of a table, the jQuery selector would be as follows: <code>$(&#39;tr:even&#39;)</code></p>
+<p>To use a filter, you add a colon followed by the filter&#39;s name after the main selector. In the example above, the main selector is <code>tr</code>, and the filter is <code>:even</code>. This code selects every even <code>&lt;tr&gt;</code> tag.</p>
+<p>To narrow down a selection further, you may want to just find every even table row in a table with class name of striped. You could do that as follows: <code>$(&#39;.striped tr:even&#39;);</code></p>
+<p>Here is how filters work:</p>
+<ul>
+<li><p><code>:even</code> and <code>:odd</code> select every other element in a group.</p>
+</li>
+<li><p><code>:first</code> and <code>:last</code> matches the first selected element and last selected element respectively.</p>
+</li>
+<li><p><code>:not()</code> finds elements that do not match a particular selector type. For example, say you want to select every <code>&lt;a&gt;</code> tag except ones with a class of navButton. You could do that as follows: <code>$(&#39;a:not(.navButton)&#39;);</code></p>
+</li>
+</ul>
+<p>Another <a href="archives/examples/selectortestnot.htm" target = "_ blank">example</a>:</p>
+<pre><code class="lang-js">$(&#39;p:not(.friends)&#39;); // Select all p tags except the paragraphs with class called friends.</code></pre>
+<p>You give the <code>:not()</code> function the name of the selector you wish to ignore. In the first example, navButton is a class selector, so this code translates to &quot;not with the class of .navButton&quot;. You can use <code>:not()</code> with any of the jQuery filters and with most jQuery selectors. For example, to find every link that does not start with <code>http://</code>, you can write this: <code>$(&#39;a:not([href^=http://])&#39;);</code></p>
+<ul>
+<li><code>:has()</code> finds elements that contain another selector. For example, say you want to find all <code>&lt;li&gt;</code> tags, but only if they have an <code>&lt;a&gt;</code> tag inside them. You could do that as follows: <code>$(&#39;li:has(a)&#39;);</code></li>
+</ul>
+<p>Another example:</p>
+<pre><code class="lang-js">$(&#39;div:has(p a)&#39;);</code></pre>
+<p>This selector would match all <code>&lt;div&gt;</code> elements that encapsulate <code>&lt;a&gt;</code> elements (anchors) within <code>&lt;p&gt;</code> elements (paragraphs).</p>
+<ul>
+<li><code>:contains()</code> finds elements that contain specific text. For example, to find every link that says &quot;Click Me!&quot; you can create a jQuery object like this: <code>$(&#39;a:contains(&quot;Click Me!&quot;)&#39;);</code></li>
+</ul>
+<p>Another <a href="archives/examples/selectortestcontains.htm" target = "_ blank">example</a>:</p>
+<pre><code class="lang-js">$(&#39;p:contains(&quot;Donald&quot;)&#39;); // Select all p tags that contain the word &#39;Donald&#39;.</code></pre>
+<ul>
+<li><p><code>:hidden</code> locates elements that are hidden, which includes elements that either have the CSS display property set to none, elements that are hidden using jQuery&#39;s hide() function, or hidden form fields. For example, if you have hidden several <code>&lt;div&gt;</code> tags, you can find them and make them visible as follows: <code>$(&#39;div:hidden&#39;).show();</code></p>
+</li>
+<li><p><code>:visible</code> is the opposite of hidden. It locates elements that are visible on the page.</p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Automatic Loops</h1>
+<p>If jQuery returns a set of elements, you would think you need a loop to process each element in turn, but because looping through a collection of elements is so common, jQuery functions have that feature built right in. In other words, when you apply a jQuery function to a selection of elements, you do not need to create a loop yourself, since the function does it automatically.
+For example, to select all images inside a <code>&lt;div&gt;</code> tag with an ID of slideshow and then hide those images, you write this in jQuery:</p>
+<pre><code class="lang-js">$(&#39;#slideshow img&#39;).hide();</code></pre>
+<p>The list of elements created with <code>$(&#39;#slideshow img&#39;)</code> might include 50 images. The hide() function automatically loops through the list, hiding each image individually.</p>
+<p>In the following <a href="archives/examples/loopexample.htm" target = "_ blank">example</a> we hide all paragraphs (<code>&lt;p&gt;</code>) using: <code>$(&#39;p&#39;).fadeOut(1500);</code> And we have also included the option to select and display/show all paragraphs: <code>$(&#39;p&#39;).fadeIn(1500);</code></p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;button#btn1&#39;).on(&#39;click&#39;, function(){
+      $(&#39;p&#39;).fadeOut(1500);
+  });
+
+  $(&#39;button#btn2&#39;).on(&#39;click&#39;, function(){
+      $(&#39;p&#39;).fadeIn(2500);
+  });
+
+});</code></pre>
+<p>We could have used hide and show but the fadeIn and fadeOut can be slowed down by providing a numeric value between the brackets.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Chaining Functions</h1>
+<p>Sometimes you will want to perform several operations on a selection of elements. For example, say you want to set the width and height of a <code>&lt;div&gt;</code> tag (with an ID of popup) using JavaScript. jQuery lets you do this as follows:</p>
+<pre><code class="lang-js">$(&#39;#popup&#39;).width(300).height(300);</code></pre>
+<p>jQuery uses a unique principle called chaining, which lets you add functions one after the other. Each function is connected to the next by a period(.), and operates on the same jQuery collection of elements as the previous function. So the code above changes the width of the element with the ID popup, and changes the height of the element. Chaining jQuery functions lets you concisely carry out a large number of actions. For example, say you not only want to set the width and height of the <code>&lt;div&gt;</code> tag but also want to add text inside the <code>&lt;div&gt;</code> and make it fade into view (assuming it is not visible at present). You can do that very succinctly as follows:</p>
+<pre><code class="lang-js">$(&#39;#popup&#39;).width(300).height(100).text(&quot;This is an example of Chaining&quot;).fadeIn(1000);</code></pre>
+<p>In this <a href="archives/examples/chaining.htm" target = "_ blank">example</a>, the code applies four jQuery functions (width(), height(), text(), and fadeIn()) to the tag with an ID name of popup.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Automatic Loops</title><head>
+</head>
+<body>
+<h1>Welcome to My Homepage</h1>
+<p class="intro">My name is Donald</p>
+<p>I live in Duckburg</p>
+<p class="intro">My best friend is Mickey</p>
+Who is your favourite:
+<ul id="choose">
+<li>Goofy</li>
+<li>Mickey</li>
+<li>Pluto</li>
+</ul>
+<button id="btn1">Hide all paragraphs</button><button id="btn2">Show all paragraphs</button>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('button#btn1').on('click', function(){
+      $('p').fadeOut(1500);
+  });
+
+  $('button#btn2').on('click', function(){
+      $('p').fadeIn(2500);
+  });
+
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Helper - Example Three</title>
+</head>
+
+<body>
+<script id="some-template" type="text/x-handlebars-template">
+  <table border="1">
+    <thead>
+      <th>Name</th>
+      <th>Average Score</th>
+    </thead>
+    <tbody>
+      {{#each this}}
+        <tr>
+          <td>{{firstName}} {{lastName}}</td>
+          <td>{{calculateScore score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </script>
+ <div id="content-placeholder">
+</div>
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src='js/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+var data = [
+           {firstName: "Kapil",
+            lastName:"Manish",
+            score:[22, 34, 45, 67]
+           },
+           {firstName: "Bruce",
+            lastName:"Kasparov",
+            score:[10, 34, 67, 90]
+           }
+           ];
+
+
+ Handlebars.registerHelper('calculateScore', function(score) {
+   var total=0;
+   for (i in score) {
+ 	    total+=score[i];
+   }
+   var avg=Math.round(total/score.length);
+   return avg;
+ });
+
+
+var source   = $("#some-template").html();
+
+var template = Handlebars.compile(source);
+
+var theCompiledHtml = template(data);
+
+$("#content-placeholder").html(theCompiledHtml);
+
+
+});
+</script>
+</body>
