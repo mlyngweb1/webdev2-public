@@ -103,8 +103,8 @@ html, body {
     </header>
     <div class="right tab-menu menu">
       
-        <a class="item" data-tab="JavaScript Exercises">
-          JavaScript Exercises
+        <a class="item" data-tab="Pop Up Boxes">
+          Pop Up Boxes
         </a>
       
         <a class="item" data-tab="01">
@@ -113,6 +113,10 @@ html, body {
       
         <a class="item" data-tab="02">
           02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
         </a>
       
     </div>
@@ -186,58 +190,66 @@ html, body {
       <div class="ui basic segment">
         <br>
         
-          <div class="ui tab segment lab" data-tab="JavaScript Exercises">
-            <h1>JavaScript Exercise</h1>
-<p>In this lab you will create .html files that contain JavaScript code enclosed in the <strong>&lt;script&gt;</strong> tag.     </p>
+          <div class="ui tab segment lab" data-tab="Pop Up Boxes">
+            <h1>Objectives</h1>
+<p>This lab will explore the various of dialog between the script and the user.</p>
 <ul>
-<li><a href="#01">Part One</a></li>
-<li><a href="#02">Part Two</a></li>
+<li><p><a href="#/01">Alert Box</a></p>
+</li>
+<li><p><a href="#/02">Confirm Box</a></p>
+</li>
+<li><p><a href="#/03">Prompt Box</a></p>
+</li>
 </ul>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="01">
-            <h1>Part One</h1>
-<ul>
-<li>Create a folder called Week01.</li>
-<li>Open the Week01 folder and create another folder called lab01.</li>
-<li>Open the lab01 folder.</li>
-<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab01 folder:</p>
-<p>1    <strong>words.html</strong>: Create two variables; assign the value <strong>Cookie</strong> to one of the variables, 
-and assign the value <strong>Monster</strong> to the other. Display the values of the two variables with a space added between the two 
-values on the one line.</p>
-<p>2    <strong>prompt.html</strong>: Prompt the user for their email address, and then output a statement, such as 
-<strong>The email address entered was... </strong>.</p>
-<p>3    <strong>variables.html</strong>: Declare a variable called <strong>whatsit</strong>. Assign a value to the variable and then output the 
-variable value and its datatype. Then assign another value to the same variable and output the variable value and its datatype 
-again. Repeat this a few times, each time assigning different values to the variable such as (21, Kilkenny, 56.99, true).
-Your statements may include no words except <strong>Value is... and the type is... </strong>. 
-Use simple HTML to output each statement on its own line.
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<img src="img/ex1.png" alt=""></p>
-</li>
-</ul>
+            <h1>Alert Box</h1>
+<p>The <strong>alert()</strong> method pops up a dialog box displaying some information. This dialog box includes an <strong>OK</strong> button that needs 
+to be clicked to close the dialog box.</p>
+<p>The syntax for an alert box is: <strong>alert(&quot;yourtext&quot;);</strong></p>
+<p>The user will need to click &quot;OK&quot; to proceed. </p>
+<p>Typical use is when you want to make sure information comes through to the user.</p>
+<p>Examples could be warnings of any kind. Typical examples include &quot;Adult Content&quot;, or technical matters 
+like &quot;This site requires Shockwave Flash plug-in&quot;.</p>
+<p>See how the <strong>alert</strong> dialog box works in the following <a href="archives/Class Files/example3.html" target= "_blank">example</a>.</p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="02">
-            <h1>Part Two</h1>
+            <h1>Confirm Box</h1>
+<p>The <strong>confirm()</strong> method pops up a dialog box displaying some information with an option for the user to accept the information 
+(<strong>OK</strong>) or reject the information (<strong>Cancel</strong>).</p>
+<p>The syntax for a confirm box is: <strong>confirm(&quot;yourtext&quot;);</strong></p>
+<p>The user needs to click either &quot;OK&quot; or &quot;Cancel&quot; to proceed.</p>
+<p>Typical use is when you want the user to verify or accept something.</p>
+<p>Examples could be age verification like &quot;Confirm that you are at least 57 years old&quot; or technical matters like &quot;Do you have a plug-in for Shockwave Flash?&quot;</p>
+<pre><code>if (confirm(&quot;Do you agree&quot;)) {
+  alert(&quot;You agree&quot;)}
+else{alert (&quot;You do not agree&quot;)}</code></pre>
+<p>If the user clicks &quot;OK&quot;, the box returns the value true.
+If the user clicks &quot;Cancel&quot;, the box returns the value false.</p>
+<p>See how the <strong>confirm</strong> dialog box works in the following <a href="archives/Class Files/example1.htm" target= "_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Prompt Box</h1>
+<p>The <strong>prompt()</strong> method produces a dialog box similar to the alert() method. However, instead of just displaying a message, 
+the prompt() method can also retrieve an answer. You supply two strings to the prompt() method. 
+The first string is the question or prompt you are giving the user. The second string is optional but it allows you to give a default value in the text field or leave it blank. If you supply no value the text field will include the text undefined (in some browsers).</p>
+<p>The prompt box syntax is: <strong>prompt(&quot;yourtext&quot;,&quot;defaultvalue&quot;);</strong></p>
+<p>The user must click either &quot;OK&quot; or &quot;Cancel&quot; to proceed after entering the text.</p>
+<p>Typical use is when the user should input a value before entering the page.</p>
+<p>Examples could be entering user&#39;s name to be stored in a cookie or entering a password or code of some kind.</p>
 <ul>
-<li>Open the Week01 folder and create another folder called lab02.</li>
-<li>Open the lab02 folder.</li>
-<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab02 folder:</p>
-<p>1    <strong>mycalculator1.html</strong>: Prompt the user for 2 numbers, add, subtract, multiply and divide them.
-Output the 4 results to the screen. 
-Remember to use <strong>parseInt()</strong> when you request the 2 numbers (e.g.  num1 = parseInt(prompt(...));)</p>
-<p>2    <strong>selection1.html</strong>: Prompt the user for a number (between 1 and 12). Using the switch statement, 
-output the corresponding month. E.g. 1 = January, 12 = December. Remember to include a default 
-option for values that are out of range.</p>
-<p>3    <strong>variables.html</strong>: Output (using a for loop) the even numbers from 2 to 20. Calculate the average of these numbers also.</p>
-<p>4    <strong>selection2.html</strong>:Prompt the user for a number (between 1 and 10). If it is equal to a value, 
-which you decide, display a message such as: You have guessed correctly. If not, display a message stating 
-whether it is too high or too low. Prompt the user until the user guesses the correct number and keep track 
-of the number of attempts.</p>
-</li>
+<li>If the user clicks &quot;OK&quot; the prompt box returns the entry. </li>
+<li>If the user clicks &quot;Cancel&quot; the prompt box returns null.</li>
 </ul>
+<p>Since you usually want to use the input from the prompt box for some purpose it is normal to store the input in a variable, as shown in this example.</p>
+<pre><code>username=prompt(&quot;Please enter your name&quot;,&quot;&quot;);</code></pre>
+<p>See how the <strong>prompt</strong> dialog box works in the following <a href="archives/Class Files/example2.htm" target= "_blank">example</a>.</p>
 
           </div>
         

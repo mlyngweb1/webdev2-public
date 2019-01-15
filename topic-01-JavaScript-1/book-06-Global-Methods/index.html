@@ -103,8 +103,8 @@ html, body {
     </header>
     <div class="right tab-menu menu">
       
-        <a class="item" data-tab="JavaScript Exercises">
-          JavaScript Exercises
+        <a class="item" data-tab="Global Methods">
+          Global Methods
         </a>
       
         <a class="item" data-tab="01">
@@ -186,58 +186,73 @@ html, body {
       <div class="ui basic segment">
         <br>
         
-          <div class="ui tab segment lab" data-tab="JavaScript Exercises">
-            <h1>JavaScript Exercise</h1>
-<p>In this lab you will create .html files that contain JavaScript code enclosed in the <strong>&lt;script&gt;</strong> tag.     </p>
+          <div class="ui tab segment lab" data-tab="Global Methods">
+            <h1>Objectives</h1>
+<p>This lab will explore some Global Methods on JavaScript.</p>
 <ul>
-<li><a href="#01">Part One</a></li>
-<li><a href="#02">Part Two</a></li>
+<li><a href="#/01">Global Methods</a></li>
+<li><a href="#/02">Examples</a></li>
 </ul>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="01">
-            <h1>Part One</h1>
-<ul>
-<li>Create a folder called Week01.</li>
-<li>Open the Week01 folder and create another folder called lab01.</li>
-<li>Open the lab01 folder.</li>
-<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab01 folder:</p>
-<p>1    <strong>words.html</strong>: Create two variables; assign the value <strong>Cookie</strong> to one of the variables, 
-and assign the value <strong>Monster</strong> to the other. Display the values of the two variables with a space added between the two 
-values on the one line.</p>
-<p>2    <strong>prompt.html</strong>: Prompt the user for their email address, and then output a statement, such as 
-<strong>The email address entered was... </strong>.</p>
-<p>3    <strong>variables.html</strong>: Declare a variable called <strong>whatsit</strong>. Assign a value to the variable and then output the 
-variable value and its datatype. Then assign another value to the same variable and output the variable value and its datatype 
-again. Repeat this a few times, each time assigning different values to the variable such as (21, Kilkenny, 56.99, true).
-Your statements may include no words except <strong>Value is... and the type is... </strong>. 
-Use simple HTML to output each statement on its own line.
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<img src="img/ex1.png" alt=""></p>
-</li>
-</ul>
+            <h1>Global Methods</h1>
+<p><dl></p>
+<p><dt>
+<strong>isNaN(value)</strong></dt></p>
+<p><dd>
+This function returns true if its argument is not a number and false if it is numeric.</dd></p>
+<p><dt>
+<strong>parseFloat(string)</strong></dt></p>
+<p><dd>
+This function parses a string, passed in as an argument, and returns it as a floating point number. 
+The string is parsed from the start with the parser looking for the numbers 0 through 9, the signs + and -, decimal points
+and exponents only. When any other character is encountered the parser stops and returns what it has already found. 
+If the first character of the string does not belong to the valid set, <strong>NaN</strong> is returned.
+</dd></p>
+<p><dt>
+<strong>parseInt(string [, radix])</strong></dt></p>
+<p><dd>
+The string is parsed and its value as an integer returned. Once an invalid character is encountered the parsing stops and the 
+function returns what it has already found. If the first character of the string is invalid, <strong>NaN</strong> is returned.
+The function optionally takes a radix as its second argument, defaulting to base 10 if an alternative is not supplied.
+</dd>
+</dl>
+Other alternatives are <strong>Number</strong> and <strong>+</strong> symbol, but these return <strong>NaN</strong> if anything other than a number, a single period (full stop) or a + or - sign are found in the string.</p>
+<p>Note: <strong>NaN</strong> is a JavaScript Global Property which represents something which is not a number. 
+Variables can hold different types of data in JavaScript, so  is why you need a way of knowing if a value is currently numeric or not.</p>
+<p>See how the these methods work in the following <a href="archives/Class Files/example1.htm" target= "_blank">example</a>.</p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="02">
-            <h1>Part Two</h1>
-<ul>
-<li>Open the Week01 folder and create another folder called lab02.</li>
-<li>Open the lab02 folder.</li>
-<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab02 folder:</p>
-<p>1    <strong>mycalculator1.html</strong>: Prompt the user for 2 numbers, add, subtract, multiply and divide them.
-Output the 4 results to the screen. 
-Remember to use <strong>parseInt()</strong> when you request the 2 numbers (e.g.  num1 = parseInt(prompt(...));)</p>
-<p>2    <strong>selection1.html</strong>: Prompt the user for a number (between 1 and 12). Using the switch statement, 
-output the corresponding month. E.g. 1 = January, 12 = December. Remember to include a default 
-option for values that are out of range.</p>
-<p>3    <strong>variables.html</strong>: Output (using a for loop) the even numbers from 2 to 20. Calculate the average of these numbers also.</p>
-<p>4    <strong>selection2.html</strong>:Prompt the user for a number (between 1 and 10). If it is equal to a value, 
-which you decide, display a message such as: You have guessed correctly. If not, display a message stating 
-whether it is too high or too low. Prompt the user until the user guesses the correct number and keep track 
-of the number of attempts.</p>
-</li>
-</ul>
+            <h1>Examples</h1>
+<p>In the following <a href="archives/Class Files/example2.htm" target= "_blank">example</a>, we prompt the user for a number and then
+test the value input. </p>
+<p>If the value entered includes a nonnumeric character then it is deemed to be invalid.</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+ var mynum=prompt(&#39;Enter a Number between 1 and 10&#39;,&#39;&#39;);
+ if (isNaN(mynum)) {
+   document.write(&#39;You did not enter a Number&#39;);
+ }
+ else {
+   document.write(&#39;The Number you entered was &#39; + mynum);
+ }
+&lt;/script&gt;</code></pre>
+<p>Now, in the following <a href="archives/Class Files/example3.htm" target= "_blank">example</a>, we again prompt the user for a number and then
+test the value input. </p>
+<p>If the value entered includes a nonnumeric character (after a numeric character/or numeric characters) then it is truncated.</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+ var mynum=parseInt(prompt(&#39;Enter a Number between 1 and 10&#39;,&#39;&#39;));
+ if (isNaN(mynum)) {
+   document.write(&#39;You did not enter a Number&#39;);
+ }
+ else {
+   document.write(&#39;The Number you entered was &#39; + mynum);
+ }
+&lt;/script&gt;</code></pre>
+<p>This example only returns that it is not a number if the first character is not numeric.</p>
 
           </div>
         
