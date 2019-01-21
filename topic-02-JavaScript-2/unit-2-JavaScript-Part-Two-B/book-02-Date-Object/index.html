@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> JavaScript-Part-Two-2  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Date Object">
+          Date Object
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Date Object">
+            <h1>Objectives</h1>
+<p>This lab will look at the various Date methods.</p>
+<p>JavaScript includes a well developed <strong>Date</strong> class which provides methods to perform many different date manipulations.</p>
+<ul>
+<li><p><a href="#01">Using the Date object</a></p>
+</li>
+<li><p><a href="#02">Retrieving values using the Date object</a></p>
+</li>
+<li><p><a href="#02">Setting values using the Date object</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Using the Date object</h1>
+<dl>
+<dt><strong>Date()</strong></dt>
+<dd>Constructs an empty date object. 
+<br>
+For example: <a href ="archives/Class Files/d1.html" target = "_blank">var d = new Date();</a></dd>
+
+<dt><strong>Date(milliseconds)</strong></dt>
+<dd>Constructs a new Date object based on the number of milliseconds that have elapsed since 00:00:00 hours on 01/01/1970. 
+<br>
+For example: <a href ="archives/Class Files/d2.html" target = "_blank">var d = new Date(9999999999);</a></dd>
+
+<dt><strong>Date(string)</strong></dt>
+<dd>    Creates a Date object based upon the contents of a text string. 
+The string must be in the format which is created by the Date.parse() function.
+<br>
+For example: <a href ="archives/Class Files/d3.html" target = "_blank">var d = new Date(&quot;January 1, 2019 00:00:01&quot;);</a></dd>
+
+<dt><strong>Date(year, month, day[, hour, minute, second])</strong></dt>
+<dd>Creates a new Date object based upon the numerical values for the year, month and day. 
+Optional time values may be supplied. January is represented by 0, and December by 11.
+<br>
+For example: <a href ="archives/Class Files/d4.html" target = "_blank">var d = new Date(2018,11,25,11,33,30,0);</a></dd>
+</dl>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Retrieving values using the Date object</h1>
+<p>The following lists some of the more useful methods for retrieving values from the Date object.</p>
+<dl>
+<dt><strong>getDate()</strong></dt>
+<dd>Returns the day of the month.</dd>
+
+<dt><strong>getDay()</strong></dt>
+<dd>Returns an integer representing the day of the week, Sunday is 0 and Saturday is 6.</dd>
+
+<dt><strong>getMonth()</strong></dt>
+<dd>Returns the month field of the Date object, represented by an integer, January is 0 and December is 11.</dd>
+
+<dt><strong>getFullYear()</strong></dt>
+<dd>Returns the year as a four digit number.</dd>
+
+<dt><strong>getHours()</strong></dt>
+<dd>Returns the hour field of the Date object.</dd>
+
+<dt><strong>getMinutes()</strong></dt>
+<dd>Returns the minutes field of the Date object, from 0 to 59.</dd>
+
+<dt><strong>getSeconds()</strong></dt>
+<dd>Returns the seconds field of the Date object.</dd>
+
+<dt><strong>getMilliseconds()</strong></dt>
+<dd>Returns the milliseconds field of the Date object as a number from 0 to 999.</dd>
+
+<dt><strong>getTime()</strong></dt>
+<dd>Returns the number of milliseconds since midnight on 01/01/1970 which the Date object represents.</dd>
+</dl>
+
+<p>The following <a href="archives/Class Files/d5.html" target = "_blank">example</a> retrieves todays date using the Date() object
+and extracts the full day, month, year and time using some of the methods listed above.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Setting values using the Date object</h1>
+<p>The following lists some of the more useful methods for setting values from the Date object.</p>
+<dl>
+<dt><strong>setDate(day)</strong></dt>
+<dd>Sets the day value of the object. Accepts values in the range 1 to 31.</dd>
+
+<dt><strong>setFullYear(year[, month, day])</strong></dt>
+<dd>Sets the year value of the object. Optionally also sets month and day values. All are passed as integers. Year as a four digit date, month in the range 0 to 11, day in the range 0 to 31.
+</dd>
+
+<dt><strong>setHours(hours[, mins, secs, ms])</strong></dt>
+<dd>Sets the hours value of the object to an integer in the range 0 through 23. Optionally also sets minutes, seconds and milliseconds.</dd>
+
+<dt><strong>setMinutes(min[, secs, ms])</strong></dt>
+<dd>Sets the minutes value using an integer in the range 0 to 59.</dd>
+
+<dt><strong>setSeconds(secs[, ms])</strong></dt>
+<dd>Sets the seconds value using an integer in the range 0 to 59.</dd>
+
+<dt><strong>setMilliseconds(ms)</strong></dt>
+<dd>Sets the milliseconds value of the object in the range 0 to 999.</dd>
+
+<dt><strong>setMonth(month[, day])</strong></dt>
+<dd>Sets the month value using an integer in the range 0 to 11.</dd>
+
+<dt><strong>setTime(time)</strong></dt>
+<dd>Sets the value of the Date object. The parameter is a string representing the number of milliseconds since midnight, 01/01/1970.
+</dd>
+
+</dl>
+
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Math and Date Exercises</h1>
+<ul>
+<li>Download, extract and open the <a href="archives/lab02.zip">lab02</a> folder in Week02.</li>
+<li>Open the lab02 folder. Inside this folder is a folder called squares.</li>
+<li><p>Open the squares folder.</p>
+<p>1  <strong>maths.html</strong>: You are given the template for a web page with a table in the sub folder. You are to add JavaScript code that 
+ will display the numbers from 1 to 10; the corresponding squared value; and the corresponding square root. 
+ For the <em>squared</em> and <em>square root</em> values use <strong>Mathematical Functions</strong>.</p>
+<p><img src="img/ex1.png" alt=""></p>
+</li>
+<li><p>Return to the lab02 folder again.</p>
+</li>
+<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab02 folder:</p>
+<p>2  <strong>random.html</strong>: Write code that will generate and display a random number between 1 and 20. </p>
+<p>3  <strong>date.html</strong>: Write JavaScript code that will output the following to the screen using the Date Functions:</p>
+<p><img src="img/ex2.png" alt=""></p>
+</li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> JavaScript-Part-Two-2  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Functions">
+          Functions
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Functions">
+            <h1>Objectives</h1>
+<p>This lab explores the how to do write functions in JavScript and how to pass parameters.  </p>
+<ul>
+<li><a href="#01">Introduction</a></li>
+<li><a href="#02">Parameter Passing</a></li>
+<li><a href="#03">Returning Values</a></li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Introduction</h1>
+<p>Instead of just adding your JavaScript to the page and having the browser perform the tasks as soon as the script is rea
+you might want your JavaScript to be performed only upon the detection of a certain event.</p>
+<p>For example, if you had JavaScript code that changed the background colour of the page when the user clicked a button, 
+then you would need to tell the browser, that the script should not be performed right away when loaded.</p>
+<p>To keep the browser from performing a script as soon as it is loaded you need to write the script as a <strong>function</strong>.</p>
+<p>JavaScript code written in functions will not be performed until you specifically ask for it. This way you gain 
+complete control of the timing.</p>
+<pre><code>&lt;script&gt;
+  function myfunction()
+  {
+    alert(&quot;Welcome to my world!!&quot;);
+  }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form name=&quot;myform&quot;&gt;
+&lt;input type=&quot;button&quot; value=&quot;Hit me&quot; onclick=&quot;myfunction()&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;</code></pre>
+<p>Looking at the code, if the line: alert(&quot;Welcome to my world!!); had not been written within a function, it would simply be 
+performed as soon as the line was loaded. </p>
+<p>But since we wrote it as a function, it is not performed until you hit the button.</p>
+<p>The call of the function is in this line:</p>
+<pre><code>&lt;input type=&quot;button&quot; value=&quot;Click Here&quot; onClick=&quot;myfunction()&quot;&gt;</code></pre>
+<p>As you can see, we placed the button in a form and added the event <strong>onClick=&quot;myfunction()&quot;</strong> to the properties of the button as can 
+be seen in the following <a href="archives/Class Files/example1.html" target = "_blank">example</a>.</p>
+<h2>Syntax</h2>
+<p>The general syntax for a function is: </p>
+<pre><code>function functionname(variable1, variable2,..., variableX)
+{ 
+// Here goes the JavaScript lines for the function
+}</code></pre>
+<p>The <strong>{</strong> and the <strong>}</strong> marks the start and end of the function.</p>
+<p>A typical bug when entering JavaScript functions is to forget about the importance of capitals in JavaScript. 
+The word function must be spelled exactly as function (i.e. lowercase). Function or FUNCTION would cause an error.</p>
+<p>Furthermore, use of capitals matters in the name of the function as well. If you had a function called myfunction() it would cause 
+an error if you referred to it as Myfunction(), MYFUNCTION() or MyFunction().</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Parameter Passing</h1>
+<p>When a function receives a value as a parameter, that value is given a name and can be accessed, using that name, by the function. 
+The names of parameters are taken from the function definition and are applied in the order in which parameters are passed in.</p>
+<pre><code>function about_you(name, age, shoesize)
+{
+   document.write(&quot;&lt;h1&gt;All About You&lt;/h1&gt;&quot;);
+   document.write(&quot;&lt;p/&gt;&lt;strong&gt;Your Name is:&lt;/strong&gt; &quot; + name);
+   document.write(&quot;&lt;p/&gt;&lt;strong&gt;Your Age is:&lt;/strong&gt; &quot; + age);
+   document.write(&quot;&lt;p/&gt;&lt;strong&gt;Your shoe size is:&lt;/strong&gt; &quot;+ shoesize);
+}</code></pre>
+<p>The above function has 3 parameters and utilises the values passed in inside the function.</p>
+<p>To call the function , we could do so as in the following <a href="archives/Class Files/example2.html" target = "_blank">example</a>:</p>
+<pre><code>&lt;body onload=&quot;about_you(&#39;Chris&#39;, 28, 10)&quot;&gt;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Returning Values</h1>
+<p>Variables declared inside a function are local to that function (unless they are global). You cannot (usually) get their value outside 
+the function unless you return the value from the function.</p>
+<pre><code>function total(a, b, c)
+{
+   let result = a + b + c;
+   return result;
+}</code></pre>
+<p><strong>result</strong> is a local variable to the function called total. We cannot see the value of <em>total</em> outside of the function
+unless we return it.</p>
+<p>We could call the function and see the returned value as in the following <a href="archives/Class Files/example3.html" target = "_blank">example</a>:</p>
+<pre><code>calculateresult = total(5, 6, 7);
+document.write(&quot;&lt;h3&gt;The sum of 5, 6, and 7 is &quot; + calculateresult + &quot;&lt;/h3&gt;&quot;);</code></pre>
+<p>Or, we could see the returned value as follows:</p>
+<pre><code>document.write(&quot;&lt;h3&gt;The sum of 5, 6, and 7 is &quot; + total(5, 6, 7));</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

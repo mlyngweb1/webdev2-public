@@ -193,6 +193,48 @@ html, body {
           
         
       
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
     </div>
     <div class="pusher" tabindex="-1">
       <div class="ui basic segment">
@@ -260,7 +302,7 @@ document.write(&quot;&lt;tr&gt;&lt;td&gt;&quot;+celsius+&quot;&lt;/td&gt;&lt;td&
 <pre><code>&lt;table&gt;
 &lt;tr&gt;&lt;th&gt;CELSIUS&lt;/th&gt;&lt;th&gt;FAHRENHEIT&lt;/th&gt;&lt;/tr&gt;
 &lt;script&gt;
-celsius = 0;
+let celsius = 0;
 while (celsius&lt;=50)
 {
  document.write(&quot;&lt;tr&gt;&lt;td&gt;&quot;+celsius+&quot;&lt;/td&gt;&lt;td&gt;&quot;+((celsius*9/5)+32)+&quot;&lt;/td&gt;&lt;/tr&gt;&quot;);
@@ -292,14 +334,14 @@ do
 <p><strong>Break</strong> simply breaks the loop and continues with what might follow after the loop.</p>
 <p>An example would be if you had a loop to calculate the squareroot of numbers decrementing from 50.</p>
 <p>Since calculating the square root of a negative number is an illegal mathemathic operation you would like the loop to end when the square root of zero had been calculated. </p>
-<pre><code>if (value==0) {break};</code></pre>
+<pre><code>if (value===0) {break};</code></pre>
 <h2>Continue</h2>
 <p><strong>Continue</strong> breaks the current loop and continues with the next value.</p>
 <p>An example would be if you had a loop that divided a certain value with a factor of numbers ranging from -50 to +50.</p>
 <p>Since division by zero is an illegal mathemathic procedure the loop should skip this iteration.</p>
 <pre><code>for (value=-50; value&lt;=50; value=value+1)
 {
-  if (value==0) {continue};
+  if (value===0) {continue};
   document.write((100/value)+&quot;&lt;br&gt;&quot;);</code></pre>
 
           </div>

@@ -189,6 +189,48 @@ html, body {
           
         
       
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
     </div>
     <div class="pusher" tabindex="-1">
       <div class="ui basic segment">
@@ -217,7 +259,7 @@ a page specifically designed for that browser should be loaded, if it&#39;s Chro
 else 
    {action2}</code></pre>
 <p>An example could be:</p>
-<pre><code>if (browser==&quot;MSIE&quot;) 
+<pre><code>if (browser===&quot;MSIE&quot;) 
    {alert(&quot;You are using MSIE&quot;)}
 else 
    {alert(&quot;You are using Chrome&quot;)}</code></pre>
@@ -235,10 +277,10 @@ else
 else {if (condition) {action2}
 else {action3}</code></pre>
 <p>An <a href="archives/Class Files/example1.htm" target = "_blank">example</a>:</p>
-<pre><code>if (browser==&quot;Firefox&quot; || browser==&quot;firefox&quot; || browser==&quot;FIREFOX&quot;){
+<pre><code>if (browser===&quot;Firefox&quot; || browser===&quot;firefox&quot; || browser===&quot;FIREFOX&quot;){
     alert(&quot;You are using Mozilla Firefox&quot;)
 }
-else {if (browser==&quot;Chrome&quot; || browser==&quot;chrome&quot; ||browser==&quot;CHROME&quot;) {
+else {if (browser===&quot;Chrome&quot; || browser===&quot;chrome&quot; ||browser===&quot;CHROME&quot;) {
     alert(&quot;You are using Google Chrome&quot;)
      }
     else {
@@ -322,7 +364,7 @@ followed by an opening brace symbol ({). </p>
 <p>For each case entry, you add a <strong>break</strong>; statement. This step is important - the break; statement exits the switch statement.</p>
 <p>You can also add a <strong>default</strong> keyword before the closing brace (}). This statement applies if none of the test cases is true.</p>
 <p>The switch statement is illustrated in the following <a href="archives/Class Files/example2.htm" target = "_blank">example</a>:</p>
-<pre><code>ans=prompt(&quot;Which Fruit do you like&quot;,&quot;apple&quot;);
+<pre><code>let ans=prompt(&quot;Which Fruit do you like&quot;,&quot;apple&quot;);
 switch (ans)
 {
 case &quot;apple&quot;:

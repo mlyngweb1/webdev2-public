@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> JavaScript-Part-Two-1  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="String Manipulation">
+          String Manipulation
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2018//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="String Manipulation">
+            <h1>Objectives</h1>
+<p>This lab will introduce you to the String Manipulation methods.</p>
+<p>Broadly speaking, string manipulation involves joining strings together, splitting them apart or searching through them. 
+JavaScript has methods (functions) which perform all of those operations and much more. </p>
+<p><strong>Note</strong>: Strings are arrays of characters where the first character starts at position 0 (zero).</p>
+<ul>
+<li><p><a href="#/01">length</a></p>
+</li>
+<li><p><a href="#/02">charAt()</a></p>
+</li>
+<li><p><a href="#/03">indexOf()</a></p>
+</li>
+<li><p><a href="#/04">split()</a></p>
+</li>
+<li><p><a href="#/05">substring()</a></p>
+</li>
+<li><p><a href="#/06">slice()</a></p>
+</li>
+<li><p><a href="#/07">toLowerCase() and toUpperCase()</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>length</h1>
+<p>This property returns the number of characters in a given string. Note that this is not a method and so you do not have to 
+place brackets when using it.</p>
+<p><em>var namelen = myname.length</em></p>
+<pre><code>&lt;script&gt;
+ document.write(&quot;&lt;h1&gt;length&lt;/h1&gt;&quot;);
+ let you = prompt(&quot;Enter your name&quot;, &quot;&quot;);
+ document.write(&quot;The length of your name(&quot;+you+&quot;) is &quot; + you.length);
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example.html" target = "_blank">Length Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>charAt()</h1>
+<p>Syntax: <strong>charAt(index)</strong></p>
+<p>The <strong>charAt()</strong> method returns the <strong>character</strong> which is at <strong>position index</strong> in the string. </p>
+<pre><code>&lt;script&gt;
+ document.write(&quot;&lt;h1&gt;charAt()&lt;/h1&gt;&quot;);
+ let name= prompt(&quot;Enter your name&quot;, &quot;&quot;);
+ document.write(&quot;The first character is &quot;+ name.charAt(0));
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example1.html" target = "_blank">charAt() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>indexOf()</h1>
+<p>Syntax: <strong>indexOf(&quot;search&quot;[, offset])</strong></p>
+<p>The <strong>indexOf()</strong> method is used to search a string for a search string. <em>If the <strong>characters(search string)</strong> are found, 
+then the index of the first character is returned. If the search is unsuccessful then -1 is returned</em>. </p>
+<p><strong>Note</strong>:The search begins at position 0 unless a value is specified for the offset. </p>
+<pre><code>&lt;script&gt;
+  document.write(&quot;&lt;h1&gt;indexOf&lt;/h1&gt;&quot;);
+  let you = prompt(&quot;Enter your email&quot;, &quot;&quot;);
+  document.write(&quot;The @ symbol is at position &quot; + you.indexOf(&quot;@&quot;));
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example2.html" target = "_blank">indexOf() Example</a>.</p>
+<h2>lastIndexOf(&quot;search&quot;[, offset])</h2>
+<p>This function does exactly the same thing as <strong>indexOf()</strong> but works its way backwards along the string. 
+The offset works in exactly the same way as in indexOf(), but the default value is <strong>string.length - 1</strong>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>split()</h1>
+<p>Syntax: <strong>split(separator[, limit])</strong></p>
+<p>The <strong>split()</strong> method breaks the string apart whenever it encounters the character passed in as the first parameter. 
+The individual elements of the string are stored in an array. It has an optional second parameter which is an integer value
+indicating how many of the pieces are to be stored in the array. </p>
+<pre><code>&lt;script&gt;
+  document.write(&quot;&lt;h1&gt;split()&lt;/h1&gt;&quot;);
+  let you = prompt(&quot;Enter your Full Name&quot;, &quot;&quot;);
+  let words = you.split(&quot; &quot;);
+  for (let i = 0; i &lt; words.length; i++)
+  {
+    document.write(&quot;&lt;br&gt;&quot; + words[i])
+  }
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example3.html" target = "_blank">split() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>substring()</h1>
+<p>Syntax: <strong>substring(index1[, index2])</strong></p>
+<p>The <strong>substring()</strong> method returns a portion of a string which starts at index1 and continues up to, but does not include, 
+the character at index2. </p>
+<p>The following rules apply:</p>
+<ul>
+<li>If index1 is less than 0, it will be treated as 0.</li>
+<li>If index2 is greater than the length of the string, it is treated as the length of the string.</li>
+<li>If the two index values are equal, an empty string is returned.</li>
+<li>If index2 is missing, all characters up to the end of the string are taken.</li>
+<li>If either argument is less than 0 or is NaN, it is treated as if it were 0.</li>
+<li>If either argument is greater than the length of the string, either argument will use length of the string.</li>
+<li>If index1 &gt; index2, then substring will swap those 2 arguments.</li>
+</ul>
+<pre><code>&lt;script&gt;
+ document.write(&quot;&lt;h3&gt;County value: Kilkenny&lt;/h3&gt;&quot;);
+ var you = &quot;Kilkenny&quot;;
+ start=0;
+ finish=2;
+ let subset1 = you.substring(start,finish);
+ document.write(&quot;Starting Value: &quot;+start);
+ document.write(&quot;&lt;br&gt;Finishing Value: &quot;+finish);
+ document.write(&quot;&lt;br&gt;The characters from position &quot; +start+ &quot; to &quot;+ finish +&quot; (but not including &quot;+finish+&quot;) are: &quot; + subset1);
+
+ start=3;
+ let subset2 = you.substring(start);
+ document.write(&quot;&lt;br&gt;&lt;br&gt;Starting Value: &quot;+start);
+ document.write(&quot;&lt;br&gt;The characters from position &quot; +start+ &quot; to the end of the string are: &quot; + subset2);
+
+ ...
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example4.html" target = "_blank">substring() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>slice()</h1>
+<p>Syntax: <strong>slice(start,end)</strong></p>
+<p>The <strong>slice()</strong> method works like the substring function. It returns a portion of a string. 
+It requires a start number that indicates the starting index position for the extracted string. 
+You can specify an optional end number if you wish. This specifies where to end the extraction (end value is not included). </p>
+<p>The following rules apply:</p>
+<ul>
+<li>If end is omitted, slice extracts chars to the end of the string, exactly like substring().</li>
+<li>If start &gt; end, slice() will NOT swap the 2 arguments.</li>
+<li>If start is negative, it is treated as length + start where length is the length of the string.</li>
+<li>If end is negative, it is treated as length + end.</li>
+</ul>
+<pre><code>&lt;script&gt;
+ document.write(&quot;&lt;h1&gt;slice()&lt;/h1&gt;&quot;);
+ document.write(&quot;&lt;h3&gt;County value: Kilkenny&lt;/h3&gt;&quot;);
+ var you = &quot;Kilkenny&quot;;
+ start=0;
+ finish=2;
+ let subset1 = you.slice(start,finish);
+ document.write(&quot;Starting Value: &quot;+start);
+ document.write(&quot;&lt;br&gt;Finishing Value: &quot;+finish);
+ document.write(&quot;&lt;br&gt;The characters from position &quot; +start+ &quot; to &quot;+ finish +&quot; (but not including &quot;+finish+&quot;) are: &quot; + subset1);
+
+ start=3;
+ let subset2 = you.slice(start);
+ document.write(&quot;&lt;br&gt;&lt;br&gt;Starting Value: &quot;+start);
+ document.write(&quot;&lt;br&gt;The characters from position &quot; +start+ &quot; to the end of the string are: &quot; + subset2);
+
+ ...
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example5.html" target = "_blank">slice() Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>toLowerCase() and toUpperCase()</h1>
+<p>Converts all characters in the string to lower case and upper case respectively. </p>
+<pre><code>&lt;script&gt;
+  document.write(&quot;&lt;h1&gt;toLowerCase() and toUpperCase&lt;/h1&gt;&quot;);
+  let you = prompt(&quot;Enter your First Name&quot;, &quot;&quot;);
+  document.write(&quot;&lt;p&gt;Your name : &quot;+ you +&quot;&lt;/p&gt;&quot;);
+  document.write(&quot;&lt;p&gt;Your name in lower case: &quot; + you.toLowerCase()+&quot;&lt;/p&gt;&quot;);
+  document.write(&quot;&lt;p&gt;Your name in upper case: &quot; + you.toUpperCase()+&quot;&lt;/p&gt;&quot;);
+&lt;/script&gt;</code></pre>
+<p><a href="archives/Class Files/example6.html" target = "_blank">toLowerCase() and toUpperCase()) Example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>String Exercises</h1>
+<ul>
+<li>Create a folder called Week02.</li>
+<li>Open the Week02 folder and create another folder called lab01.</li>
+<li>Open the lab01 folder.</li>
+<li><p>Create web pages that include JavaScript code for each of the following and store them in the lab01 folder:</p>
+<p>1  <strong>stringexercise1.html</strong>: Prompt the user for their name. Using <strong>.length</strong> and <strong>.charAt()</strong>:</p>
+<pre><code> a Return the length of the string entered;
+ b the first character;
+ c and the last character.</code></pre>
+<p>2  <strong>stringexercise2.html</strong>: Prompt the user for an email address. Using <strong>indexOf() and lastIndexOf()</strong>:</p>
+<pre><code> a Output the string entered;
+ b the length of the string; 
+ c the position of the @; 
+ d the position of the first . (full stop) after the @; 
+ e and the position of the last . (full stop)  before the @.</code></pre>
+<p><img src="img/ex1.png" alt=""></p>
+<p>3  <strong>stringexercise3.html</strong>: Given a student record such as: Jane Doe: 45: 60: 80 stored in a string. </p>
+<pre><code>var record = &quot;Jane Doe:45:60:80 &quot;;</code></pre>
+<p>The numbers correspond to marks achieved during the semester. Using <strong>split()</strong>, extract each element and calculate the overall mark. 
+The first 2 marks are CA (first mark worth 20%; and the second mark worth 30%). The final mark is the exam paper (worth 50%).</p>
+<p>Output Jane Doe: 67</p>
+<p>4  <strong>stringexercise4.html</strong>: Create a variable <em>coursecode</em> and assign a value as follows:</p>
+<pre><code>var coursecode = &quot;wd151&quot;;</code></pre>
+<p>Using <strong>substring()</strong>, extract and output the first 2 characters into 1 variable; and extract and output the remainder of the string into another variable. 
+Verify that the second variable is numeric (use isNaN). </p>
+</li>
+</ul>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
