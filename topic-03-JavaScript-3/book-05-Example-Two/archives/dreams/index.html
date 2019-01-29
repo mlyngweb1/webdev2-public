@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Dream of the Future</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class ="ui raised stackable segment">
+    <header class = "ui center aligned padded raised stackable grid segment">
+      <h1>
+        A Dream of the Future
+      </h1>
+    </header>
+
+    <main class = "ui two column raised stackable  grid segment">
+      <div class="ui column">
+
+      <p class="bold">Oh hi,</p>
+      <p>Tell me your hopes and dreams:</p>
+      <form id ="adddream" class = "ui form">
+          <div class="fields">
+             <div class="eight wide field">
+                   <input name="dream" type="text" maxlength="100" placeholder="Dreams!" required>
+             </div>
+             <div class="field">
+           <button type="submit" id="submit-dream" class = "ui button">Submit Dream</button>
+             </div>
+           </div>
+       </form>
+      <section class="dreams">
+        <ul id="dreamsul"></ul>
+      </section>
+      </div>
+         <div class="ui column">
+         <p>
+      <img src = "images/homer.png"  alt = "Homer" class="ui  centered  image" >
+      </p>
+      </div>
+    </main>
+</div>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="js/client.js"></script>
+  </body>
+</html>

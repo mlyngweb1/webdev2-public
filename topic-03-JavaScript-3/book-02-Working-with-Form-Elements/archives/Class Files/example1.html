@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WIT Ski Club</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+  <link rel ="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="ui container">
+
+<div class="ui center aligned grid row">
+<header class = "column">
+<h1>Ski Club Signup Page</h1>
+</header>
+</div>
+
+<form action="" method="post" id = "skiclub" onsubmit="feedback()" class = "ui form" >
+<h4 class="ui dividing header">Personal Information</h4>
+
+   <div class="inline field">
+    <label for="contactname" class = "two wide field">Name</label>
+     <input type="text" class = "four wide field" name="contactname" id="contactname"  autofocus required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+     title="Please enter a name (Surname optional) with First Letter capitalised">
+   </div>
+
+
+<h4 class="ui dividing header">Ski Package - Number of Days</h4>
+   <div class="inline field">
+    <label for="days" class = "two wide field">Number of Days</label>
+     <input type="text" class = "four wide field" name="days" id="days"  value="7"  required pattern = "[0-9]{1,2}"
+     title="Please enter a numeric value > 1">
+</div>
+
+
+
+
+ <button class="ui button" type="submit">Calculate</button>
+ <button class="ui button" type="reset">Clear the Info</button>
+</form>
+</section>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script>
+function feedback()
+{
+	yourname=document.getElementById("contactname").value;
+	numdays=document.getElementById("days").value;
+
+	alert("Thank you " + yourname + ", you are booked in for " + numdays + " days");
+}
+</script>
+</body>
+</html>
+
+

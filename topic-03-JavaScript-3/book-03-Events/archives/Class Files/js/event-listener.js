@@ -2,11 +2,11 @@ function checkUsername() { // Declare function
 
   var elMsg = document.getElementById('feedback');     // Get feedback element
   if (this.value.length < 5) {                         // If username too short
-    elMsg.textContent = 'Username must be 5 characters or more'; // Set msg
+    elMsg.innerHTML = 'Username must be 5 characters or more'; // Set msg
     this.value="";                                     // Clear the text box
     this.focus();                                      // Return focus to the text box
   } else {                                             // Otherwise
-    elMsg.textContent = '';                            // Clear msg
+    elMsg.innerHTML = '';                            // Clear msg
   }
 }
 
@@ -17,11 +17,11 @@ function checkPassword() {                            // Declare function
   re2 = /[A-Z]/;                                      // Set up a regular expression (all uppercase letters)
   if ((this.value.length < 6) || (!re.test(this.value)) || (!re1.test(this.value)) || (!re2.test(this.value))) {
 	  // If password is too short or includes no number or no lowercase or uppercase letter
-    elFeedMsg.textContent = 'Password must be 6 characters or more and contain at least one letter (upper and lower case) and one number'; // Set msg
+    elFeedMsg.innerHTML = 'Password must be 6 characters or more and contain at least one letter (upper and lower case) and one number'; // Set msg
     this.value="";                                     // Clear the text box
     this.focus();                                      // Return focus to the text box
   } else {                                             // Otherwise
-    elFeedMsg.textContent = '';                        // Clear msg
+    elFeedMsg.innerHTML = '';                        // Clear msg
   }
 }
 

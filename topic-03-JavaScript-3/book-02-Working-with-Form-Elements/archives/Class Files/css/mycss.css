@@ -1,0 +1,129 @@
+body{
+  background-color: #050845;
+  color: black;
+}
+
+.container-fluid{
+  background-color: #fdf8f2;
+  margin: 3% 5% 0;
+  padding:1%;
+
+}
+
+header {
+  padding:2em;
+  background-color:#256290;
+}
+
+#main {
+  margin-top:.5em;
+}
+
+nav{
+  padding:1em 0;
+  background-color:#256290;
+}
+
+nav ul {	
+  list-style-type:none;
+}
+nav li {
+  font-family : Arial, Helvetica, sans-serif;
+  margin-bottom:1em;
+  margin-left:-1em;
+}
+
+h1, h2{
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #666666;
+}
+
+
+h1{
+  font-size: 2em;
+  color:white;
+}
+
+
+h2{
+  font-size: 1.5em;
+}
+
+p{
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+a {
+  outline:0;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: aqua;
+}
+
+p a:link {
+  text-decoration: underline;
+  color: navy;
+}
+
+p a:visited {
+  text-decoration: underline;
+  color:purple;
+}
+
+p a:hover {
+  text-decoration:none;
+  background-color:#256290;
+  color:white;
+}
+
+img { 
+  float:left;
+  margin-right:1em;
+}
+
+p.news {
+  font-style:italic;
+}
+
+table {
+  border-collapse: collapse;
+  border:solid black 1px;
+}
+
+th {
+  border:solid black 1px;
+  background-color: dimgray;
+  padding: 0.2em;
+  text-align: left;
+  color:white;
+}
+
+th.onecol {
+  text-align:center;
+}
+
+td {
+  border:solid black 1px;
+  padding: 0.2em;  
+  font-size:14px;
+  color:navy;
+  font-family:Verdana,sans-serif;
+}
+
+tbody tr:nth-child(odd) {
+  background-color:lightgray;
+}
+   
+tbody tr:hover {
+  background-color:slategray;
+}

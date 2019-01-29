@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WIT Ski Club</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+  <link rel ="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="ui container">
+
+<div class="ui center aligned grid row">
+<header class = "column">
+<h1>Ski Club Signup Page</h1>
+</header>
+</div>
+
+<form action="" method="post" id = "skiclub" onsubmit="feedback()" class = "ui form" >
+<h4 class="ui dividing header">Personal Information</h4>
+
+   <div class="inline field">
+    <label for="contactname" class = "two wide field">Name</label>
+     <input type="text" class = "four wide field" name="contactname" id="contactname"  autofocus required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+     title="Please enter a name (Surname optional) with First Letter capitalised">
+   </div>
+
+
+<h4 class="ui dividing header">Ski Package - Transport Option</h4>
+
+ <div class="grouped fields">
+      <label for="travel">Select your Transport option:</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="travel" checked="checked" id = "train" value = "40">
+          <label for = "train" >Train (&euro;40)</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="travel"  id = "bus" value = "25">
+          <label for = "bus">Bus (&euro;25)</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="travel" id = "air" value = "85">
+          <label for = "air">Air (&euro;85)</label>
+        </div>
+      </div>
+
+
+
+ <button class="ui button" type="submit">Calculate</button>
+ <button class="ui button" type="reset">Clear the Info</button>
+</form>
+</section>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script>
+function feedback()
+{
+  yourname=document.getElementById("contactname").value;
+  travels = document.getElementsByName("travel");
+  for (i in travels)
+  {
+   if (travels[i].checked) {
+     cost  = parseInt(travels[i].value);
+     break;
+   }
+  }
+  alert("Thank you " + yourname + ", your travel costs are \u20AC" + cost);
+}
+</script>
+</body>
+</html>
+
+

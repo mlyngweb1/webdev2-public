@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WIT Ski Club</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+  <link rel ="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="ui container">
+
+<div class="ui center aligned grid row">
+<header class = "column">
+<h1>Ski Club Signup Page</h1>
+</header>
+</div>
+
+<form action="" method="post" id = "skiclub" onsubmit="feedback()" class = "ui form" >
+<h4 class="ui dividing header">Personal Information</h4>
+
+   <div class="inline field">
+    <label for="contactname" class = "two wide field">Name</label>
+     <input type="text" class = "four wide field" name="contactname" id="contactname" autofocus required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+     title="Please enter a name (Surname optional) with First Letter capitalised">
+   </div>
+
+
+<h4 class="ui dividing header">Ski Package - Dinner options</h4>
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" name="dinner" id="dinner" value="15" checked>
+      <label for = "dinner">Dinner (&euro;15/night)</label>
+    </div>
+  </div>
+
+ <button class="ui button" type="submit">Calculate</button>
+ <button class="ui button" type="reset">Clear the Info</button>
+</form>
+</section>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script>
+function feedback()
+{
+  yourname=document.getElementById("contactname").value;
+  let meal = 0;
+  if(document.getElementById("dinner").checked)
+  {
+   meal=parseInt(document.getElementById("dinner").value);
+
+   alert("Thank you " + yourname + ", your dinner cost per night is \u20AC" + meal);
+  }
+  else {
+   alert("Thank you " + yourname + ", you require no dinner at night time");
+  }
+}
+</script>
+</body>
+</html>
+
+
