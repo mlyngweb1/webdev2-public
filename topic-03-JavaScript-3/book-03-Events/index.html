@@ -402,11 +402,11 @@ validate our form input.</p>
 
   var elMsg = document.getElementById(&#39;feedback&#39;);     
   if (this.value.length &lt; 5) {                         
-    elMsg.textContent = &#39;Username must be 5 characters or more&#39;; 
+    elMsg.innerHTML = &#39;Username must be 5 characters or more&#39;; 
     this.value=&quot;&quot;;                                     
     this.focus();                                      
   } else {                                             
-    elMsg.textContent = &#39;&#39;;                            
+    elMsg.innerHTML = &#39;&#39;;                            
   }
 }
 
@@ -416,11 +416,11 @@ function checkPassword() {
   re1 = /[a-z]/;                                      
   re2 = /[A-Z]/;                                      
   if ((this.value.length &lt; 6) || (!re.test(this.value)) || (!re1.test(this.value)) || (!re2.test(this.value))) {
-    elFeedMsg.textContent = &#39;Password must be 6 characters or more and contain at least one letter (upper and lower case) and one number&#39;; 
+    elFeedMsg.innerHTML = &#39;Password must be 6 characters or more and contain at least one letter (upper and lower case) and one number&#39;; 
     this.value=&quot;&quot;;                                     
     this.focus();                                      
   } else {                                             
-    elFeedMsg.textContent = &#39;&#39;;                       
+    elFeedMsg.innerHTML = &#39;&#39;;                       
   }
 }
 
@@ -436,7 +436,7 @@ function <strong>checkUsername</strong> is called.  And, when the user leaves th
 <p>Both functions include tests against the value entered. If there is an error (true), then:</p>
 <ol>
 <li>An error message is written to the empty <strong>div</strong> underneath each element (feedback and feedbackmsg respectively). This message is written to the text node
-using <strong>textContent</strong>. You could use <strong>innerHTML</strong> also (this allows the text to be marked up).</li>
+using <strong>innerHTML</strong>. You could use <strong>innerHTML</strong> also (this allows the text to be marked up).</li>
 <li>The text box is emptied (<strong>this.value=&quot;&quot;;</strong>)</li>
 <li>Focus is returned to the text box (<strong>this.focus();</strong>).</li>
 </ol>
