@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part One  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="jQuery Selectors">
+          jQuery Selectors
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="jQuery Selectors">
+            <h1>Objectives</h1>
+<p>This lab will introduce you to the jQuery JavaScript library.</p>
+<ul>
+<li><p><a href="#/01">What is jQuery?</a></p>
+</li>
+<li><p><a href="#/02">Getting started</a></p>
+</li>
+<li><p><a href="#/03">jQuery selectors (tag, id, class)</a></p>
+</li>
+<li><p><a href="#/04">Attribute selectors</a></p>
+</li>
+<li><p><a href="#/05">The document.ready() function</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>What is jQuery</h1>
+<p>jQuery is an open source JavaScript library that simplifies the interactions between an HTML document, or more precisely the Document Object Model (aka the DOM), and JavaScript. In plain words, jQuery makes Dynamic HTML (DHTML) dead easy. Specifically, jQuery simplifies HTML document traversing and manipulation, browser event handling, DOM animations, Ajax interactions, and cross-browser JavaScript development.</p>
+<p>jQuery is an amazing JavaScript library that makes it easy to create wonderful web effects in just a few lines of code. jQuery achieves this goal by taking common, repetitive, tasks, stripping out all the unnecessary markup, and leaving them short, smart and understandable. jQuery also provides capabilities for developers to create plug-ins on top of the JavaScript library.</p>
+<p>jQuery is not a language but it is a well written JavaScript code. As quoted on an official jQuery website, &quot;it is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.&quot;</p>
+<p>The jQuery library contains the following features:</p>
+<ul>
+<li>HTML/DOM manipulation</li>
+<li>CSS manipulation</li>
+<li>HTML event methods</li>
+<li>Effects and animations</li>
+<li>AJAX</li>
+<li>Utilities</li>
+</ul>
+<h2>Why jQuery</h2>
+<p>jQuery is very compact and well written JavaScript code that increases the productivity of the developer by enabling them to achieve critical User Interaction functionality by writing less code. Advantages of jQuery are:</p>
+<ul>
+<li>Improve the performance of the application.</li>
+<li>Develop most browser compatible web pages.</li>
+<li>Implement UI related critical functionality without writing hundreds of lines of codes.</li>
+<li>No need to learn fresh new syntaxes to use jQuery, knowing simple JavaScript syntax is enough.</li>
+<li>Simple and Cleaner code, no need to write several lines of codes to achieve complex functionality.</li>
+</ul>
+<h2>JavaScript Libraries</h2>
+<p>Many JavaScript programs have to deal with the same set of Web page tasks again and again: selecting an element, adding new content, hiding and showing content, modifying a tag&#39;s attributes, determining the value of form fields, and making programs react to different user interactions. The details of these basic actions can turn out to be quite complicated - especially if you want the program to work in all major browsers. Fortunately, JavaScript libraries offer a way to leap-frog past many time consuming programming details.</p>
+<p>A JavaScript library is simply a collection of JavaScript code that provides simple solutions to many of the mundane, day-to-day details of JavaScript. You can think of a library as a collection of prewritten JavaScript functions that you add to your Web page. These functions make it easy to complete common tasks.</p>
+<p>We are going to use the popular jQuery library.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Getting Started with jQuery</h1>
+<p>jQuery is a library of JavaScript Functions. jQuery is a lightweight &quot;write less, do more&quot; JavaScript library.</p>
+<p>The first step in using jQuery is linking to the jQuery source. The <code>jquery.js</code> file is a single JavaScript file that you can link a Web page to use. 
+Compressed and uncompressed copies of jQuery files are available. The uncompressed file is best used during development or debugging; 
+the compressed file saves bandwidth and improves performance in production. </p>
+<pre><code class="lang-html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;/script&gt;</code></pre>
+<p>Once you have linked to the jQuery file, you are ready to add your own scripts that take advantage of jQuery&#39;s advanced functions. 
+For example, you can attach another external JavaScript file with your own programming in it, or add a second <code>&lt;script&gt;</code> tag to the Web page and start programming:</p>
+<pre><code class="lang-html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/example.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>jQuery Selectors</h1>
+<p>The jQuery library harnesses the power of Cascading Style Sheets (CSS) selectors to let us quickly and easily access elements or groups of elements in the Document Object Model (DOM). A jQuery Selector is a function which makes use of expressions to find out matching elements from a DOM based on the given criteria. Simply you can say, selectors are used to select one or more HTML elements using jQuery. Once an element is selected then we can perform various operations on that selected element.</p>
+<h2>jQuery Selectors</h2>
+<p>jQuery selectors start with the dollar sign and parentheses - <code>$()</code>. $ is shorthand for jQuery. <code>$()</code> makes use of following three building blocks while selecting elements in a given document:</p>
+<table>
+<tr>
+<th style="width:10%; text-align:left;">Tag Name</th>
+<td>Represents a tag name available in the DOM. For example $(&#39;p&#39;) selects all paragraphs in the document.</td>
+</tr>
+<tr>
+<th style="width:10%; text-align:left;">Tag ID</th>
+<td>Represents a tag available with the given ID in the DOM. For example $(&#39;#some-id&#39;) selects the single element in the document that has an ID of some-id.</td>
+</tr>
+<tr>
+<th style="width:10%; text-align:left;">
+Tag Class
+</th>
+<td>Represents a tag available with the given class in the DOM. For example $(&#39;.some-class&#39;) selects all elements in the document that have a class of some-class.
+</td>
+</tr>
+</table>
+
+<h2>Examples</h2>
+<h3>Element selectors</h3>
+<p>You can select any page element by its tag name. For example: to select every <code>&lt;a&gt;</code> tag on the page, you&#39;d write this: <code>var linkslist = $(&#39;a&#39;);</code></p>
+<p>In this <a href="archives/examples/selectortesttag.htm" target = "_ blank">example</a>, we see the paragraphs are highlighted (background colour has changed) because the elements with the <code>&lt;p&gt;</code>  tag are selected and modified.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;p&#39;).css(&#39;background-color&#39;,&#39;#ac9986&#39;);
+});</code></pre>
+<h3>ID selectors</h3>
+<p>You can select any page element that has an ID applied to it using jQuery and a CSS ID selector. For example, say you have the following HTML in a Web page:</p>
+<pre><code class="lang-html">&lt;p id = &#39;message&#39;&gt;Special message&lt;/p&gt;</code></pre>
+<p>To select the element using jQuery: <code>var messagePara = $(&#39;#message&#39;);</code> You have to use the CSS-syntax for defining an ID selector <code>(&#39;#message&#39;)</code>.</p>
+<p>In this <a href="archives/examples/selectortestid.htm" target = "_ blank">example</a>, we see the second paragraph is highlighted (background colour has changed) because the element with the ID p2 is selected and modified.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&quot;#p2&quot;).css(&quot;background-color&quot;, &quot;yellow&quot;);
+});</code></pre>
+<h3>Class selectors</h3>
+<p>You can select all page elements with the same class name. For example: to select every element on the page with the class name submenu, you&#39;d write this: <code>var menus = $(&#39;.submenu&#39;)</code>;</p>
+<p>In this <a href="archives/examples/selectortestclass.htm" target = "_ blank">example</a>, we see the first and third paragraphs are highlighted (background colour has changed) because the elements with the class friends are selected and modified.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;.friends&#39;).css(&#39;background-color&#39;,&#39;#ac9986&#39;);
+});</code></pre>
+<p><strong>Note:</strong> When our selection returns more than one element as in the first example <code>$(&#39;p&#39;)</code>, we do not have to use a loop to apply/change the background 
+colour for each paragraph, we can just add (chain) the operation to be executed.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>jQuery Attribute Selectors</h1>
+<p>Attribute selectors let you select elements based on whether the element has a particular attribute, and even check to make sure the attribute matches a specific value. For example, you could find every link tag that points outside your site, and add code to just those links.</p>
+<h2>Examples:</h2>
+<ul>
+<li><code>$(&#39;img[alt]&#39;)</code> select all <code>&lt;img&gt;</code> tags with the alt attribute set.</li>
+<li><code>$(&#39;input[type=&quot;text&quot;]&#39;)</code> select all text boxes in a form.</li>
+<li><code>$(&#39;a[href^=&quot;http://&quot;]&#39;)</code> select all links that point outside your site. Note that <code>^=</code> means starting with. </li>
+<li><code>$(&#39;a[href^=&quot;mailto:&quot;]&#39;)</code> select all mailto: links.</li>
+<li><code>$(&#39;a[href$=&quot;.pdf&quot;]&#39;)</code> select all links that point to PDF files. Note that <code>$=</code> means ending with.</li>
+<li><code>$(&#39;a[href*=&quot;wit.ie&quot;]&#39;)</code> select all links that point to <code>wit.ie</code>. Note that <code>*=</code> means includes/contains.</li>
+</ul>
+<p>In the following <a href="archives/examples/attributetest.htm" target = "_ blank">example</a>, we see 2 of the 3 links have changed (font: bold and italic; color: black) because the links with the <code>href^=&quot;http://&quot;</code> attribute are selected and modified.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;a[href^=&quot;http://&quot;]&#39;).css({
+   &#39;font-weight&#39;:&#39;bold&#39;,
+   &#39;font-style&#39;:&#39;italic&#39;,
+   &#39;color&#39;:&#39;black&#39;
+  });
+});</code></pre>
+<p>If we want to change more than one CSS property on an element, we can pass an object literal to the <code>.css()</code> function. Think of an object literal as a list of property name/value pairs. After each property name, you insert a colon (:) followed by a value; each name/value pair is separated by a comma, and the whole lot is surrounded by braces {}.</p>
+<pre><code class="lang-js">{
+   &#39;font-weight&#39;:&#39;bold&#39;,
+   &#39;font-style&#39;:&#39;italic&#39;,
+   &#39;color&#39;:&#39;black&#39;
+}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>The Document Ready Function</h1>
+<p>You might have noticed that all jQuery functions, in our examples, are inside a <code>document.ready()</code> function. As almost everything we do when using jQuery reads or manipulates the document object model (DOM), we need to make sure that we start adding events etc. as soon as the DOM is ready. If you want an event to work on your page, you should call it inside the <code>$(document).ready()</code> function. Everything inside it will load as soon as the DOM is loaded and before the page contents are loaded.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;a[href^=&quot;http://&quot;]&#39;).css({
+   &#39;font-weight&#39;:&#39;bold&#39;,
+   &#39;font-style&#39;:&#39;italic&#39;,
+   &#39;color&#39;:&#39;black&#39;
+  });
+});</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part One  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Modifying CSS properties">
+          Modifying CSS properties
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Modifying CSS properties">
+            <h1>Objectives</h1>
+<p>jQuery can also be used to change the CSS properties of elements.</p>
+<ul>
+<li><p><a href="#01">Classes</a></p>
+</li>
+<li><p><a href="#02">Reading and changing CSS properties</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Classes</h1>
+<p>Adding, removing, and changing elements is not the only thing jQuery is good at. You will often want to, for example, add a class to a tag or change a CSS property of an element.</p>
+<p>We can create some really advanced visual effects on a web page by simply using jQuery to add, remove, or change a class applied to an element. Because web browsers process and implement CSS instructions very quickly and efficiently, simply adding a class to a tag could completely change the tag&#39;s appearance or even make it disappear from a page.</p>
+<p>jQuery provides several functions for manipulating a tag&#39;s class attribute.</p>
+<h2>addClass()</h2>
+<p><code>addClass()</code> adds a specified class to an element. You can add the addClass() after a jQuery selection and pass the function a string, 
+which represents the class name you wish to add. For example, to add the class <em>externalLink</em> to all links pointing outside your site, you can use this code:</p>
+<pre><code class="lang-js">$(&#39;a[href^=&quot;http://&quot;]&#39;).addClass(&#39;externalLink&#39;);</code></pre>
+<p>This would take HTML like this:</p>
+<pre><code class="lang-html">&lt;a href = &quot;http://www.oreilly.com/&quot;&gt;</code></pre>
+<p>And change it to the following:</p>
+<pre><code class="lang-html">&lt;a href = &quot;http://www.oreilly.com/&quot; class = &quot;externalLink&quot;&gt;</code></pre>
+<p>Obviously, for this function to be of any use, you will need a CSS class style defined in the style sheet. If the tag already has a class applied to it, 
+the addClass() function does not eliminate the old class; it just adds the new class as well.</p>
+<p>In this <a href="archives/examples/addclass.htm" target = "_ blank">example</a>, a class (highlight) is added to the last paragraph.</p>
+<h2>removeClass()</h2>
+<p><code>removeClass()</code> is the opposite to addClass(). It removes a single class, multiple classes, or all classes from each element in the set of matched elements. 
+For example, if you wanted to remove a class named highlight from a <code>&lt;div&gt;</code> with an ID of alertbox, you would do this:</p>
+<pre><code class="lang-js">$(&#39;#alertbox&#39;).removeClass(&#39;highlight&#39;);</code></pre>
+<p>In this <a href="archives/examples/removeclass.htm" target = "_ blank">example</a>, the class (blue) is removed from every second paragraph.</p>
+<h2>toggleClass()</h2>
+<p><code>toggleClass()</code> allows you to toggle a particular class - meaning it will add the class if it does not already exist, or remove the class if it does. 
+Toggling is a popular way to show an element in either an on or off state.</p>
+<p>In this <a href="archives/examples/toggleclass.htm" target = "_ blank">example</a>, the class (highlight) is toggled on every paragraph. 
+Initially, 3 paragraphs (first, third, and fourth) have just the class blue applied, and the second paragraph have both classes blue and highlight applied. 
+If you click on any of the 3 paragraphs (first, third, and fourth), the class highlight is applied, if you click on any of them again, 
+the highlight class is removed (i.e. toggles). Likewise if you click on the second paragraph, the class highlight is removed, and if you click on it again, 
+it is applied (i.e. toggles).</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Reading and Changing CSS Properties</h1>
+<p>jQuery&#39;s css() function lets you directly change CSS properties of an element, so instead of simply applying a class style to an element, you can immediately add a border or background colour, or set a width or positioning property. You can use the css() function in three ways:</p>
+<h3>Get the current value of a CSS property</h3>
+<p>For example, say you want to find the background colour of a <code>&lt;div&gt;</code> tag with an ID of main:</p>
+<pre><code class="lang-js">var bgColor = $(&#39;#main&#39;).css(&#39;background-color&#39;);</code></pre>
+<p>After this code runs, the variable bgColor will contain a string with the element&#39;s background colour value. In this <a href="archives/examples/cssget.htm" target = "_ blank">example</a>, the values of the colour and font size for the h2 element are displayed.</p>
+<h3>Set the CSS property for an element</h3>
+<p>To use the function in this way, you must supply two arguments to the function: the <code>CSS property name</code> and <code>a value</code>. For example, to change the font size for the <body> tag to 200%, you could do this:</p>
+<pre><code class="lang-js">$(&#39;body&#39;).css(&#39;font-size&#39;, &#39;200%&#39;);</code></pre>
+<p>To add a black, one pixel border around all paragraphs with a class of highlight:</p>
+<pre><code class="lang-js">$(&#39;.highlight&#39;).css(&#39;border&#39;, &#39;1px solid black&#39;);</code></pre>
+<h3>Change multiple CSS properties at once</h3>
+<p>If you want to change more than one CSS property on an element, you do not need to resort to multiple uses of the .css() function. As we saw previously, we can pass what is called an object literal to the .css() function. Think of an object literal as a list of property name/value pairs. After each property name, you insert a colon (:) followed by a value; each name/value pair is separated by a comma, and the whole lot is surrounded by braces {}.</p>
+<p>For example:</p>
+<pre><code class="lang-js">{
+  &#39;background-color&#39; : &#39;#FF0000&#39;,
+  &#39;border&#39;: &#39;2px solid #FE0037&#39;
+}</code></pre>
+<p>To use an object literal with the css() function, just pass the object to the function like this:</p>
+<pre><code class="lang-js">$(&#39;.highlight&#39;).css(
+ {
+  &#39;background-color&#39; : &#39;#FF0000&#39;,
+  &#39;border&#39;: &#39;2px solid #FE0037&#39;
+ }
+ );</code></pre>
+<p>The opening round bracket ( marks the beginning of the .css() function; the opening curly bracket { marks the beginning of the object literal. The closing } marks the end of the object literal. The closing ) marks the end of the .css() function. The semicolon(;) marks the end of the statement.</p>
+<p>In this <a href="archives/examples/csschange.htm" target = "_ blank">example</a>, the values of the background colour and font size for the 
+p element are changed.</p>
+<p>.</p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
