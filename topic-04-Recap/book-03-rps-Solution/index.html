@@ -98,25 +98,13 @@ html, body {
     <header class="header item">
       <i id="toc" class="sitemap icon"></i>
       
-        <a href="../../index.html"> JavaScript-Part-Two-2  </a>
+        <a href="../index.html">  Recap  </a>
       
     </header>
     <div class="right tab-menu menu">
       
-        <a class="item" data-tab="Input Validation">
-          Input Validation
-        </a>
-      
-        <a class="item" data-tab="01">
-          01
-        </a>
-      
-        <a class="item" data-tab="02">
-          02
-        </a>
-      
-        <a class="item" data-tab="03">
-          03
+        <a class="item" data-tab="RPS-Solution">
+          RPS-Solution
         </a>
       
     </div>
@@ -351,76 +339,10 @@ html, body {
       <div class="ui basic segment">
         <br>
         
-          <div class="ui tab segment lab" data-tab="Input Validation">
-            <h1>Objectives</h1>
-<p>We will now combine string functions and our own declared functions to perform validation on strings input by the user.</p>
-<ul>
-<li><a href="#01">Empty Strings</a></li>
-<li><a href="#02">Numeric Strings (Numbers Only)</a></li>
-<li><a href="#03">Repeat until valid input entered</a></li>
-</ul>
-
-          </div>
-        
-          <div class="ui tab segment lab" data-tab="01">
-            <h1>Empty Strings</h1>
-<p>We can check whether the input is empty or whether the user has selected cancel as in the following <a href="archives/Class Files/example1.html" target = "_blank">example</a>: </p>
-<pre><code>&lt;script&gt;
-let sentence = prompt(&quot;Enter a string, please&quot;,&quot;&quot;);
-let res = isFilled(sentence);
-if (res) {
-   document.write(&quot;&lt;p&gt;The string entered was &quot; + sentence+ &quot;&lt;/p&gt;&quot;);
-}
-else document.write(&quot;&lt;p&gt;No input was entered&lt;/p&gt;&quot;);
-
-function isFilled(field) {
- if (field==null || field.length== 0) {
-     return false;
-  }
- return true;
-}
-&lt;/script&gt;</code></pre>
-
-          </div>
-        
-          <div class="ui tab segment lab" data-tab="02">
-            <h1>Numeric Strings (Numbers Only)</h1>
-<p>We can check whether the string entered are has numbers only as in the following <a href="archives/Class Files/example2.html" target = "_blank">example</a>: </p>
-<pre><code>&lt;script&gt;
-let mynum = parseInt(prompt(&quot;Enter your favourite number, please&quot;,&quot;&quot;));
-let res= isFilled(mynum);
-if (res) {
-   document.write(&quot;&lt;p&gt;The number entered was &quot; + mynum+ &quot;&lt;/p&gt;&quot;);
-}
-else document.write(&quot;&lt;p&gt;The valid entered was invalid&lt;/p&gt;&quot;);
-
-
-function isFilled(field) {
- if (field==null || field.length == 0 ||  (isNaN(field))) {
-     return false;
-  }
- return true;
-}
-&lt;/script&gt;</code></pre>
-
-          </div>
-        
-          <div class="ui tab segment lab" data-tab="03">
-            <h1>Repeat until valid input entered</h1>
-<p>The <em>isFilled</em> function is modified to include a While statement as in the following <a href="archives/Class Files/example3.html" target = "_blank">example</a>: </p>
-<pre><code>&lt;script&gt;
-let sentence = prompt(&quot;Enter a string, please&quot;,&quot;&quot;);
-sentence = isFilled(sentence)
-document.write(&quot;&lt;p&gt;The string entered was &quot; + sentence+ &quot;&lt;/p&gt;&quot;);
-
-function isFilled(field) {
- while (field==null || field.length== 0) {
-     alert(&quot;The input is empty&quot;);
- field = prompt(&quot;Enter a string, please&quot;,&quot;&quot;);
-  }
- return field;
-}
-&lt;/script&gt;</code></pre>
+          <div class="ui tab segment lab" data-tab="RPS-Solution">
+            <h1>RPS Solution</h1>
+<p>This lab includes the solution for the RPS game.</p>
+<p>Download it from <a href="archives/rpssolution.zip">RPS Solution</a>.</p>
 
           </div>
         

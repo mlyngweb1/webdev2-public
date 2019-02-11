@@ -115,8 +115,8 @@ html, body {
           02
         </a>
       
-        <a class="item" data-tab="Exercise 3">
-          Exercise 3
+        <a class="item" data-tab="03">
+          03
         </a>
       
     </div>
@@ -286,6 +286,27 @@ html, body {
         
           
             <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-03-rps-Solution/index.html">RPS-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-04-Card-Display-Solution/index.html">Card-Display-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
                href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
           
         
@@ -307,13 +328,6 @@ html, body {
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Card-Display/index.html">W2-Task </a>
-          
-        
-      
-        
-          
-            <a class="item"
                href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
           
         
@@ -329,104 +343,6 @@ html, body {
           
             <a class="item"
                href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-00-Events/index.html">Events </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-01-Images/index.html">Images </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-02-Plugins/index.html">jQuery Plugins </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-03-Example/index.html">Example </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-2/book-04-Exercises/index.html">Exercises </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-00-Effects/index.html">Effects </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-01-Working with Forms/index.html">Working with Forms </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-3/book-02-jQuery UI/index.html">jQueryUI </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-01-Templates/index.html">Templating </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-08-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-00-Custom Helpers/index.html">Custom Helpers </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-01-Partials/index.html">Partials </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-Handlebars-2/book-02-Data Input/index.html">Data Input </a>
           
         
       
@@ -466,9 +382,9 @@ html, body {
 <li>All the following code should go inside the document.ready function.</li>
 <li>Add the following line, inside the document.ready function.</li>
 </ul>
-<pre><code class="lang-js">var paras = $(&#39;p&#39;);</code></pre>
+<pre><code class="lang-js">var numparas = $(&#39;p&#39;).length;</code></pre>
 <p>This code selects all the paragraphs tags. Now we will output the number of paragraphs in the footer. We are going to append the text to the existing paragraph in the footer.</p>
-<pre><code class="lang-js">$(&#39;footer p&#39;).append(paras.length + &#39; paragraphs!&#39;);</code></pre>
+<pre><code class="lang-js">$(&#39;footer p&#39;).append(numparas + &#39; paragraphs!&lt;br&gt;&#39;);</code></pre>
 <p>Now save the file and open <code>index.html</code> in your browser. The page should display a message in the footer (7 paragraphs).</p>
 <h3>Part 3: Add more jQuery</h3>
 <p>Add the code to output the following to the footer:</p>
@@ -536,28 +452,22 @@ html, body {
 
           </div>
         
-          <div class="ui tab segment lab" data-tab="Exercise 3">
+          <div class="ui tab segment lab" data-tab="03">
             <h1>Exercise Three:</h1>
-<h3>Exercise 3.1:</h3>
 <ul>
-<li>Download, extract and open the <a href="archives/lab02.zip">Lab02</a> folder.</li>
-<li>Open the <strong>exercise1.htm</strong> file in your text editor.</li>
+<li>Download, extract and open the <a href="archives/Lab02.zip">Lab02</a> folder.</li>
+<li>Open the <strong>index.html</strong> file in your text editor.</li>
 </ul>
-<p>We have a web page with an unordered list of fruit.</p>
+<p>We have a web page with two buttons and an unordered list of colours (Colours of the Rainbow).</p>
+<p><img src="img/colours.PNG" alt=""></p>
 <ul>
-<li>Add code that will display the number of fruits to the web page by outputting the data into the paragraph with an id = nofruit.</li>
+<li>Add code that will display the number of colours to the empty paragraph (&lt;p&gt;) when the first button is clicked.</li>
 </ul>
-<p><img src="img/p2ex1.png" alt=""></p>
+<p><img src="img/colours1.PNG" alt=""></p>
 <ul>
-<li>Allow the user to append more fruit if they click the button. When the button is clicked prompt the user for a fruit name and then append the input value to the list.</li>
+<li>Add code that will change the colour of each list item to it&#39;s colour when the second button is clicked.</li>
 </ul>
-<p><img src="img/p2ex1a.png" alt=""></p>
-<h3>Exercise 3.2:</h3>
-<ul>
-<li>Open the <strong>exercise2.htm</strong> file in your text editor.</li>
-<li>Add code to ascertain the number of external links and output the result to the screen before the unordered list with the id = browsers.</li>
-<li>For each of the external links extract the link and append it to the unordered list (browsers).</li>
-</ul>
+<p><img src="img/colours2.PNG" alt=""></p>
 
           </div>
         
