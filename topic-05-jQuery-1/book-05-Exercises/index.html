@@ -382,7 +382,7 @@ html, body {
 <li>All the following code should go inside the document.ready function.</li>
 <li>Add the following line, inside the document.ready function.</li>
 </ul>
-<pre><code class="lang-js">var numparas = $(&#39;p&#39;).length;</code></pre>
+<pre><code class="lang-js">let numparas = $(&#39;p&#39;).length;</code></pre>
 <p>This code selects all the paragraphs tags. Now we will output the number of paragraphs in the footer. We are going to append the text to the existing paragraph in the footer.</p>
 <pre><code class="lang-js">$(&#39;footer p&#39;).append(numparas + &#39; paragraphs!&lt;br&gt;&#39;);</code></pre>
 <p>Now save the file and open <code>index.html</code> in your browser. The page should display a message in the footer (7 paragraphs).</p>
