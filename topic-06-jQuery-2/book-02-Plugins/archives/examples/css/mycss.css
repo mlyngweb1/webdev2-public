@@ -1,0 +1,52 @@
+body {
+	font: 62.5% "Trebuchet MS", Arial, sans-serif;
+	background: url(../images/bg.png) repeat-x;
+}
+
+#container{
+	width: 70%;
+	margin: 0 auto;
+        background: white;
+        overflow:auto;
+}
+
+h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #990000;
+	padding: .3em;
+	font-weight: normal;
+}
+
+#gallery {
+        float:left;
+	width: 85px;
+	padding: 0 20px 30px 10px;
+	border-right: 1px dotted #5C7B7B;
+}
+
+#gallery a {
+	padding:5px 5px 3px 5px;
+	display: block;
+	border: 1px solid #666;
+	margin: 0 10px 8px 0;
+	width: 70px;
+}
+
+#gallery img {
+	border: 1px solid #666;
+}
+
+#photo {
+	width: 422px;
+	padding: 10% 20% 0 30%;
+}
+
+#photo img {
+	padding: 3%;
+	border: 1px solid #333;
+	position: absolute;
+	background-color:white;
+}
+
+
+

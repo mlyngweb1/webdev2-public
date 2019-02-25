@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part Two  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Events">
+          Events
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-03-rps-Solution/index.html">RPS-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-04-Card-Display-Solution/index.html">Card-Display-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-02-Plugins/index.html">jQuery-Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-03-Exercises/index.html">Exercises </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Events">
+            <h1>Objectives</h1>
+<p>This lab will introduce you to event handling in jQuery.</p>
+<ul>
+<li><p><a href="#/01">What are Events?</a></p>
+</li>
+<li><p><a href="#/02">Common Events</a></p>
+</li>
+<li><p><a href="#/03">Writing an Event Handler</a></p>
+</li>
+<li><p><a href="#/04">jQuery hover()</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>What are Events?</h1>
+<p>Web browsers are programmed to recognise basic actions like the page loading, someone moving a mouse, typing a key, or resizing the browser window. 
+Each of the things that happen to a web page is an event. To make your web page interactive, you write programs that respond to events. In this way, 
+you can make a <strong>&lt;div&gt;</strong> tag appear or disappear when a visitor clicks the mouse, a new image appear when she mouses over a link, or check the contents of a text field when she clicks a form&#39;s Submit button.</p>
+<p>As you know, Event handlers are methods that are called when &quot;something happens&quot; in HTML. The term &quot;triggered (or &quot;fired&quot;) by an event&quot; is often used.</p>
+<p>Recall, preparing a web page to respond to an event is a three-stage process:</p>
+<ol>
+<li>Select the element node(s) you want the script to respond to.</li>
+<li>Indicate which event on the selected node(s) will trigger the response.</li>
+<li>State the code you want to run when the event occurs.</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Common Events</h1>
+<h2>Mouse Events</h2>
+<ul>
+<li><strong>.click</strong>:    The click fires after you click and release the mouse button.</li>
+<li><strong>.dblclick</strong>:    The dblclick fires after you click and release the mouse button twice.</li>
+<li><strong>.mousedown</strong>:    The mousedown fires after you press the mouse button down.</li>
+<li><strong>.mouseup</strong>:    The mouseup fires after you release the mouse button.</li>
+<li><strong>.mouseenter</strong>:    The mouseenter fires after you move the mouse over a page element.</li>
+<li><strong>.mouseover</strong>:    The mouseover fires after you move the mouse over a page element. It works on child elements also.</li>
+<li><strong>.mouseleave</strong>:    The mouseleave fires after you move the mouse off a page element.</li>
+<li><strong>.mouseout</strong>:    The mouseout fires after you move the mouse off a page element. It works on child elements also.</li>
+<li><strong>.mousemove</strong>:    The mousemove fires after you move the mouse.</li>
+</ul>
+<h2>Document/Window Events</h2>
+<ul>
+<li><strong>.load</strong>:    The load fires when the web browser finishes downloading all of a web page&#39;s files.</li>
+<li><strong>.resize</strong>:    The resize fires when you resize the browser window by clicking the maximise button, or by dragging the browser&#39;s resize handle.</li>
+<li><strong>.scroll</strong>:    The scroll fires when you drag the scroll bar, or use the keyboard (up/down/home/end) keys, or mouse scroll wheel to scroll a web page. If the web page has no scroll bars then no scroll event is ever triggered.</li>
+<li><strong>.unload</strong>:    The unload fires when you click a link to go to another page, close a browser tab, or close a browser window.</li>
+</ul>
+<h2>Form Events</h2>
+<ul>
+<li><strong>.submit</strong>:    The submit fires whenever a visitor submits a form.</li>
+<li><strong>.reset</strong>:    The reset fires whenever a visitor clicks the reset button on a form.</li>
+<li><strong>.change</strong>:    The change fires whenever a form field value or status changes.</li>
+<li><strong>.focus</strong>:    The focus fires when you click into or select a form element.</li>
+<li><strong>.blur</strong>:    The blur fires when you exit a currently focused form element.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Writing an Event Handler</h1>
+<p>We are going to handle events using the on() Method. The on() method attaches one or more event handlers for the selected elements. Event handlers attached using the on() method will work for both current and FUTURE elements.</p>
+<p>For <a href="archives/examples/event1.html" target = "_ blank">example</a>, if we want to attach a click event to a <code>&lt;p&gt;</code> element:</p>
+<pre><code class="lang-js">$(&quot;p&quot;).on(&quot;click&quot;, function(){
+    $(this).hide();
+});</code></pre>
+<p>If we want to attach multiple event handlers to a <code>&lt;p&gt;</code> element, it would be done as in the following <a href="archives/examples/event2.html" target = "_ blank">example</a>:</p>
+<pre><code class="lang-js">$(&quot;p&quot;).on({
+    mouseenter: function(){
+        $(this).css(&quot;background-color&quot;, &quot;lightgray&quot;);
+    },
+    mouseleave: function(){
+        $(this).css(&quot;background-color&quot;, &quot;lightblue&quot;);
+    },
+    click: function(){
+        $(this).css(&quot;background-color&quot;, &quot;yellow&quot;);
+    }
+});</code></pre>
+<p>We will now look at a similar <a href="archives/examples/hoverlandscape2.html" target = "_ blank">example</a>:</p>
+<pre><code class="lang-js">$(&#39;#myImage&#39;).on({
+   mouseenter: function(){
+    $(this).attr(&#39;src&#39;, &#39;images/landscape.jpg&#39;);
+   },
+   mouseleave: function(){
+    $(this).attr(&#39;src&#39;, &#39;images/landscape.gif&#39;);
+  }
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>jQuery hover()</h1>
+<p>The mouseenter and mouseleave events are frequently used together. For example, when you mouse over a button, a menu might appear, move your mouse off the button, 
+and the menu disappears. jQuery provides a shortcut of referring to both. The <code>.hover()</code> method binds handlers for both mouseenter and mouseleave events. jQuery&#39;s .hover() method works like any other event, except it accepts two functions. The first function runs when the mouse travels over the element, and the second function runs when the mouse moves off the element. The basic structure looks like:</p>
+<pre><code class="lang-js">$(&#39;#selector&#39;).hover(function1, function2);</code></pre>
+<p>In the following <a href="archives/examples/hoverlandscape.html" target = "_ blank">example</a>, if we move the mouse over the image it changes; move the mouse away and the original image is restored.</p>
+<pre><code class="lang-js">$(&#39;#myImage&#39;).hover(function(){
+  $(this).attr(&#39;src&#39;, &#39;images/landscape.jpg&#39;);
+   },
+  function(){
+  $(this).attr(&#39;src&#39;, &#39;images/landscape.gif&#39;);
+});</code></pre>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

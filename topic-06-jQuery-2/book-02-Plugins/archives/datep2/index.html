@@ -1,0 +1,41 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+
+  <div class="ui container">
+  <h1>Calendar examples</h1>
+
+  <h3>Input</h3>
+  <div class="ui calendar" id="example1">
+    <div class="ui input left icon">
+      <i class="calendar icon"></i>
+      <input type="text" placeholder="Date/Time">
+    </div>
+  </div>
+  <br/>
+
+
+
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+  $( function() {
+
+    $( "#example1" ).datepicker({ minDate: "-20Y",
+    maxDate: "+1Y +10D",
+              changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yyyy-mm-dd'
+});
+  } );
+  </script>
+</body>
+</html>

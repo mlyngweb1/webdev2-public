@@ -1,0 +1,52 @@
+body {
+  font: "Trebuchet MS", Arial, sans-serif;
+  background: url(../images/bg.png) repeat-x;
+}
+
+.container {
+  background-color: #fdf8f2;
+  margin: 3% auto 0;
+  padding:1%;
+}
+
+legend {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: .3em;
+  font-weight: bold;
+  color: #990000;
+  border-bottom:solid 1px black;
+}
+ 
+sidebar {
+  padding-top:5em;
+}
+
+.buttonarea {
+  margin-left:17%;
+}
+
+.buttonarea input {   
+  background-color: gray;
+  color: white;   
+  font-weight: bold;   
+  padding: .5%;  
+}
+
+.validationError {
+  color: white !important;
+  background-color:gray !important;
+}
+   
+.ui-state-error {
+  font-size: 1em;
+  color: gray;
+  font-weight: bold;
+  background-color:transparent;
+  border-color:transparent;
+}
+
+
+
+
+
+

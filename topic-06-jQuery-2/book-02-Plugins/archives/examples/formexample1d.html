@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Example (with datePicker)</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.2/dist/semantic.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" href = "css/gallery2.css">
+</head>
+<body>
+<div class="ui container">
+<div class="ui two column grid">
+<sidebar class="four wide column">
+<img src="images/burning_book.jpg" alt="">
+</sidebar>
+<section class="ten wide column">
+
+
+  <form action="process.html" method="get" name="signup" id="signup" role="form" class = "ui form" >
+
+   <div class = "inline field">
+             <label for="name" class="two wide field">Name</label>
+               <input type="text" class="eight wide field" name="name"  id="name" autofocus>
+           </div>
+
+   <div class = "inline field">
+      <label for="email" class="two wide field">E-mail Address</label>
+     <input name="email" class="eight wide field" type="email" id="email">
+    </div>
+
+   <div class = "inline field">
+      <label for="mypassword" class="two wide field">Password</label>
+     <input name="mypassword" class="eight wide field" type="password" id="mypassword" >
+      </div>
+
+   <div class = "inline field">
+	       <label for="confirm_password" class="two wide field">Confirm Password</label>
+	      <input name="confirm_password" class="eight wide field" type="password" id="confirm_password" >
+	       </div>
+   <div class = "inline field">
+    <label for="dob" class="two wide field">Date of Birth</label>
+    <span class="ui calendar" id="dob">
+     <span class="ui input left icon">
+      <i class="calendar icon"></i>
+      <input type="text" placeholder="Date/Time" class="eight wide field">
+     </span>
+    </span>
+   </div>
+
+ <input type="submit" class="ui primary button" value="Send Us the Info">
+  <input type="reset" class="ui primary button" value="Clear the Info">
+
+</form>
+</section>
+</div>
+
+</div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.2/dist/semantic.min.js"></script>
+<script>
+$(document).ready(function () {
+
+$("#dob").calendar({
+  type: 'date',
+  startMode: 'year',
+  monthFirst: false,
+  formatter: {
+  	      date: function (date, settings) {
+  	      if (!date) return '';
+  	      var day = date.getDate();
+  	      var month = date.getMonth() + 1;
+  	      var year = date.getFullYear();
+  	      return day + '-' + month + '-' + year;
+   }}
+});
+
+});
+</script>
+
+
+</body>
+</html>
