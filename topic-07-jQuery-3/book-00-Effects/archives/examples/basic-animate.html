@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<button id="btn">Animate height & width</button>
+
+<div id="box" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#btn").on('click', function(){
+    $("#box").animate({
+      height: "300px",
+      width: "300px"
+    }, 5000,"linear", function(){
+      $(this).after("<p>Animation is complete!</p>");
+      });
+    });
+  });
+
+</script>
+
+</body>
+</html>
+

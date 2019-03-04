@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part Three  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Working with Forms">
+          Working with Forms
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="Exercise 2">
+          Exercise 2
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-03-rps-Solution/index.html">RPS-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-04-Card-Display-Solution/index.html">Card-Display-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-02-Plugins/index.html">jQuery-Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-03-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-01-Working-with-Forms/index.html">Working with Forms </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Working with Forms">
+            <h1>Objectives</h1>
+<p>In this lab, you will learn how to use jQuery selectors that work with forms.</p>
+<ul>
+<li><p><a href="#/01">Selecting form elements</a></p>
+</li>
+<li><p><a href="#/02">Form methods &amp; events</a></p>
+</li>
+<li><p><a href="#/03">Form Enhancements</a></p>
+</li>
+<li><p><a href="#/04">Form Example</a></p>
+</li>
+<li><p><a href="#/05">Event Delegation</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Selecting form elements</h1>
+<p>jQuery has selectors that are designed specifically to work with forms. However, because of the way jQuery searches for elements, these selectors are not always the quickest way to select elements on a page. The jQuery selectors are shown here, and other options for faster performance are noted.</p>
+<h3>Selectors for form elements</h3>
+<ul>
+<li><strong>:button</strong>: <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements whose type attribute has a value of button.</li>
+<li><strong>:checkbox</strong>: <code>&lt;input&gt;</code> elements whose type attribute has a value of checkbox. Note that you get better performance with $(&#39;[type=&quot;checkbox&quot;]&#39;).</li>
+<li><strong>:checked</strong>: Checked elements from checkboxes and radio buttons (see :selected for select boxes)</li>
+<li><strong>:disabled</strong>: All elements that have been disabled</li>
+<li><strong>:enabled</strong>: All elements that are enabled</li>
+<li><strong>:focus</strong>: Element that currently has focus. Note that you get better performance with $(document.activeElement).</li>
+<li><strong>:file</strong>: All elements that are file inputs.</li>
+<li><strong>:image</strong>: All image inputs. Note that you get better performance using $(&#39;[type=&quot;image&quot;]&#39;).</li>
+<li><strong>:input</strong>: All <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;textarea&gt;</code> elements.</li>
+<li><strong>:password</strong>: All password inputs. Note that you get better performance using $(&#39;[type=&quot;password&quot;]&#39;).</li>
+<li><strong>:radio</strong>: All radio inputs. To select a group of radio buttons, you can use $(&#39;input[name=&quot;gender&quot;]:radio&#39;).</li>
+<li><strong>:reset</strong>: All inputs that are reset buttons.</li>
+<li><strong>:selected</strong>: All elements that are selected.</li>
+<li><strong>:submit</strong>: <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements whose type attribute has a value of submit. Note that you get better performance using $(&#39;[type=&quot;submit&quot;]&#39;).</li>
+<li><strong>:text</strong>: Selects <code>&lt;input&gt;</code> elements with a type attribute whose value is text, or whose type attribute is not present. You will likely get better performance from (&#39;input:text&#39;).</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Form methods &amp; events</h1>
+<p>jQuery also provides methods that can be used with forms. For example, the .val() method gets the value from the first element in a selection; it can also be used to set the value for all matching elements.</p>
+<h2>Form methods</h2>
+<ul>
+<li><strong>.val()</strong>: Primarily used with <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;textarea&gt;</code> elements. It can be used to get the value of the first element in a matched set, or update the value of all of them</li>
+<li><strong>.filter()</strong>: Used to filter a jQuery selection using a second selector (especially form-specific filters)</li>
+<li><strong>.is()</strong>: Often used with filters to check whether a form input is selected/checked</li>
+<li><strong>.isNumeric()</strong>: Checks whether the value represents a numeric value and returns a Boolean.</li>
+</ul>
+<h2>Events</h2>
+<p>The events shown here correspond to JavaScript events that you might use to trigger functions. They work with the .on() method; for example:</p>
+<pre><code class="lang-js">$(&#39;#form&#39;).on(&#39;submit&#39;, function(){
+  //code to be executed when submit button is clicked
+});</code></pre>
+<ul>
+<li><strong>blur</strong>: When an element loses focus</li>
+<li><strong>change</strong>: When the value of an input changes</li>
+<li><strong>focus</strong>: When an element gains focus</li>
+<li><strong>select</strong>: When the option for a <code>&lt;select&gt;</code> element is changed</li>
+<li><strong>submit</strong>: When a form is submitted</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Form Enhancements</h1>
+<p>We can add enhancements to our forms elements by utilising the occurence of certain events.</p>
+<p>The following <a href="archives/examples/enhanceexample.html" target = "_ blank">example</a> changes the background colour of the text box when the cursor moves into it (<code>focus()</code>), and removes the background colour when the 
+cursor moves away from it (<code>blur()</code>).</p>
+<pre><code class="lang-js"> $(&#39;#signup :input:not(:submit)&#39;).focus(function() {
+           $(this).css(&#39;background-color&#39;,&#39;pink&#39;);
+ });
+
+ $(&#39;#signup :input&#39;).blur(function() {
+           $(this).css(&#39;background-color&#39;,&#39;white&#39;);
+ });</code></pre>
+<h2>Disabling and Enabling Form Fields</h2>
+<p>Form fields are generally meant to be filled out. However, there are times when you might not want a visitor to be able to fill out a text field, or check a 
+checkbox. 
+For example, on an application form, you need only fill in your spouse&#39;s PPS if you are married. If you selected the single option then the spouse&#39;s PPS text 
+field should be disabled.</p>
+<pre><code class="lang-js">$(&#39;#single&#39;).click(function() {
+   $(&#39;#spousePPS&#39;).attr(&#39;disabled&#39;, true);
+});
+
+$(&#39;#married&#39;).click(function() {
+   $(&#39;#spousePPS&#39;).attr(&#39;disabled&#39;, false);
+});</code></pre>
+<p>This <a href="archives/examples/enhanceexample2.html" target = "_ blank">example</a> disables the spousePPS text box when the Single radio button is selected. 
+It enables it if the Married radio/option button is selected.</p>
+<h2>Hiding and Showing Form Fields</h2>
+<p>Instead of disabling and enabling form fields, we can hide and show form fields:</p>
+<pre><code class="lang-js">$(&#39;#spousePPSdiv&#39;).hide();
+
+$(&#39;#single&#39;).click(function() {
+   $(&#39;#spousePPSdiv&#39;).hide();
+});
+
+$(&#39;#married&#39;).click(function() {
+   $(&#39;#spousePPSdiv&#39;).show();
+});</code></pre>
+<p>This <a href="archives/examples/enhanceexample3.html" target = "_ blank">example</a> hides the spousePPS text box and label when the web page loads and
+when the Single radio button is selected. It shows both (label and text box) if the Married radio/option button is selected.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Form Example</h1>
+<p>In this <a href="archives/examples/form.html" target = "_ blank">example</a>, a button and form have been added under the list from the last lab. When the user clicks on the button to add a new item, the form will come into view. The form lets users add a new item to the list with a single text input and a submit button. (The new item button is hidden when the form is in view.) When the user presses the submit button, the new item is added to the bottom of the list. (The form is also hidden and the new item button is shown again.)</p>
+<h3>form.html</h3>
+<pre><code class="lang-html">&lt;div id=&quot;newItemButton&quot;&gt;&lt;button href=&quot;#&quot; id=&quot;showForm&quot;&gt;new item&lt;/button&gt;&lt;/div&gt;
+ &lt;form id=&quot;newItemForm&quot;&gt;
+   &lt;input type=&quot;text&quot; id=&quot;itemDescription&quot; placeholder=&quot;Add description...&quot; /&gt;
+   &lt;input type=&quot;submit&quot; id=&quot;addButton&quot; value=&quot;add&quot; /&gt;
+ &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+<h3>form.js</h3>
+<p><code>1</code>: When the page loads, the CSS hides the new item button (and shows the form), so jQuery methods show the new item button and hide the form.  </p>
+<pre><code class="lang-js">$(&#39;#newItemButton&#39;).show();
+$(&#39;#newItemForm&#39;).hide();</code></pre>
+<p><code>2</code>: If a user clicks on the new item button (the <code>&lt;button&gt;</code> element whose id attribute has a value of showForm), the new item button is hidden and the form is shown.</p>
+<pre><code class="lang-js">$(&#39;#showForm&#39;).on(&#39;click&#39;, function(){
+   $(&#39;#newItemButton&#39;).hide();
+   $(&#39;#newItemForm&#39;).show();
+});</code></pre>
+<p><code>4</code>: The last part of the script handles the form submit event.</p>
+<ul>
+<li>When the form is submitted, an anonymous function is called. It is passed the event object.</li>
+<li>The .preventDefault() method stops the form from being submitted.</li>
+<li>The .val() method gets the value the user entered from the text input that is stored in $textInput. The value is stored in a variable called newText.</li>
+<li>A new item is added to the end of the list using the .after() method.</li>
+<li>The form is hidden, the new item button is shown again, and the content of the text input is emptied (so the placeholder text is shown again and the user can add a new entry if they want to).</li>
+</ul>
+<pre><code class="lang-js">$newItemForm.on(&#39;submit&#39;, function(e){
+    e.preventDefault();
+    var newText = $(&#39;input:text&#39;).val();
+    $(&#39;ul&#39;).after(&#39;&lt;li&gt;&#39; + newText + &#39;&lt;/li&gt;&#39;);
+    $(&#39;#newItemButton&#39;).show();
+    $(&#39;#newItemForm&#39;).hide();
+    $(&#39;input:text&#39;).val(&#39;&#39;);
+});</code></pre>
+<p>This is the complete script:</p>
+<pre><code class="lang-js">$(document).ready(function(){
+
+  $(&#39;#newItemButton&#39;).show();
+  $(&#39;#newItemForm&#39;).hide();
+
+  $(&#39;#showForm&#39;).on(&#39;click&#39;, function(){
+    $(&#39;#newItemButton&#39;).hide();
+    $(&#39;#newItemForm&#39;).show();
+  });
+
+  $newItemForm.on(&#39;submit&#39;, function(e){
+    e.preventDefault();
+    var newText = $(&#39;input:text&#39;).val();
+    $(&#39;li:last&#39;).after(&#39;&lt;li&gt;&#39; + newText + &#39;&lt;/li&gt;&#39;);
+    $(&#39;#newItemButton&#39;).show();
+    $(&#39;#newItemForm&#39;).hide();
+    $(&#39;input:text&#39;).val(&#39;&#39;);
+  });
+
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Event Delegation</h1>
+<h2>Introduction</h2>
+<p><strong>Event delegation</strong> allows us to attach a single event listener, to a parent element, that will fire for all descendants matching a selector, 
+whether those descendants exist now or are added in the future.</p>
+<p>In our previous <a href="archives/examples/form.html" target = "_ blank">example</a>, we added list items. If we now add in the code to delete the list items as 
+previously:</p>
+<pre><code class="lang-js">$(&#39;li&#39;).on(&#39;click&#39;, function() {
+    $(this).animate({
+      opacity: 0.0,
+      paddingLeft: &#39;+=80&#39;
+    }, 500, function() {
+      $(this).remove();
+    });
+});</code></pre>
+<p>This will no longer work as can be seen in this <a href="archives/examples/formerror.html" target = "_ blank">example</a>. Add a new list item and then try to remove it, 
+nothing happens!</p>
+<p>This is because of the directly bound event handler that we attached. Direct events are only attached to elements at the time the associated method is called. </p>
+<h2>Event Propagation</h2>
+<p>Understanding how events propagate is an important factor in being able to leverage <code>Event Delegation</code>. Any time one of our list items are clicked, a <code>click</code> event 
+is fired for that list item, and then bubbles up the DOM tree, triggering each of its parent <code>click</code> event handlers:</p>
+<ol>
+<li>&lt;li&gt;</li>
+<li>&lt;ul&gt;</li>
+<li>&lt;body&gt;</li>
+<li>&lt;html&gt;</li>
+<li>document root</li>
+</ol>
+<p>This means that anytime you click one of our list item tags, you are effectively clicking over the entire document body! This is called <code>event bubbling</code>
+or <code>event propagation</code>.
+Since we know how events bubble, we can create a delegated event:</p>
+<pre><code class="lang-js">$(&#39;ul&#39;).on(&#39;click&#39;, &#39;li&#39;, function() {
+    $(this).animate({
+        opacity: 0.0,
+        paddingLeft: &#39;+=180&#39;
+     }, 500, &#39;swing&#39;, function() {
+        $(this).remove();
+    });
+});</code></pre>
+<p>Notice how we have moved the <em>li</em> part from the selector to the second parameter position of the <code>.on(</code>) method.  The <code>on()</code> method attaches one or more event 
+handlers for the selected elements and child elements. This (optional) second, selector parameter tells the handler to listen for the specified event, 
+and when it hears it, check to see if the triggering element for that event matches the second parameter. In this case, the triggering event is our <em>li</em> tag, 
+which matches that parameter. Since it matches, our anonymous function will execute. We have now attached event listeners to our <code>&lt;ul&gt;</code> that will listen 
+for <em>click</em> events on it&#39;s descendant list items, instead of attaching an unknown number of directly bound events to the existing <em>li</em> tags only.</p>
+<p>Now, have a look at our modified <a href="archives/examples/example.html" target = "_ blank">example</a>. </p>
+<p><strong>Note:</strong> This example also allows keeps a count of the list items (<code>$(li&#39;).length</code>) as well as allowing the user to add a new list item and delete a list item.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercise 2">
+            <h1>Exercise 3</h1>
+<ul>
+<li>Download, extract and open the <a href="archives/lab03.zip">Lab03</a> folder.</li>
+<li><p>In the js/form.js file, carry out the following steps:</p>
+<ol>
+<li><p>Implement the form feature described in the example (step 3 in this section). The new item button should reveal the form field and add button; clicking 
+the add button should add the item to the list.</p>
+</li>
+<li><p>Edit the script so that the item is added to the start of the list, instead of the end.</p>
+</li>
+<li><p>Add an event handler to the checkbox. When the checkbox is clicked, it should get the value of the checkbox and display the value in the 
+userSelection div along with a message (e.g. You have selected: yes). The message should disappear if the checkbox is unchecked. 
+Both scenarios should look as shown here:</p>
+</li>
+</ol>
+</li>
+</ul>
+<p><img src="img/exercise2.png" alt=""></p>
+<p><img src="img/exercise2a.png" alt=""></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

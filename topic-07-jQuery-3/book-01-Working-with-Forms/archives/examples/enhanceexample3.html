@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Form Enhancement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+    <link href="css/gallery.css" rel="stylesheet">
+</head>
+<body>
+<div class="ui container">
+<div class="ui two column grid">
+<sidebar class="four wide column">
+<img src="images/burning_book.jpg" alt="">
+</sidebar>
+<section class="ten wide column">
+<h1>Signup Form  </h1>
+  <form action="process.html" method="post" name="signup" id="signup" class = "ui form">
+   <div class = "inline field">
+      <label for="PPS" class="three wide field">PPS Number </label>
+      <input name="PPS" type="text" id="PPS" autofocus class="seven wide field">
+    </div>
+   <div class = "inline field">
+      <label for="name" class="three wide field">Name </label>
+      <input name="name" type="email" id="name" class="seven wide field">
+    </div>
+
+     <div class="grouped fields">
+      <label class="label">Marital Status</label>
+	      <div class="field">
+	        <div class="ui radio checkbox">
+	          <input type="radio" name="status" checked="" id = "single" value = "single">
+	          <label for = "single" >Single</label>
+	        </div>
+	      </div>
+	      <div class="field">
+	        <div class="ui radio checkbox">
+	          <input type="radio" name="status"  id = "married" value = "married">
+	          <label for = "married">Married</label>
+	        </div>
+	      </div>
+     </div>
+
+     <div class = "inline field" id = "spousePPSdiv">
+      <label for="spousePPS" class="three wide field">Spouse PPS Number</label>
+      <input name="spousePPS" type="text" id="spousePPS" class="seven wide field">
+    </div>
+     <div>
+       <input type="submit" name="submit" id="submit" value="Submit" >
+    </div>
+  </form>
+</section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script>
+$(document).ready(function() {
+
+ $('#spousePPSdiv').hide();
+
+$('#signup :input:not(:submit)').focus(function() {
+           $(this).css('background-color','pink');
+ });
+
+ $('#signup :input').blur(function() {
+           $(this).css('background-color','white');
+ });
+ $('#single').click(function() {
+   $('#spousePPSdiv').hide();
+});
+
+$('#married').click(function() {
+   $('#spousePPSdiv').show();
+});
+
+}); // end ready()
+</script>
+</body>
+</html>

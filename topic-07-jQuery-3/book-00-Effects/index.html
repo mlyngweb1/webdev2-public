@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  jQuery Part Three  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Effects">
+          Effects
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Exercise 1">
+          Exercise 1
+        </a>
+      
+        <a class="item" data-tab="Exercise 2">
+          Exercise 2
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-03-rps-Solution/index.html">RPS-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-04-Card-Display-Solution/index.html">Card-Display-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-02-Plugins/index.html">jQuery-Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-03-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-01-Working-with-Forms/index.html">Working with Forms </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Effects">
+            <h1>Objectives</h1>
+<p>This lab describes how jQuery can be used for effects and animations.</p>
+<ul>
+<li><p><a href="#/01">Types of effects</a></p>
+</li>
+<li><p><a href="#/02">Effects example</a></p>
+</li>
+<li><p><a href="#/03">The animate function</a></p>
+</li>
+<li><p><a href="#/04">Callback Functions</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Types of effects</h1>
+<p>When you start using jQuery, the effects methods can enhance your web page with transitions and movement. Here you can see some of the jQuery effects that show 
+or hide elements and their content. You can animate them, fading in or out, or slide them up and down.</p>
+<h2>Basic effects</h2>
+<ul>
+<li><strong>.show()</strong>: Displays selected elements</li>
+<li><strong>.hide()</strong>: Hides selected elements</li>
+<li><strong>.toggle()</strong>: Toggles between showing and hiding selected elements</li>
+</ul>
+<h2>Fading effects</h2>
+<ul>
+<li><strong>.fadeIn()</strong>: Fades in selected elements making them opaque</li>
+<li><strong>.fadeOut()</strong>: Fades out selected elements making them transparent</li>
+<li><strong>.fadeTo()</strong>: Changes opacity of selected elements</li>
+<li><strong>.fadeToggle()</strong>: Hides or shows selected elements by changing their opacity (the opposite of their current state)</li>
+</ul>
+<h2>Sliding effects</h2>
+<ul>
+<li><strong>.slideUp()</strong>: Hides selected elements with a sliding motion</li>
+<li><strong>.slideDown()</strong>: Shows selected elements with a sliding motion</li>
+<li><strong>.slideToggle()</strong>: Hides or shows selected elements with a sliding motion (in the opposite direction to its current state)</li>
+</ul>
+<h2>Custom effects</h2>
+<ul>
+<li><strong>.delay()</strong>: Delays execution of subsequent items in queue</li>
+<li><strong>.stop()</strong>: Stops an animation if it is currently running</li>
+<li><strong>.animate()</strong>: Creates custom animations (more on this later)</li>
+</ul>
+<p>When an element that was previously hidden is shown, faded in, or slides into view, the other elements on the page may move to make space for it. 
+When an element is hidden, has been faded out, or has slid out of view, the other elements on the page can move into the space these elements took up. 
+Methods with <em>toggle</em> in their name will look at the current state of the element (whether it is visible or hidden) and will switch to the opposite state. </p>
+<p>In this <a href="archives/examples/basic-example.html" target = "_ blank">example</a> the list items are faded into view (over 3000 milliseconds) when the page loads. 
+Each item is removed (using <code>.remove()</code>) when it is clicked on. 
+<br>In fact, the items are loaded normally along with the rest of the page, 
+but then immediately hidden using jQuery. Once hidden, only then are they faded into view. This is so they will still be visible in 
+browsers that do not have JavaScript enabled.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Effects example</h1>
+<p>In this <a href="archives/examples/effects.html" target = "_ blank">example</a> it appears as if list items are faded into view when the page loads. 
+Each item is faded out when it is clicked on. </p>
+<p><code>1</code>. In the first statement, the selector picks the <code>&lt;h2&gt;</code> element and hides it so that it can be animated in. The chosen effect to show the heading is the .slideDown() method. Note how the methods are chained; there is no need to make a new selection for each of the tasks.</p>
+<pre><code class="lang-js">$(function() {
+
+  $(&#39;h2&#39;).hide().slideDown();
+
+});</code></pre>
+<p><code>2</code>. The second part causes the list of items to appear one by one.</p>
+<ul>
+<li>Again, before they can be faded in, they must be hidden.</li>
+<li>Then the <code>.each()</code> method is used to loop through each of the <code>&lt;li&gt;</code> elements in turn. You can see that this triggers an anonymous function.</li>
+<li>Inside the anonymous function the <em>index</em> property acts as a counter indicating which <code>&lt;li&gt;</code> element is the current one.</li>
+<li>The <code>.delay()</code> method creates a pause before the list item is shown. The delay is set, multiplying the index number by 700ms (otherwise all of the list items would appear at the same time).</li>
+<li>Then it is faded in using the <code>.fadeIn()</code> method.</li>
+</ul>
+<pre><code class="lang-js">$(function() {
+
+  $(&#39;h2&#39;).hide().slideDown();
+
+  $(&#39;li&#39;).hide().each(function(index) {
+    $(this).delay(700 * index).fadeIn(700);
+  });
+
+});</code></pre>
+<p><code>3</code>. The final part creates an event listener that waits for the user to click on a list item. When they do, it will fade that item out to remove it from the list (the fade will take 700 milliseconds).</p>
+<p>The complete function can be seen here:</p>
+<pre><code class="lang-js">$(function() {
+
+  $(&#39;h2&#39;).hide().slideDown();
+
+  $(&#39;li&#39;).hide().each(function(index) {
+    $(this).delay(700 * index).fadeIn(700);
+  });
+
+  $(&#39;li&#39;).on(&#39;click&#39;, function() {
+    $(this).fadeOut(700);
+  });
+
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>The animate() function</h1>
+<p>The .animate() method allows you to create some of your own effects and animations by changing CSS properties. You can animate any CSS property whose value can be represented as a number, e.g. height, width and font-size (but not those whose value would be a string e.g. font-family or text-transform).</p>
+<p>The CSS properties are written using camelCase notation. For example, border-left-top-radius would become borderLeftTopRadius. The animate method can take three optional parameters, as shown here:</p>
+<pre><code class="lang-js">.animate({
+  //styles you want to change
+}[,speed][,easing][,complete]);</code></pre>
+<ol>
+<li><strong>speed</strong> indicates the duration of the animation in milliseconds. It can also take the keywords <em>slow</em> and <em>fast</em>.</li>
+<li><strong>easing</strong> can have two values: <em>linear</em> (the speed of the animation is uniform); or <em>swing</em> (speeds up in the middle of the transition, and is slower at the start and end). If no value is specified, swing is used by default.</li>
+<li><strong>complete</strong> is used to call a function that should run when the animation has finished. This is known as a <code>callback</code> function.</li>
+</ol>
+<h2>Example One</h2>
+<p>In this <a href="archives/examples/basic-animate.html" target = "_ blank">example</a>, the <code>.animate()</code> method is used to gradually 
+increase the height and width of the box from 100px to 300px over 5000 milliseconds when the user clicks the button (Animate height &amp; width). After the animation is complete, a callback function outputs text in a paragraph (Animation is complete!).</p>
+<pre><code class="lang-js">$(&quot;#btn&quot;).on(&#39;click&#39;, function(){
+  $(&quot;#box&quot;).animate({
+    height: &quot;300px&quot;,
+    width: &quot;300px&quot;
+  }, 5000,&quot;linear&quot;, function(){
+      $(this).after(&quot;&lt;p&gt;Animation is complete!&lt;/p&gt;&quot;);
+  });
+});</code></pre>
+<h2>Example Two</h2>
+<p>In this <a href="archives/examples/animate.html" target = "_ blank">example</a>, the .animate() method is used to gradually change the values of two CSS properties. Both of them have numerical values: opacity and padding-left.</p>
+<p><code>1</code>. All list items are selected and, when a user clicks on one of them, an anonymous function runs. Inside it, <code>$(this)</code> creates a new jQuery object 
+holding the element the user clicked on. The <code>.animate()</code> method is then called on that jQuery object.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;li&#39;).on(&#39;click&#39;, function() {
+    $(this).animate({
+      //styles to be changed
+    });
+  });
+});</code></pre>
+<p><code>2</code>. Inside the <code>.animate()</code> method, the <em>opacity</em> and <em>paddingLeft</em> are changed. The value of the <em>paddingLeft</em> property is increased by 80 pixels 
+which makes it look like the text is sliding to the right as it fades out.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;li&#39;).on(&#39;click&#39;, function() {
+    $(this).animate({
+      opacity: 0.0,
+      paddingLeft: &#39;+=80&#39;;
+    });
+  });
+});</code></pre>
+<p><code>3</code>. The <code>.animate()</code> method has two more parameters. The first is the speed of the animation in milliseconds (in this case, 500ms). 
+The second is another anonymous function indicating what should happen when the animation finishes. When the animation has finished, 
+the callback function removes that list item from the page using the <code>.remove()</code> method.</p>
+<pre><code class="lang-js">$(document).ready(function(){
+  $(&#39;li&#39;).on(&#39;click&#39;, function() {
+    $(this).animate({
+      opacity: 0.0,
+      paddingLeft: &#39;+=80&#39;
+    }, 500, function() {
+      $(this).remove();
+    });
+  });
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Callback Functions</h1>
+<p>JavaScript statements are executed line by line. But, since jQuery effect takes some time to finish the next line code may execute while the previous effect 
+is still running. To prevent this from happening jQuery provides a <code>callback function</code> for each effect method.</p>
+<p>A <code>callback function</code> is a function that is executed once the effect is complete. The callback function is passed as an argument to the effect methods and 
+they typically appear as the last argument of the method.</p>
+<p>Consider the following <a href="archives/examples/nocallback.html" target = "_ blank">example</a> in which we&#39;ve placed the <code>slideToggle()</code> and <code>alert()</code> statements next to each other. If you try this code the alert will 
+be displayed immediately once you click the trigger button without waiting for slide toggle effect to complete.</p>
+<pre><code class="lang-js">$(&quot;button&quot;).click(function(){
+      $(&quot;p&quot;).slideToggle(&quot;slow&quot;);
+      alert(&quot;The slide toggle effect has completed.&quot;);
+});</code></pre>
+<p>And, here&#39;s the <a href="archives/examples/callback.html" target = "_ blank">modified version</a> of the previous example in which we&#39;ve placed the <code>alert()</code> statement inside a callback function for the <code>slideToggle()</code> method. 
+If you try this code the alert message will be displayed once the slide toggle effect has completed.</p>
+<pre><code class="lang-js">$(&quot;button&quot;).click(function(){
+      $(&quot;p&quot;).slideToggle(&quot;slow&quot;, function(){
+          alert(&quot;The slide toggle effect has completed.&quot;);
+      });
+});</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercise 1">
+            <h1>Exercise 1</h1>
+<ul>
+<li>Create a folder called Week07.</li>
+<li>Download, extract and open the <a href="archives/lab01.zip">Lab01</a> folder.</li>
+<li>In the js/exercise1.js file, add a jQuery script that does the following:<ul>
+<li>Hides and then displays the <code>&lt;h2&gt;</code> heading using the .slideDown() method. The .slideDown() method should use a parameter of 800 milliseconds.</li>
+<li>Fades in each of the list items. There should be a delay of 800ms on each list item, and the fade in itself should also take 800ms.</li>
+<li>When the user moves their mouse over a list item, use the animate method to increase the left padding by 10. The left padding should decrease by 10 when they move their mouse away from the list item.</li>
+<li>When the user clicks on a list item, increase the left padding by 100 and the letter spacing by 10. The list item should also be removed from the list.</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercise 2">
+            <h1>Exercise 2</h1>
+<ul>
+<li>Download, extract and open the <a href="archives/lab02.zip">Lab02</a> folder.</li>
+<li><p>Using the jQuery <code>.animate()</code> method for each of the buttons, write JavaScript code that will:</p>
+<ul>
+<li><strong>Drive</strong>: Move the car to left position = 580px over a speed of 1000 milliseconds.</li>
+<li><strong>Push</strong>: Increase the left position of the car by 100px over a speed of 500 milliseconds.</li>
+<li><strong>Reverse</strong>: Move the car to left position = 0px over a speed of 3000 milliseconds.  </li>
+</ul>
+<p><strong>Note:</strong> When handling the Push, if the left position increases to greater than 580px then call the Reverse method that you have coded.</p>
+</li>
+</ul>
+<p><strong>Initial Position</strong>:
+<img src="img/car1.PNG" alt=""></p>
+<p><strong>After a few pushes</strong>
+<img src="img/car2.PNG" alt=""></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

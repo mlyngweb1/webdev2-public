@@ -1,0 +1,1 @@
+$(document).ready(function(){   $('li').hide().fadeIn(3000);   $('li').on('click', function() {       $(this).remove();   });});
