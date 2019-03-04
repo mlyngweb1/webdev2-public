@@ -25,7 +25,9 @@ $(document).ready(function(){
     e.preventDefault();
     var text = $('input:text').val();
     $('ul').append('<li>' + text + '</li>');
-    $('input:text').val('');
+      $('#newItemButton').show();
+      $('#newItemForm').hide();
+      $('input:text').val('');
     updateCount();
   });
 

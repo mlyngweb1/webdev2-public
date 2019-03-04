@@ -18,6 +18,8 @@ $(document).ready(function(){
     e.preventDefault();
     var text = $('input:text').val();
     $('ul').append('<li>' + text + '</li>');
+    $('#newItemButton').show();
+    $('#newItemForm').hide();
     $('input:text').val('');
   });
 
