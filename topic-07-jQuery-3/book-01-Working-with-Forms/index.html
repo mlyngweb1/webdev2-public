@@ -541,10 +541,10 @@ $(&#39;#newItemForm&#39;).hide();</code></pre>
 <li>A new item is added to the end of the list using the .after() method.</li>
 <li>The form is hidden, the new item button is shown again, and the content of the text input is emptied (so the placeholder text is shown again and the user can add a new entry if they want to).</li>
 </ul>
-<pre><code class="lang-js">$newItemForm.on(&#39;submit&#39;, function(e){
+<pre><code class="lang-js">$(&#39;#newItemForm&#39;).on(&#39;submit&#39;, function(e){
     e.preventDefault();
     var newText = $(&#39;input:text&#39;).val();
-    $(&#39;ul&#39;).after(&#39;&lt;li&gt;&#39; + newText + &#39;&lt;/li&gt;&#39;);
+    $(&#39;ul&#39;).append(&#39;&lt;li&gt;&#39; + text + &#39;&lt;/li&gt;&#39;);
     $(&#39;#newItemButton&#39;).show();
     $(&#39;#newItemForm&#39;).hide();
     $(&#39;input:text&#39;).val(&#39;&#39;);
@@ -560,10 +560,10 @@ $(&#39;#newItemForm&#39;).hide();</code></pre>
     $(&#39;#newItemForm&#39;).show();
   });
 
-  $newItemForm.on(&#39;submit&#39;, function(e){
+ $(&#39;#newItemForm&#39;).on(&#39;submit&#39;, function(e){
     e.preventDefault();
     var newText = $(&#39;input:text&#39;).val();
-    $(&#39;li:last&#39;).after(&#39;&lt;li&gt;&#39; + newText + &#39;&lt;/li&gt;&#39;);
+    $(&#39;ul&#39;).append(&#39;&lt;li&gt;&#39; + text + &#39;&lt;/li&gt;&#39;);
     $(&#39;#newItemButton&#39;).show();
     $(&#39;#newItemForm&#39;).hide();
     $(&#39;input:text&#39;).val(&#39;&#39;);
