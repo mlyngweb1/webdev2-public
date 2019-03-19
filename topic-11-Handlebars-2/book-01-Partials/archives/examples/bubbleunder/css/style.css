@@ -1,0 +1,114 @@
+/*
+CSS for BubbleUnder site
+*/
+body {
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  background-color: #e2edff;
+  line-height: 125%;
+}
+
+p, blockquote {
+  font-size: small;
+  color: navy;
+}
+
+h1 {
+  font-size: x-large;
+}
+
+h2 {
+  font-size: medium;
+  font-weight: normal;
+}
+
+h1, h2, h3 {
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+  background-color: navy;
+  color: white;
+}
+
+li {
+  font-size: small;
+}
+
+a {
+  font-weight: bold;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: navy;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: white;
+  background-color: navy;
+}
+
+a:active {
+  color: aqua;
+  background-color: navy;
+}
+
+p a:link {
+   text-decoration:underline;
+}
+
+#tagline {
+  font-style: italic;
+  font-family: Georgia, Times, serif;
+}
+
+.fun {
+  color: #339999;
+  font-family: Georgia, Times, serif;
+  letter-spacing: 0.05em;
+}
+
+table, th, td {
+  border:solid 1px black;
+}
+
+th, td {
+  padding: .3em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-size: x-small;
+  text-align: left;
+  background: #241374;
+  color: #ffffff;
+  border-color:#000066;
+  padding: 0 .5em;
+}
+
+td {
+  font-size: small;
+}
+
+tr:nth-of-type(even){
+  background-color: #ADD8E6;
+}
+
+tr:nth-of-type(odd) {
+  background-color:#B0C4DE;
+}
+
+caption {
+  color: #000066;
+  font-size: small;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: .5em;
+  caption-side:bottom;
+}

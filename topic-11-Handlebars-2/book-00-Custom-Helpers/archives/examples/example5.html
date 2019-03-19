@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Helper - Example Five</title>
+</head>
+<body>
+
+<script id="some-template" type="text/x-handlebars-template">
+  <ul>
+  {{#each people}}
+        <li>{{capitalise name}} - {{../group}}</li>
+    {{/each}}
+  </ul>
+</script>
+<div id="content-placeholder">
+</div>
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src='js/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+var data = { people: [
+    {name: "alan murphy"},
+    {name: "Allison Doyle"},
+    {name: "Ryan Smith"}
+  ], group: "Bloggers" };
+
+Handlebars.registerHelper('capitalise', function(str) {
+  data=str.split(" ");
+  formattedname="";
+  for (i in data) {
+     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1,).toLowerCase() + " ";
+  }
+  return formattedname;
+});
+
+var source   = $("#some-template").html();
+var template = Handlebars.compile(source);
+var theCompiledHtml = template(data);
+ $("#content-placeholder").html(theCompiledHtml);
+});
+</script>
+</body>
+</html>

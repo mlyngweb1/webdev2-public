@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Helper - Example Two</title>
+</head>
+
+<body>
+<script id="some-template" type="text/x-handlebars-template">
+  <table border="1">
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Secret Identity</th>
+      <th>Number of Powers</th>
+      <th>Powers</th>
+    </thead>
+    <tbody>
+      {{#each members}}
+        <tr>
+          <td>{{name}}</td>
+          <td>{{age}} </td>
+          <td>{{secretIdentity}}</td>
+          <td>{{numPowers powers}}</td>
+          <td>
+          {{#each powers}}
+           <ul>
+            <li>{{this}}</li>
+           </ul>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </script>
+ <div id="content-placeholder"></div>
+
+<script src='js/jquery-3.1.1.min.js'></script>
+<script src='js/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+  var superheroes = {
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": [
+        "Radiation resistance",
+        "Turning tiny",
+        "Radiation blast"
+      ]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}
+
+Handlebars.registerHelper('numPowers', function(powers) {
+  var cnt=0;
+  for (i in powers) {
+	  cnt++;
+  }
+  return cnt;
+});
+
+var source   = $("#some-template").html();
+
+var template = Handlebars.compile(source);
+
+var theCompiledHtml = template(superheroes);
+
+$("#content-placeholder").html(theCompiledHtml);
+});
+
+</script>
+</body>
