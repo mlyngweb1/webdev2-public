@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>with Helper</title>
+</head>
+
+<body>
+<script id="handlebars-demo" type="text/x-handlebars-template">
+<div>
+  <h1>{{title}}</h1>
+
+  {{#with author}}
+  <h2>By {{firstName}} {{lastName}}</h2>
+  {{/with}}
+  {{#with contributor}}
+  <h3>Contribution by {{firstName}} {{lastName}}</h3>
+  {{/with}}
+</div>
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+const blog = {
+  title: "My first post!",
+  author: {
+    firstName: "Charles",
+    lastName: "Jolley"
+  },
+  contributor: {
+    firstName:"Miranda",
+    lastName:"York"
+  }
+}
+
+// Retrieve the template data from the HTML (jQuery is used here).
+var template = Handlebars.compile($('#handlebars-demo').html());
+
+var thecontent = template(blog);
+
+$(document.body).append(thecontent);});
+</script>
+</body>

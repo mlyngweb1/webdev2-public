@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Handlebars 1  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Helpers">
+          Helpers
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Exercise">
+          Exercise
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-00-JavaScript-Introduction/index.html">JavaScript Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-01-Variables/index.html">Variables </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-02-Operators/index.html">JavaScript Operators </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-03-Selection/index.html">Selection </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-04-Loops/index.html">Loops </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-05-Pop-Up-Boxes/index.html">Pop Up Boxes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-06-Global-Methods/index.html">Global Methods </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-01-JavaScript-1/book-07-Exercise/index.html">JavaScript Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-00-String-Manipulation/index.html">String Manipulation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-1-JavaScript-Part-Two-A/book-01-Math-Object/index.html">Math Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-02-Date-Object/index.html">Date Object </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-03-Functions/index.html">Functions </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-04-Validation/index.html">Input Validation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-02-JavaScript-2/unit-2-JavaScript-Part-Two-B/book-05-Arrays/index.html">Arrays </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-00-DOM/index.html">Document Object Model </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-01-Accessing-Elements/index.html">Accessing Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-02-Working-with-Form-Elements/index.html">Working with Form Elements </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-03-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-04-Example-One/index.html">Example-1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-05-Example-Two/index.html">Example-2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-03-JavaScript-3/book-06-Exercises/index.html">Exercise </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-01-rps/index.html">W1-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-02-Card-Display/index.html">W2-Task </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-03-rps-Solution/index.html">RPS-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-04-Recap/book-04-Card-Display-Solution/index.html">Card-Display-Solution </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-00-jQuery-Selectors/index.html">jQuery Selectors </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-01-jQuery-Filters/index.html">jQuery Filters </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-02-Adding-content-to-a-page/index.html">Adding content </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-03-Modifying-CSS-properties/index.html">Modifying CSS properties </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-04-Tag-attributes/index.html">Tag attributes </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-05-jQuery-1/book-05-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-00-Events/index.html">Events </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-01-Images/index.html">Images </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-02-Plugins/index.html">jQuery-Plugins </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-06-jQuery-2/book-03-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-00-Effects/index.html">Effects </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-07-jQuery-3/book-01-Working-with-Forms/index.html">Working with Forms </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-09-JSON/book-01-JSON-Exercises/index.html">Exercises </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Templates/index.html">Handlebars Templating </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Helpers/index.html">Helpers </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Helpers">
+            <h1>Objectives</h1>
+<p>This lab will introduce you to helpers in Handlebars.</p>
+<ul>
+<li><p><a href="#/01">Blocks</a></p>
+</li>
+<li><p><a href="#/02">each Helper</a></p>
+</li>
+<li><p><a href="#/03">if Helper</a></p>
+</li>
+<li><p><a href="#/04">unless and with Helpers</a></p>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Blocks</h1>
+<p>In Handlebars, blocks are expressions that have a block opening <code>({{# }})</code> and closing <code>({{/}})</code>.<br>For now, take a look at how an <code>if</code> block is written:</p>
+<pre><code>{{#if boolean}}
+   Some Content here
+{{/if}}</code></pre>
+<p>Now take a look at how an <code>each</code> block is written:</p>
+<pre><code>{{#each boolean}}
+   Some Content here
+{{/each}}</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>each Helper</h1>
+<p>The <strong>each</strong> helper is used to iterate over an array. The syntax of the helper is </p>
+<pre><code>{{#each ArrayName}} 
+YourContent 
+{{/each}}</code></pre>
+<p>If we employ the following template:</p>
+<pre><code>{{#each names}}
+  Name : {{firstName}} {{lastName}}&lt;br&gt;
+{{/each}}</code></pre>
+<p>in conjunction with this context variable (employees):</p>
+<pre><code>var employees = {
+  &quot;country&quot;:&quot;USA&quot;,
+  &quot;names&quot; : [
+    {&quot;firstName&quot;:&quot;Ritesh&quot;,&quot;lastName&quot;:&quot;Kumar&quot;},
+    {&quot;firstName&quot;:&quot;John&quot;,&quot;lastName&quot;:&quot;Doe&quot;}
+  ]
+}</code></pre>
+<p>then the output can be seen in the following <a href ="archives/examples/example1.html" target="_blank">example</a>.</p>
+<h2>Using <em>this</em></h2>
+<p>Sometimes if you have an array of single elements rather than objects how can you refer to each element? We can refer to the individual array items by using the keyword <strong>this</strong> inside the block.</p>
+<p>If we employ the following template:</p>
+<pre><code>&lt;h1&gt;{{name}} - {{age}}&lt;/h1&gt;
+&lt;h3&gt;{{secretIdentity}}&lt;/h3&gt;
+&lt;ul&gt;
+  {{#each powers}}
+    &lt;li&gt;{{this}}&lt;/li&gt;
+  {{/each}}
+&lt;/ul&gt;</code></pre>
+<p>in conjunction with this context variable (superhero):</p>
+<pre><code>var superhero = {
+      &quot;name&quot;: &quot;Madame Uppercut&quot;,
+      &quot;age&quot;: 39,
+      &quot;secretIdentity&quot;: &quot;Jane Wilson&quot;,
+      &quot;powers&quot;: [
+        &quot;Million tonne punch&quot;,
+        &quot;Damage resistance&quot;,
+        &quot;Superhuman reflexes&quot;
+      ]
+}</code></pre>
+<p>then the output can be seen in the following <a href ="archives/examples/example5.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>if and unless Helpers</h1>
+<p>The <strong>if</strong> helper is similar to an if statement. If the condition evaluates to a truthy value, Handlebars will render the block. 
+We can also specify a template section known as <code>else section</code>, by using {{else}}. </p>
+<p>To show how the <code>if</code> helper works, let us consider the template below:</p>
+<pre><code>{{#if countries}}
+  The countries are present.
+{{else}}
+  The countries are not present.
+{{/if}}</code></pre>
+<p>If we provide the following context variable (data):</p>
+<pre><code>var data = {
+  &quot;countries&quot;: []
+}</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example2.html" target="_blank">example</a>.</p>
+<h2>unless Helper</h2>
+<p>The <strong>unless</strong> helper is the inverse of the <code>if</code> helper. It renders the block when the condition evaluates to a falsy value as can
+be seen in the following <a href ="archives/examples/example3.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>with Helper</h1>
+<p>In case there is an object with nested properties, and there are a lot of them, it is possible to use <strong>with</strong> to pass the context.</p>
+<p>To show how the <code>with</code> helper works, let us consider the template below:</p>
+<pre><code>{{#with author}}
+  &lt;h2&gt;By {{firstName}} {{lastName}}&lt;/h2&gt;
+{{/with}}
+
+{{#with contributor}}
+  &lt;h3&gt;Contribution by {{firstName}} {{lastName}}&lt;/h3&gt;
+{{/with}}</code></pre>
+<p>If we provide the following context variable (blog):</p>
+<pre><code>var blog = {
+  title: &quot;My first post!&quot;,
+  author: {
+    firstName: &quot;Charles&quot;,
+    lastName: &quot;Jolley&quot;
+  },
+  contributor: {
+    firstName:&quot;Miranda&quot;,
+    lastName:&quot;York&quot;
+  }
+}</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example4.html" target="_blank">example</a>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercise">
+            <h1>Helpers Exercises</h1>
+<ul>
+<li>Open the folder called <code>Week10</code>.</li>
+<li>Download, extract and open the <a href="archives/lab02.zip">Lab02</a> folder.</li>
+</ul>
+<h2>Exercise One</h2>
+<ul>
+<li>Open file (exercise1.html).</li>
+</ul>
+<p>Given the following data (context):</p>
+<pre><code>const recipe = {
+  description: &#39;Yummy Chicken Noodle Soup&#39;,
+  ingredients: [
+    {quantity: &quot;1 cup&quot;, name: &#39;Chicken&#39;},
+    {quantity: &quot;3 nanoliters&quot;, name: &#39;Stock&#39;},
+    {quantity: &quot;12&quot;, name: &#39;Noodles&#39;}
+  ]
+}</code></pre>
+<p>Create and compile a template that will result in the following:</p>
+<p><img src="img/exercise.png" alt=""></p>
+<h2>Exercise Two</h2>
+<ul>
+<li>Open file (exercise2.html).</li>
+</ul>
+<p>Given the following data (context):</p>
+<pre><code>const data = {
+  name: &quot;Jack&quot;,
+  date: &quot;12/03/18&quot;,
+  comment: &quot;This is a really &lt;strong&gt;awesome&lt;/strong&gt; tutorial. Thanks.&quot;,
+  social: [
+    {
+      site: &quot;Twitter&quot;,
+      name: &quot;Jack_Franklin&quot;
+    },
+    {
+      site: &quot;Github&quot;,
+      name: &quot;jackfranklin&quot;
+    }
+  ]
+}</code></pre>
+<p>Create and compile a template that will result in the following:</p>
+<p><img src="img/exercise2.png" alt=""></p>
+<p>and the following if there are no social sites (i.e. social is an empty array):</p>
+<p><img src="img/exercise3.png" alt=""></p>
+<h2>Exercise Three</h2>
+<ul>
+<li>Open file (exercise3.html).</li>
+</ul>
+<p>Given the following data (context):</p>
+<pre><code>const friends = [
+       {
+        &quot;name&quot;:&quot;Stevie&quot;,
+        &quot;fullname&quot;:&quot;Stevie Feliciano&quot;,
+        &quot;image&quot;:&quot;images/stevie.jpg&quot;,
+        &quot;joined&quot;:2016,
+        &quot;job&quot;:&quot;Web Developer&quot;,
+        &quot;city&quot;:&quot;Boston&quot;,
+        &quot;mates&quot;:35
+       },
+       {
+        &quot;name&quot;:&quot;Helen&quot;,
+        &quot;fullname&quot;:&quot;Helen Hess&quot;,
+        &quot;image&quot;:&quot;images/helen.jpg&quot;,
+        &quot;joined&quot;:2013,
+        &quot;job&quot;:&quot;Art Director&quot;,
+        &quot;city&quot;:&quot;New York&quot;,
+        &quot;mates&quot;:22
+       },
+       ...
+]</code></pre>
+<p>Create and compile a template that will result in the following set of cards (one per <em>friend</em>):</p>
+<p><img src="img/exercise4.png" alt=""></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

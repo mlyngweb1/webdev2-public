@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Example One</title>
+</head>
+
+<body>
+
+<script id="template" type="text/x-handlebars-template">
+  <p>Use the <strong>{{{power}}}</strong>, {{name}}!</p>
+</script>
+
+<div id = "placeholder"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+const person = {
+      name: "Luke",
+      power: "force"
+};
+
+//Compile the template
+let compiled_template = Handlebars.compile($('#template').html());
+
+//Render the data into the template
+let rendered = compiled_template(person);
+
+//Overwrite the contents of #target with the renderer HTML
+$('#placeholder').html(rendered);
+
+});
+</script>
+</body>
