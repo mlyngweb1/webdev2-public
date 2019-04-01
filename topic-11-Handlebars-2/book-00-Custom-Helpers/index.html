@@ -406,21 +406,14 @@ html, body {
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Templates/index.html">Handlebars Templating </a>
           
         
       
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Templates/index.html">Templating </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Helpers/index.html">Helpers </a>
           
         
       
@@ -442,6 +435,13 @@ html, body {
           
             <a class="item"
                href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-11-Handlebars-2/book-02-Data-Input/index.html">Data Input </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-11-Handlebars-2/book-03-Exercise/index.html">Exercise </a>
           
         
       
@@ -470,11 +470,11 @@ html, body {
         
           <div class="ui tab segment lab" data-tab="01">
             <h1>What are Custom Helpers?</h1>
-<p>As we have seen, Handlebars has some built in helpers such as #each, #if, etc... Handlebars also gives you the ability to create your own custom helper. 
-This means writing code to do something that you want (like converting names to sentence case).
-Simply register your function into Handlebars, and any template you compile afterwards can 
-access your helper. With custom helpers, we can add any kind or JavaScript logic. Custom helpers are created in the JavaScript code, not inside the Handlebars template.</p>
-<p>Custom block helpers are also registered with the <strong>Handlebars.registerHelper</strong> method. </p>
+<p>As we have seen, Handlebars has some built in helpers such as <code>#each</code>, <code>#if</code>, etc... Handlebars also gives you the ability to create your own custom helper. 
+This means writing JavaScript code to do something that you want (for example converting names to sentence case).</p>
+<p>You simply register your function into Handlebars (with the <strong>Handlebars.registerHelper</strong> method), and then any template you compile afterwards can 
+access your helper. </p>
+<p>Custom helpers are created in the JavaScript code, not inside the Handlebars template.</p>
 
           </div>
         
@@ -483,7 +483,7 @@ access your helper. With custom helpers, we can add any kind or JavaScript logic
 <p>This example just calls a function to return the firstname and lastname together.</p>
 <p>Let us consider the template below:</p>
 <pre><code>&lt;div&gt;
-  &lt;h1&gt;By {{fullName author}}&lt;/h1&gt;
+  &lt;h1&gt;By {{fullName blogger}}&lt;/h1&gt;
   &lt;p&gt;{{message}}&lt;/p&gt;
 
   &lt;h3&gt;Comments&lt;/h3&gt;
@@ -497,7 +497,7 @@ access your helper. With custom helpers, we can add any kind or JavaScript logic
 &lt;/div&gt;</code></pre>
 <p>If we provide the following context variable:</p>
 <pre><code>var data = {
-  author: {firstName: &quot;Alan&quot;, lastName: &quot;Johnson&quot;},
+  blogger: {firstName: &quot;Alan&quot;, lastName: &quot;Johnson&quot;},
   message: &quot;I Love Handlebars&quot;,
   comments: [{
     author: {firstName: &quot;Yehuda&quot;, lastName: &quot;Katz&quot;},
@@ -675,6 +675,9 @@ group: &quot;Bloggers&quot;
   return formattedname;
 });</code></pre>
 <p>We will obtain the result as in the following <a href ="archives/examples/example5.html" target="_blank">example</a>.</p>
+<p>Likewise if we look at our <a href ="archives/examples/example6.html" target="_blank">Cards example</a> again, we can ensure that the person&#39;s name
+is output correctly.</p>
+<p>.</p>
 
           </div>
         

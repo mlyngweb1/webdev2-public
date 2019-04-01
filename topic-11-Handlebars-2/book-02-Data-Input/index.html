@@ -394,21 +394,14 @@ html, body {
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Templates/index.html">Handlebars Templating </a>
           
         
       
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Templates/index.html">Templating </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Helpers/index.html">Helpers </a>
           
         
       
@@ -433,6 +426,13 @@ html, body {
           
         
       
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-11-Handlebars-2/book-03-Exercise/index.html">Exercise </a>
+          
+        
+      
     </div>
     <div class="pusher" tabindex="-1">
       <div class="ui basic segment">
@@ -452,66 +452,56 @@ html, body {
         
           <div class="ui tab segment lab" data-tab="01">
             <h1>Employee Form</h1>
-<p>In this <a href="archives/examples/employee.html" target="_blank">example</a> which displays employee records from a JSON object. The web page also includes 
+<p>In this <a href="archives/example/employee.html" target="_blank">example</a> which displays employee records from a JSON object. The web page also includes 
 a button that will open a form inside a modal dialog if we want to add a new employee.</p>
-<pre><code>&lt;button class=&quot;float-right btn btn-primary&quot; id=&quot;btncall&quot; data-toggle=&quot;modal&quot; data-target=&quot;#modalForm&quot;&gt;Add Employee&lt;/button&gt;</code></pre>
+<pre><code>&lt;button class=&quot;ui primary button&quot; id=&quot;btncall&quot;&gt;Add Employee&lt;/button&gt;</code></pre>
+<p>Code required to respond to the button <code>click</code> event:</p>
+<pre><code>$(&quot;#btncall&quot;).on(&#39;click&#39;, function(){
+     $(&quot;.empform&quot;).modal(&#39;show&#39;);
+});</code></pre>
 <p>The following form contains text boxes (validated), which allow the user to enter Employee data:</p>
-<pre><code>&lt;form name = &#39;emplist&#39; id = &quot;emplist&quot; &gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-&lt;label for = &quot;id&quot; class=&quot;col-sm-3 col-form-label&quot;&gt;Employee ID&lt;/label&gt;
-&lt;div class=&quot;col-sm-9&quot;&gt;
-&lt;input type = &quot;text&quot; name=&quot;id&quot; id =&quot;id&quot; autofocus class=&quot;form-control&quot; required pattern = &quot;\d&quot; title=&quot;Please enter numeric values only&quot;&gt;
+<pre><code>&lt;form name = &#39;emplist&#39; id = &quot;emplist&quot; class = &quot;ui form&quot; &gt;
+&lt;div class=&quot;inline field&quot;&gt;
+&lt;label for = &quot;id&quot; class=&quot;two wide field&quot;&gt;Employee ID&lt;/label&gt;
+&lt;input type = &quot;text&quot; class=&quot;eight wide field&quot;  name=&quot;id&quot; id =&quot;id&quot; autofocus  required pattern = &quot;\d&quot;
+                title=&quot;Please enter numeric values only&quot;&gt;
 &lt;/div&gt;
+
+&lt;div class=&quot;inline field&quot;&gt;
+&lt;label for = &quot;firstname&quot; class=&quot;two wide field&quot;&gt;First Name&lt;/label&gt;
+&lt;input type = &quot;text&quot; name=&quot;firstname&quot; id=&quot;firstname&quot; class=&quot;eight wide field&quot; required pattern = &quot;[A-Z][a-z]+( [A-Z][a-z]+)?&quot;
+                title=&quot;Please enter your first name (Second name optional) with First Letter capitalised&quot;&gt;
 &lt;/div&gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-&lt;label for = &quot;firstname&quot; class=&quot;col-sm-3 col-form-label&quot;&gt;First Name&lt;/label&gt;
-&lt;div class=&quot;col-sm-9&quot;&gt;
-&lt;input type = &quot;text&quot; name=&quot;firstname&quot; id=&quot;firstname&quot; class=&quot;form-control&quot; required pattern = &quot;[A-Z][a-z]+( [A-Z][a-z]+)?&quot; 
-                     title=&quot;Please enter your first name (Second name optional) with First Letter capitalised&quot;&gt;
+
+&lt;div class=&quot;inline field&quot;&gt;
+&lt;label for = &quot;lastname&quot; class=&quot;two wide field&quot;&gt;Last Name&lt;/label&gt;
+&lt;input type = &quot;text&quot; name=&quot;lastname&quot; id=&quot;lastname&quot; class=&quot;eight wide field&quot; required pattern = &quot;[A-Z][a-z]+( [A-Z][a-z]+)?&quot;
+                title=&quot;Please enter a Surname (Second name optional) with First Letter capitalised&quot;&gt;
 &lt;/div&gt;
+
+&lt;div class=&quot;inline field&quot;&gt;
+&lt;label for = &quot;county&quot; class=&quot;two wide field&quot;&gt;County&lt;/label&gt;
+&lt;input type = &quot;text&quot; name=&quot;county&quot; id=&quot;county&quot; class=&quot;eight wide field&quot; required pattern = &quot;[A-Z][a-z]+&quot; title =&quot;Please enter a valid county with First Letter capitalised&quot;&gt;
 &lt;/div&gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-&lt;label for = &quot;lastname&quot; class=&quot;col-sm-3 col-form-label&quot;&gt;Last Name&lt;/label&gt;
-&lt;div class=&quot;col-sm-9&quot;&gt;
-&lt;input type = &quot;text&quot; name=&quot;lastname&quot; id=&quot;lastname&quot; class=&quot;form-control&quot; required pattern = &quot;[A-Z][a-z]+( [A-Z][a-z]+)?&quot; 
-                     title=&quot;Please enter a Surname (Second name optional) with First Letter capitalised&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-&lt;label for = &quot;county&quot; class=&quot;col-sm-3 col-form-label&quot;&gt;County&lt;/label&gt;
-&lt;div class=&quot;col-sm-9&quot;&gt;
-&lt;input type = &quot;text&quot; name=&quot;county&quot; id=&quot;county&quot; class=&quot;form-control&quot; required pattern = &quot;[A-Z][a-z]+&quot; 
-                     title =&quot;Please enter a valid county with First Letter capitalised&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-&lt;label for = &quot;email&quot; class=&quot;col-sm-3 col-form-label&quot;&gt;Email Address&lt;/label&gt;
-&lt;div class=&quot;col-sm-9&quot;&gt;
-&lt;input type = &quot;email&quot; name=&quot;email&quot; id=&quot;email&quot; class=&quot;form-control&quot; required pattern = &quot;^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$&quot;
+
+&lt;div class=&quot;inline field&quot;&gt;
+&lt;label for = &quot;email&quot; class=&quot;two wide field&quot;&gt;Email Address&lt;/label&gt;
+&lt;input type = &quot;email&quot; name=&quot;email&quot; id=&quot;email&quot; class=&quot;eight wide field&quot; required pattern = &quot;^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$&quot;
      title=&quot;Please enter a valid email&quot;&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;form-group row&quot;&gt;
-    &lt;div class=&quot;col-sm-10&quot;&gt;
-      &lt;input type=&quot;submit&quot; id=&quot;thesubmit&quot; value=&quot;Add Employee&quot;&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+
+&lt;input type=&quot;submit&quot; id=&quot;thesubmit&quot; class=&quot;ui primary button&quot; value=&quot;Add Employee&quot;&gt;
 &lt;/form&gt;
 ~</code></pre>
-<p>The code for the form above is enclosed in code that will open the form inside a modal dialog (this is a Bootstrap feature), when requested to:</p>
-<pre><code>&lt;div class=&quot;modal fade&quot; id =&quot;modalForm&quot;   role=&quot;dialog&quot;&gt;
-&lt;div class=&quot;modal-dialog&quot;&gt;
-&lt;div class=&quot;modal-content&quot;&gt;
-&lt;div class=&quot;modal-header&quot;&gt;
-&lt;h1&gt;Add Employee&lt;/h1&gt;
-&lt;/div&gt;
-&lt;div class= modal-body&gt;
-&lt;form name = &#39;emplist&#39; id = &quot;emplist&quot; &gt;
-...
-&lt;/form&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+<p>The code for the form above is enclosed in code that will open the form inside a modal dialog (this is a Semantic UI feature), when requested to:</p>
+<pre><code>&lt;div class=&quot;ui modal empform&quot;&gt;
+ &lt;i class=&quot;close icon&quot;&gt;&lt;/i&gt;
+ &lt;div class=&quot;header&quot;&gt;
+  &lt;h1&gt;Add Employee&lt;/h1&gt;
+ &lt;/div&gt;
+ &lt;form name = &#39;emplist&#39; id = &quot;emplist&quot; class = &quot;ui form&quot; &gt;
+  ...
+ &lt;/form&gt;
 &lt;/div&gt;</code></pre>
 
           </div>
@@ -519,7 +509,9 @@ a button that will open a form inside a modal dialog if we want to add a new emp
           <div class="ui tab segment lab" data-tab="02">
             <h1>JavaScript required</h1>
 <p>The code to display the JSON data is as follows:</p>
-<pre><code>var employee = [
+<pre><code>const dept = {
+    title: &quot;Sales&quot;,
+    employee :[
         {
             &#39;id&#39;:1,
             &#39;firstname&#39;: &quot;Fred&quot;,
@@ -541,17 +533,19 @@ a button that will open a form inside a modal dialog if we want to add a new emp
             &#39;county&#39;:&#39;Waterford&#39;,
             &#39;email&#39;:&#39;samdunne@gmail.com&#39;
         }
-  ];
+  ]
+  };
 
-var source   = $(&quot;#some-template&quot;).html();
-var template = Handlebars.compile(source);
-var theCompiledHtml = template(employee);
+let template   = Handlebars.compile($(&quot;#emp-template&quot;).html());
+let theCompiledHtml = template(dept);
 $(&quot;#content-placeholder&quot;).html(theCompiledHtml);</code></pre>
 <h2>Add an Employee</h2>
-<p>When the user enters employee data (id, firstname, lastname, county, and email) and then clicks the submit (Add Employee) button the text box data is put together 
+<p>When the user enters employee data (id, firstname, lastname, county, and email) and then clicks the submit (Add Employee) button the text box data is gathered together 
 into a new object, and this new object is pushed onto the employee array. The page is then refreshed
 including the new employee object. The modal dialog is hidden and the text boxes are cleared.</p>
-<pre><code>$(&#39;#emplist&#39;).submit(function() {
+<pre><code>$(&#39;#emplist&#39;).submit(function(evt) {
+    evt.preventDefault();
+
   newemp= {
      id:$(&#39;#id&#39;).val(),
      firstname:$(&#39;#firstname&#39;).val(),
@@ -559,11 +553,10 @@ including the new employee object. The modal dialog is hidden and the text boxes
      county:$(&#39;#county&#39;).val(),
      email:$(&#39;#email&#39;).val()
   }
-
-  employee.push(newemp);
-  var theCompiledHtml = template(employee);
+  dept.employee.push(newemp);
+  let theCompiledHtml = template(dept);
   $(&quot;#content-placeholder&quot;).html(theCompiledHtml);
-  $(&#39;#modalForm&#39;).modal(&#39;hide&#39;);
+  $(&#39;.empform&#39;).modal(&#39;hide&#39;);
   $(&#39;input[type=&quot;text&quot;]&#39;).each(function() {
         $(this).val(&quot;&quot;);
   });

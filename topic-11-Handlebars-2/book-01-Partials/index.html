@@ -398,21 +398,14 @@ html, body {
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Intro/index.html">Intro to Handlebars </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-00-Templates/index.html">Handlebars Templating </a>
           
         
       
         
           
             <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Templates/index.html">Templating </a>
-          
-        
-      
-        
-          
-            <a class="item"
-               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-02-Helpers/index.html">Helpers </a>
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-10-Handlebars-1/book-01-Helpers/index.html">Helpers </a>
           
         
       
@@ -434,6 +427,13 @@ html, body {
           
             <a class="item"
                href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-11-Handlebars-2/book-02-Data-Input/index.html">Data Input </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="http://mlyngweb1.github.io/Website-Development-2-2019//topic-11-Handlebars-2/book-03-Exercise/index.html">Exercise </a>
           
         
       
@@ -499,42 +499,55 @@ a <em>compiled template</em> as its second argument. </p>
         
           <div class="ui tab segment lab" data-tab="03">
             <h1>Example Two</h1>
-<p>In the following example we create a partial that includes code that is common on each web page of a web site.</p>
-<pre><code>Handlebars.registerPartial(&quot;headersection&quot;, &#39;&lt;header&gt;&lt;h1&gt;BubbleUnder.com&lt;/h1&gt;&lt;/header&gt;&#39; +
-&#39;&lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;&#39; +
-&#39;&lt;li&gt;&lt;a href=&quot;about.html&quot;&gt;About Us&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;events.html&quot;&gt;Club Events&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;contact.html&quot;&gt;Contact Us&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;&#39;);</code></pre>
-<p>Let us consider the template below that is used in each web page. The partial (header and nav that is common on all pages) is included on each page:</p>
-<pre><code>&lt;script id=&quot;handlebars-demo&quot; type=&quot;text/x-handlebars-template&quot;&gt;
-  {{&gt; headersection}}
-  ...
+<p>We will expand the previous <strong>card</strong> example, by populating a dropdown menu with some content from each of the cards. We will code this inside a partial as follows:</p>
+<pre><code>&lt;script id=&quot;dropdown-partial&quot; type=&quot;text/x-handlebars-template&quot;&gt;
+&lt;div class=&quot;ui selection dropdown&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;user&quot;&gt;
+  &lt;i class=&quot;dropdown icon&quot;&gt;&lt;/i&gt;
+  &lt;div class=&quot;default text&quot;&gt;Select Friend&lt;/div&gt;
+  &lt;div class=&quot;menu&quot;&gt;
+  {{#each this}}
+    &lt;div class=&quot;item&quot; data-value={{name}}&gt;
+      &lt;img class=&quot;ui mini avatar image&quot; src={{image}}&gt;
+      {{fullname}}
+    &lt;/div&gt;
+    {{/each}}
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;/script&gt;</code></pre>
-<p>If we also provide the following context variable (JSON object):</p>
-<pre><code>var clubevents = {
-  title: &#39;Club events/dive trips for the next six months&#39;,
-  events: [
-    {date: &quot;12 July&quot;, desc: &quot;Committee meeting, deciding on next year&#39;s trips&quot;, contact:&quot;Bob Dobalina&quot;},
-    {date: &quot;19 July&quot;, desc: &quot;7-day trip to Hurghada (package deal) - limited spaces&quot;, contact:&quot;Bob Dobalina&quot;},
-    {date: &quot;5 August&quot;, desc: &quot;Ocean &amp;amp; Sports Diver Theory Course&quot;, contact:&quot;Jeff Edgely&quot;},
-    {date: &quot;12 August&quot;, desc: &quot;Murder Mystery Weekend, Cotswolds (no diving!&quot;, contact:&quot;Jill Smith&quot;}
-  ]
-}</code></pre>
-<p>The template below is used in <em>events.html</em> that utilises the JSON object:</p>
-<pre><code>&lt;section&gt;
- &lt;h2&gt;Club Events&lt;/h2&gt;
+<p>We will register the partial as follows:</p>
+<pre><code>Handlebars.registerPartial(&quot;dropdown&quot;, $(&quot;#dropdown-partial&quot;).html());</code></pre>
+<p>And, we will invoke the partial inside the template:</p>
+<pre><code>&lt;script id=&quot;cards&quot; type=&quot;text/x-handlebars-template&quot;&gt;
 
- &lt;table&gt;
- &lt;caption&gt;{{title}}&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;&lt;th&gt;Date&lt;/th&gt;&lt;th&gt;Event Description&lt;/th&gt;&lt;th&gt;Contact&lt;/th&gt;&lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
-  {{#each events}}
-   &lt;tr&gt;&lt;td&gt;{{date}}&lt;/td&gt;&lt;td&gt;{{desc}}&lt;/td&gt;&lt;td&gt;{{contact}}&lt;/td&gt;&lt;/tr&gt;
-  {{/each}}
- &lt;/tbody&gt;
- &lt;/table&gt;
-&lt;/section&gt;</code></pre>
-<p>We will obtain the result as in the following <a href ="archives/examples/bubbleunder/index.html" target="_blank">example</a>.</p>
+{{&gt; dropdown}}
+
+{{#each this}}
+&lt;div class=&quot;ui card&quot; id ={{name}}&gt;
+  &lt;div class=&quot;image&quot;&gt;
+    &lt;img src={{image}}&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;content&quot;&gt;
+    &lt;a class=&quot;header&quot;&gt;{{fullname}}&lt;/a&gt;
+    &lt;div class=&quot;meta&quot;&gt;
+      &lt;span class=&quot;date&quot;&gt;Joined in {{joined}}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;description&quot;&gt;
+      {{name}} is {{job}} in {{city}}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;extra content&quot;&gt;
+    &lt;a&gt;
+      &lt;i class=&quot;user icon&quot;&gt;&lt;/i&gt;
+      {{mates}} Friends
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+{{/each}}
+
+&lt;/script&gt;</code></pre>
+<p>We will obtain the result as in the following <a href ="archives/examples/example2.html" target="_blank">example</a>.</p>
+<p>.</p>
 
           </div>
         

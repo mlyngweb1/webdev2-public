@@ -1,0 +1,36 @@
+.ui.container {
+  padding-top:1em;
+}
+
+section {
+  margin-top:1em;
+}
+
+form {
+ padding:1em;
+}
+
+h1 {
+  text-align:center;
+}
+
+#btncall {
+  margin-top:1em;
+  float:right;
+}
+
+.ui.table thead th{
+      background: navy;
+      color: white;
+}
+
+.ui.striped.table > tr:nth-child(2n),
+.ui.striped.table tbody tr:nth-child(2n) {
+      background-color: lightblue;
+}
+
+.ui.selectable.table tbody tr:hover,
+.ui.table tbody tr td.selectable:hover {
+      background-color: skyblue !important;
+      color:white !important;
+}

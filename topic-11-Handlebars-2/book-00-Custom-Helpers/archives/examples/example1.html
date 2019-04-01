@@ -15,7 +15,7 @@
 <body>
 <script id="handlebars-demo" type="text/x-handlebars-template">
 <div>
-  <h1>By {{fullName author}}</h1>
+  <h1>By {{fullName blogger}}</h1>
   <p>{{message}}</p>
 
   <h3>Comments</h3>
@@ -29,12 +29,12 @@
 </div>
 </script>
 
-<script src='js/jquery-3.1.1.min.js'></script>
-<script src='js/handlebars.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js'></script>
 <script>
 $(document).ready(function() {
 var data = {
-  author: {firstName: "Alan", lastName: "Johnson"},
+  blogger: {firstName: "Alan", lastName: "Johnson"},
   message: "I Love Handlebars",
   comments: [{
     author: {firstName: "Yehuda", lastName: "Katz"},
@@ -51,9 +51,9 @@ Handlebars.registerHelper('fullName', function(person) {
   return person.firstName + " " + person.lastName;
 });
 
-var template = Handlebars.compile($('#handlebars-demo').html());
+let template = Handlebars.compile($('#handlebars-demo').html());
 
-var html = template(data);
+let html = template(data);
 
 $(document.body).append(html);});
 </script>

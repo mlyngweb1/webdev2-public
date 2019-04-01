@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" type="text/css">
+    <title>Card Display</title>
+    <style>
+
+    .ui.container {
+    margin-top:3%;
+    }
+
+    .description {
+	  font-style:italic;
+	  font-weight:bold;
+    }
+
+    .date {
+      color:purple;
+     }
+    </style>
+</head>
+<body>
+
+<div class = "ui container">
+<h1>Which Friend?</h1>
+<div id ="friends"></div>
+
+<script id="dropdown-partial" type="text/x-handlebars-template">
+<div class="ui selection dropdown">
+  <input type="hidden" name="user">
+  <i class="dropdown icon"></i>
+  <div class="default text">Select Friend</div>
+  <div class="menu">
+  {{#each this}}
+    <div class="item" data-value={{name}}>
+      <img class="ui mini avatar image" src={{image}}>
+      {{capitalise fullname}}
+    </div>
+    {{/each}}
+  </div>
+</div>
+</script>
+
+<script id="cards" type="text/x-handlebars-template">
+{{> dropdown}}
+
+{{#each this}}
+<div class="ui card" id ={{name}}>
+  <div class="image">
+    <img src={{image}}>
+  </div>
+  <div class="content">
+    <a class="header">{{capitalise fullname}}</a>
+    <div class="meta">
+      <span class="date">Joined in {{joined}}</span>
+    </div>
+    <div class="description">
+      {{name}} is {{job}} in {{city}}
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="user icon"></i>
+      {{mates}} Friends
+    </a>
+  </div>
+</div>
+{{/each}}
+</script>
+
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js'></script>
+<script>
+$(document).ready(function() {
+const friends = [
+       {
+        "name":"Stevie",
+        "fullname":"Stevie feliciano",
+        "image":"images/stevie.jpg",
+        "joined":2016,
+        "job":"Web Developer",
+        "city":"Boston",
+        "mates":35
+       },
+       {
+        "name":"Helen",
+        "fullname":"helen hess",
+        "image":"images/helen.jpg",
+        "joined":2013,
+        "job":"Art Director",
+        "city":"New York",
+        "mates":22
+       },
+       {
+        "name":"Elliot",
+        "fullname":"elliot Fu",
+        "image":"images/elliot.jpg",
+        "joined":2015,
+        "job":"Research Assistant",
+        "city":"New York",
+        "mates":26
+       },
+       {
+        "name":"Christian",
+        "fullname":"christian monroe",
+        "image":"images/christian.jpg",
+        "joined":2016,
+        "job":"Musician",
+        "city":"Boston",
+        "mates":23
+       },
+       {
+        "name":"Matt",
+        "fullname":"Matt smith",
+        "image":"images/matt.jpg",
+        "joined":2015,
+        "job":"Teacher",
+        "city":"New York",
+        "mates":28
+       },
+       {
+        "name":"Jenny",
+        "fullname":"jenny howe",
+        "image":"images/jenny.jpg",
+        "joined":2014,
+        "job":"UX Designer",
+        "city":"Manhatten",
+        "mates":30
+       }
+      ];
+
+Handlebars.registerHelper('capitalise', function(str) {
+  data=str.split(" ");
+  formattedname="";
+  for (i in data) {
+     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1,).toLowerCase() + " ";
+  }
+  return formattedname;
+});
+
+Handlebars.registerPartial("dropdown", $("#dropdown-partial").html());
+
+let template = Handlebars.compile($('#cards').html());
+
+let output = template(friends);
+
+$('#friends').html(output);
+
+
+$('.ui.card').hide();
+$('.ui.dropdown').dropdown();
+
+    $('input[name="user"]').on('change',  function(){
+      $('.ui.card').hide();
+      friend=($('input[name="user"]').val());
+
+     for (x in friends) {
+         if (friend === friends[x].name) {
+             theid = '#'+friend;
+	         $(theid).show();
+	         break;
+         }
+     }
+    });
+});
+</script>
+</body>
+</html>

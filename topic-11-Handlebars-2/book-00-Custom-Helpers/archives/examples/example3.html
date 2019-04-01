@@ -26,8 +26,8 @@
  <div id="content-placeholder">
 </div>
 
-<script src='js/jquery-3.1.1.min.js'></script>
-<script src='js/handlebars.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js'></script>
 <script>
 $(document).ready(function() {
 var data = [
@@ -52,9 +52,7 @@ var data = [
  });
 
 
-var source   = $("#some-template").html();
-
-var template = Handlebars.compile(source);
+let template   = Handlebars.compile($("#some-template").html());
 
 var theCompiledHtml = template(data);
 

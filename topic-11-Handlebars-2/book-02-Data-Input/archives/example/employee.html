@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html  lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" >
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="ui container">
+<script id="emp-template" type="text/x-handlebars-template">
+
+<header>
+      <h1>{{title}}</h1>
+</header>
+<section>
+<table class="ui striped selectable table" >
+<thead>
+<tr>
+<th>Emp ID</th>
+<th>Employee Name</th>
+<th>Address</th>
+<th>Email Address</th>
+</tr>
+</thead>
+<tbody>
+{{#each employee}}
+<tr>
+<td>{{id}}</td>
+<td>{{firstname}} {{lastname}} </td>
+<td>{{county}}</td>
+<td>{{email}}</td>
+</tr>
+{{/each}}
+</tbody>
+</table>
+</section>
+
+
+</script>
+
+<div id = "content-placeholder"></div>
+<button class="ui primary button" id="btncall">Add Employee</button>
+<div class="ui modal empform">
+<i class="close icon"></i>
+<div class="header">
+<h1>Add Employee</h1>
+</div>
+
+<form name = 'emplist' id = "emplist" class = "ui form" >
+<div class="inline field">
+<label for = "id" class="two wide field">Employee ID</label>
+<input type = "text" class="eight wide field"  name="id" id ="id" autofocus  required pattern = "\d"
+                title="Please enter numeric values only">
+</div>
+
+<div class="inline field">
+<label for = "firstname" class="two wide field">First Name</label>
+<input type = "text" name="firstname" id="firstname" class="eight wide field" required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+                title="Please enter your first name (Second name optional) with First Letter capitalised">
+</div>
+
+<div class="inline field">
+<label for = "lastname" class="two wide field">Last Name</label>
+<input type = "text" name="lastname" id="lastname" class="eight wide field" required pattern = "[A-Z][a-z]+( [A-Z][a-z]+)?"
+                title="Please enter a Surname (Second name optional) with First Letter capitalised">
+</div>
+
+<div class="inline field">
+<label for = "county" class="two wide field">County</label>
+<input type = "text" name="county" id="county" class="eight wide field" required pattern = "[A-Z][a-z]+" title ="Please enter a valid county with First Letter capitalised">
+</div>
+
+<div class="inline field">
+<label for = "email" class="two wide field">Email Address</label>
+<input type = "email" name="email" id="email" class="eight wide field" required pattern = "^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$"
+     title="Please enter a valid email">
+</div>
+
+<input type="submit" id="thesubmit" class="ui primary button" value="Add Employee">
+
+</form>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js'></script>
+<script src="js/emp.js"></script>
+
+  </body>
+</html>

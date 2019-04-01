@@ -5,11 +5,6 @@
 </head>
 <body>
 <h1>Handlebars Partials Example!</h1>
-
-<div id="list">
-</div>
-<script src='js/jquery-3.1.1.min.js'></script>
-<script src='js/handlebars.min.js'></script>
 <script id="people-template" type="text/x-handlebars-template">
       {{#each people}}
         <h2>{{first_name}} {{last_name}}</h2>
@@ -25,7 +20,11 @@
       </div>
 </script>
 
-<script type="text/javascript">
+<div id="list"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js'></script>
+
+<script>
       $(document).ready(function() {
          var data = {
 	            people: [
@@ -40,9 +39,11 @@
 
 		Handlebars.registerPartial("person", $("#person-partial").html());
 
-        var template = Handlebars.compile($("#people-template").html());
+        let template = Handlebars.compile($("#people-template").html());
 
-        $('#list').html(template(data));
+        let output = template(data);
+
+        $('#list').html(output);
       });
 </script>
 </body>
