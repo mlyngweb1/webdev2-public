@@ -670,7 +670,7 @@ group: &quot;Bloggers&quot;
   data=str.split(&quot; &quot;);
   formattedname=&quot;&quot;;
   for (i in data) {
-     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1,).toLowerCase() + &quot; &quot;;
+     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1).toLowerCase() + &quot; &quot;;
   }
   return formattedname;
 });</code></pre>

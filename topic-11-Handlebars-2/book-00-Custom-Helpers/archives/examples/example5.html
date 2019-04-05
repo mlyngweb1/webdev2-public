@@ -30,7 +30,7 @@ Handlebars.registerHelper('capitalise', function(str) {
   data=str.split(" ");
   formattedname="";
   for (i in data) {
-     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1,).toLowerCase() + " ";
+     formattedname+= data[i].charAt(0).toUpperCase() + data[i].substring(1).toLowerCase() + " ";
   }
   return formattedname;
 });
